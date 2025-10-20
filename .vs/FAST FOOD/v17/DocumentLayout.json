@@ -1,0 +1,379 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Laptrinhwebt5\\FAST FOOD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\models\\kfccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\models\\kfccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\danhmucs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\danhmucs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\controllers\\monanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\controllers\\monanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\monans\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\monans\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\donhangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\donhangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\models\\monan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\models\\monan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\monans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\monans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\models\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\models\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\controllers\\chitietdonhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\controllers\\chitietdonhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\controllers\\donhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\controllers\\donhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\migrations\\202510200838310_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\migrations\\202510200838310_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|d:\\laptrinhwebt5\\fast food\\fast food\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|D:\\Laptrinhwebt5\\FAST FOOD\\fast food\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|D:\\Laptrinhwebt5\\FAST FOOD\\fast food\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CEDA22F-AC41-47B3-B887-E5EAFC559DF4}|FAST FOOD\\FAST FOOD.csproj|solutionrelative:fast food\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 391,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Site.css",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Content\\Site.css",
+              "RelativeDocumentMoniker": "FAST FOOD\\Content\\Site.css",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Content\\Site.css",
+              "RelativeToolTip": "FAST FOOD\\Content\\Site.css",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAmwHoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-17T13:58:24.505Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\MonAns\\Create.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\MonAns\\Create.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\MonAns\\Create.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\MonAns\\Create.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAwEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T09:19:11.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DanhmucsController.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\DanhmucsController.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Controllers\\DanhmucsController.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\DanhmucsController.cs",
+              "RelativeToolTip": "FAST FOOD\\Controllers\\DanhmucsController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T09:00:24.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\MonAns\\Index.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\MonAns\\Index.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\MonAns\\Index.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\MonAns\\Index.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T08:57:11.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MonAnsController.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\MonAnsController.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Controllers\\MonAnsController.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\MonAnsController.cs",
+              "RelativeToolTip": "FAST FOOD\\Controllers\\MonAnsController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:56:54.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Danhmucs\\Create.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\Danhmucs\\Create.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Danhmucs\\Create.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\Danhmucs\\Create.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T09:49:34.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KFCContext.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\KFCContext.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Models\\KFCContext.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\KFCContext.cs",
+              "RelativeToolTip": "FAST FOOD\\Models\\KFCContext.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:09:48.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Migrations\\Configuration.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Migrations\\Configuration.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Migrations\\Configuration.cs",
+              "RelativeToolTip": "FAST FOOD\\Migrations\\Configuration.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:33:05.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DonHangsController.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\DonHangsController.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Controllers\\DonHangsController.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\DonHangsController.cs",
+              "RelativeToolTip": "FAST FOOD\\Controllers\\DonHangsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T09:00:52.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\DonHangs\\Create.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\DonHangs\\Create.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\DonHangs\\Create.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\DonHangs\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T09:49:32.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DanhMuc.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\DanhMuc.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Models\\DanhMuc.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\DanhMuc.cs",
+              "RelativeToolTip": "FAST FOOD\\Models\\DanhMuc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:00:30.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MonAn.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\MonAn.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Models\\MonAn.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\MonAn.cs",
+              "RelativeToolTip": "FAST FOOD\\Models\\MonAn.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:01:37.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChiTietDonHangsController.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\ChiTietDonHangsController.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Controllers\\ChiTietDonHangsController.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Controllers\\ChiTietDonHangsController.cs",
+              "RelativeToolTip": "FAST FOOD\\Controllers\\ChiTietDonHangsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T09:28:07.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Danhmucs\\Index.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\Danhmucs\\Index.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Danhmucs\\Index.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\Danhmucs\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T09:08:26.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "202510200838310_InitialCreate.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Migrations\\202510200838310_InitialCreate.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Migrations\\202510200838310_InitialCreate.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Migrations\\202510200838310_InitialCreate.cs",
+              "RelativeToolTip": "FAST FOOD\\Migrations\\202510200838310_InitialCreate.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:38:36.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Web.config",
+              "RelativeDocumentMoniker": "FAST FOOD\\Web.config",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Web.config",
+              "RelativeToolTip": "FAST FOOD\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-20T08:27:40.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DonHang.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\DonHang.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Models\\DonHang.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\DonHang.cs",
+              "RelativeToolTip": "FAST FOOD\\Models\\DonHang.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:03:58.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ChiTietDonHang.cs",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\ChiTietDonHang.cs",
+              "RelativeDocumentMoniker": "FAST FOOD\\Models\\ChiTietDonHang.cs",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Models\\ChiTietDonHang.cs",
+              "RelativeToolTip": "FAST FOOD\\Models\\ChiTietDonHang.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T08:03:19.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T13:57:56.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "FAST FOOD\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Laptrinhwebt5\\FAST FOOD\\FAST FOOD\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "FAST FOOD\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T13:57:28.175Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 9,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

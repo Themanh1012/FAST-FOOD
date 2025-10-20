@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <nav class="navbar bg-body-tertiary fixed-top header">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">KFC</a>
+            <div class="middle">
+                <a class="navbar-brand" href="#">Thực Đơn</a>
+                <a class="navbar-brand" href="#">Khuyến Mãi</a>
+                <a class="navbar-brand" href="#">Dịch Vụ Tiệc</a>
+                <a class="navbar-brand" href="#">Hệ Thống Nhà Hàng</a>
+            </div>
+
+            <div class="right-header">
+                <div class="cart-container">
+                   
+                     
+
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </div>
+                </div>
+                <div class="icon-login">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER 2-->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mt-5 header2">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đặt ngay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Giao hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hoặc mang đi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="order02" href="#">Bắt đầu đặt hàng</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--SLIDE-->
+    <div id="carouselExample" class="carousel slide slide1">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://static.kfcvietnam.com.vn/images/content/home/carousel/lg/6COB.webp?v=LKn6A3" class="d-block w-100" alt="01">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.kfcvietnam.com.vn/images/content/home/carousel/lg/TNAG-P3.webp?v=w3or1g" class="d-block w-100" alt="02">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.kfcvietnam.com.vn/images/content/home/carousel/lg/NewPasta.webp?v=w3or1g" class="d-block w-100" alt="03">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!--Menu-->
+    <div class="menu">
+        <h3> DANH MỤC MÓN ĂN </h3>
+        <hr />
+    </div>
+</main>

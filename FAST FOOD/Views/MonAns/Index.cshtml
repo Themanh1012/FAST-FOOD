@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FAST_FOOD.Models.MonAn>
+
+@{
+    ViewBag.Title = "Danh Sách Món Ăn";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Thêm Món Mới", "Create" , null , new {@class="btn btn-primary"})
+</p>
+<table class="table table-bordered" style="text-align:center">
+    <tr>
+        <th>
+           Tên Danh Mục
+        </th>
+        <th>
+            Tên Món
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Hình Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.DanhMuc?.TenDanhMuc
+        </td>
+        <td>
+            @item.TenMon
+        </td>
+        <td>
+            @item.Gia.ToString("N0") đ
+        </td>
+        <td>
+            <img src="~/Images/@item.HinhAnh" width="100" height="80" alt="@item.TenMon" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MonAnId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MonAnId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MonAnId })
+        </td>
+    </tr>
+}
+
+</table>

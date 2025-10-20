@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FAST_FOOD.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DonHang.TenKhachHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonAn.TenMon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonHang.TenKhachHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonAn.TenMon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhTien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ChiTietId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ChiTietId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ChiTietId })
+        </td>
+    </tr>
+}
+
+</table>
