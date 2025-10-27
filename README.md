@@ -1,4 +1,5 @@
-CÁCH MỞ FILE SQL SERVER và dùbg 
+CÁCH MỞ FILE SQL SERVER và dùng 
+
 🔹 Bước 1: Mở SQL Server Management Studio (SSMS)
 
 🔹 Bước 2: Restore database từ file .bak
