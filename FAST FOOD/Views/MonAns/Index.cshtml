@@ -29,21 +29,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-           @item.DanhMuc?.TenDanhMuc
-        </td>
+            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
         <td>
             @item.TenMon
         </td>
         <td>
-            @item.Gia.ToString("N0") đ
+            @(item.Gia != null ? string.Format("{0:N0} đ", item.Gia) : "Chưa có giá")
         </td>
         <td>
-            <img src="~/Images/@item.HinhAnh" width="100" height="80" alt="@item.TenMon" />
+            <img src="@Url.Content(string.IsNullOrEmpty(item.HinhAnh) ? "~/Images/noimage.png" : item.HinhAnh)"
+                 width="100" height="80" alt="@item.TenMon" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MonAnId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MonAnId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MonAnId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.MonAnId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MonAnId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MonAnId })
         </td>
     </tr>
 }

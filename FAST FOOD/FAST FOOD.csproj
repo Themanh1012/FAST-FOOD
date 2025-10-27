@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202510200838310_InitialCreate.Designer.cs">
       <DependentUpon>202510200838310_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510271615252_UpdateKFCModel.cs" />
+    <Compile Include="Migrations\202510271615252_UpdateKFCModel.Designer.cs">
+      <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
@@ -222,7 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="Images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -254,6 +258,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202510200838310_InitialCreate.resx">
       <DependentUpon>202510200838310_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510271615252_UpdateKFCModel.resx">
+      <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

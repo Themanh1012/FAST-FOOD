@@ -11,52 +11,54 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Thông Tin Món Ăn</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenMon, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="form-horizontal">
+    <h4>Thông Tin Món Ăn</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenMon, htmlAttributes: new { @class = "control-label col-md-2" })
 
-            <!--Tên Món-->
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenMon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenMon, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <!--Giá-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!--Hinh ANh-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="HinhAnhFile" class="form-control" accept="image/*" />
-                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @* Danh muc *@
-        <div class="form-group">
-            @Html.LabelFor(model => model.DanhMucId, "DanhMucId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DanhMucId", null, "--Chọn danh mục--",new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DanhMucId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @* Nut tạo *@
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <!--Tên Món-->
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenMon, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenMon, "", new { @class = "text-danger" })
         </div>
     </div>
+    <!--Giá-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" , required="required"}  })
+            @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @* Danh muc *@
+    <div class="form-group">
+        @Html.LabelFor(model => model.DanhMucId, "DanhMucId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DanhMucId", null, "--Chọn danh mục--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DanhMucId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Hinh ANh-->
+    <div class="form-group">
+        <label>Hình ảnh </label>
+        <div class="col-md-10">
+            <input type="file" name="HinhAnhFile" class="form-control" />
+        </div>
+   
+    </div>
+   
+
+    @* Nut tạo *@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

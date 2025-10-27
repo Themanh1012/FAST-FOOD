@@ -1,12 +1,13 @@
-﻿using System;
+﻿using FAST_FOOD.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FAST_FOOD.Models;
 
 namespace FAST_FOOD.Controllers
 {
@@ -17,8 +18,9 @@ namespace FAST_FOOD.Controllers
         // GET: MonAns
         public ActionResult Index()
         {
-            var monAns = db.MonAns.Include(m => m.DanhMuc);
-            return View(monAns.ToList());
+            var monAns = db.MonAns.Include(m => m.DanhMuc).ToList();
+            return View(monAns);
+
         }
 
         // GET: MonAns/Details/5
@@ -56,38 +58,47 @@ namespace FAST_FOOD.Controllers
                 //NHỚ KỸ 
                 if (HinhAnhFile != null && HinhAnhFile.ContentLength > 0)
                 {
+                    //luu vao thu muc 
+                    var folderPath = Server.MapPath("~/Images/Products/");
+
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
                     //lay ten file
-                    var fileName = System.IO.Path.GetFileName(HinhAnhFile.FileName);
+                    var fileName = Path.GetFileName(HinhAnhFile.FileName);
 
                     //luu thu muc
-                    var path = Server.MapPath("~/Images/" + fileName);
+                    var path = Path.Combine(folderPath, fileName);
 
                     //luu file vao image
                     HinhAnhFile.SaveAs(path);
 
                     //gan ten file trong model
-                    monAn.HinhAnh = fileName;
+                 
+                    monAn.HinhAnh = "~/Images/Products/" + fileName;
                 }
                 else
                 {
-                    monAn.HinhAnh = monAn.HinhAnh ?? "noimage.png"; // hoặc string.Empty
+                    // Nếu không upload thì dùng ảnh mặc định
+                    monAn.HinhAnh = "~/Images/noimage.png";
                 }
-                try
-                {
-                    db.MonAns.Add(monAn);
+                //try
+                //{
+                db.MonAns.Add(monAn);
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    // Ghi log hoặc in ra lỗi chi tiết để xem nguyên nhân thực sự
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.InnerException?.Message);
+                //}
+                //catch (Exception ex)
+                //{
+                //    // Ghi log hoặc in ra lỗi chi tiết để xem nguyên nhân thực sự
+                //    Console.WriteLine(ex.Message);
+                //    Console.WriteLine(ex.InnerException?.Message);
 
-                    ViewBag.Error = ex.InnerException?.Message ?? ex.Message;
-                    ViewBag.DanhMucId = new SelectList(db.Danhmucs, "DanhMucId", "TenDanhMuc", monAn.DanhMucId);
-                    return View(monAn);
-                }
+                //    ViewBag.Error = ex.InnerException?.Message ?? ex.Message;
+                //    ViewBag.DanhMucId = new SelectList(db.Danhmucs, "DanhMucId", "TenDanhMuc", monAn.DanhMucId);
+                //    return View(monAn);
+                //}
             }
 
             ViewBag.DanhMucId = new SelectList(db.Danhmucs, "DanhMucId", "TenDanhMuc", monAn.DanhMucId);

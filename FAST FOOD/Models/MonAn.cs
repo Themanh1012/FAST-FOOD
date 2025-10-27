@@ -16,11 +16,14 @@ namespace FAST_FOOD.Models
         public string TenMon { get; set; }
 
         public decimal Gia { get; set; }
+        
         public string HinhAnh { get; set; }
 
+      
         //khoa ngoai
-        
+
         public int DanhMucId {  get; set; }
+
         [ForeignKey("DanhMucId")]
         public virtual Danhmuc DanhMuc { get; set; }
 

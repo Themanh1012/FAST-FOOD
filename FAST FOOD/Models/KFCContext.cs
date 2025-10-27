@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Collections;
 namespace FAST_FOOD.Models
 {
     public class KFCContext: DbContext
     {
         public KFCContext(): base("KFCContext"){
-                this.Configuration.LazyLoadingEnabled = true;   
+                this.Configuration.LazyLoadingEnabled = false;   
             }
         public DbSet<Danhmuc> Danhmucs { get; set; }
+       
         public DbSet<MonAn> MonAns { get; set; }
         public DbSet<DonHang> DonHangs { get; set; }
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
@@ -21,7 +23,8 @@ namespace FAST_FOOD.Models
             modelBuilder.Entity<MonAn>()
                 .HasRequired(m => m.DanhMuc)
                 .WithMany(dm => dm.MonAns)
-                .HasForeignKey(m => m.DanhMucId);
+                .HasForeignKey(m => m.DanhMucId)
+                .WillCascadeOnDelete(false);
 
             //1:N DONHANG -CHITIETDONHANG
             modelBuilder.Entity<ChiTietDonHang>()

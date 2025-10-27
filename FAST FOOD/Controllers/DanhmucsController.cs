@@ -38,6 +38,7 @@ namespace FAST_FOOD.Controllers
         // GET: Danhmucs/Create
         public ActionResult Create()
         {
+            //ViewBag.DanhMucId = new SelectList(db.DanhMucs, "DanhMucId", "TenDanhMuc");
             return View();
         }
 
@@ -50,6 +51,8 @@ namespace FAST_FOOD.Controllers
         {
             if (ModelState.IsValid)
             {
+                //save picture 
+                
                 db.Danhmucs.Add(danhmuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
