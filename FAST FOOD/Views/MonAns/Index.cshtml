@@ -30,11 +30,14 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+            </td>
         <td>
             @item.TenMon
         </td>
         <td>
-            @(item.Gia != null ? string.Format("{0:N0} đ", item.Gia) : "Chưa có giá")
+            @String.Format("{0:N0} đ", item.Gia) <!-- dùng bản này nếu Gia là decimal -->
+            @* hoặc dùng dòng dưới nếu Gia là decimal? *@
+            @* @(item.Gia.HasValue ? string.Format("{0:N0} đ", item.Gia.Value) : "Chưa có giá") *@
         </td>
         <td>
             <img src="@Url.Content(string.IsNullOrEmpty(item.HinhAnh) ? "~/Images/noimage.png" : item.HinhAnh)"

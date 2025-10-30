@@ -1,50 +1,33 @@
 ﻿@model FAST_FOOD.Models.MonAn
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết Món Ăn";
 }
 
-<h2>Details</h2>
+<h2>Chi Tiết Món Ăn</h2>
 
 <div>
-    <h4>MonAn</h4>
+    <h4>@Model.TenMon</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DanhMuc.TenDanhMuc)
-        </dt>
+        <dt>Tên Danh Mục</dt>
+        <dd>@(Model.DanhMuc != null ? Model.DanhMuc.TenDanhMuc : "Không có danh mục")</dd>
 
+        <dt>Tên Món</dt>
+        <dd>@Model.TenMon</dd>
+
+        <dt>Giá</dt>
+        <dd>@String.Format("{0:N0} đ", Model.Gia)</dd>
+
+        <dt>Hình Ảnh</dt>
         <dd>
-            @Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)
+            <img src="@Url.Content(string.IsNullOrEmpty(Model.HinhAnh) ? "~/Images/noimage.png" : Model.HinhAnh)"
+                 alt="@Model.TenMon" width="200" class="img-thumbnail" />
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenMon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenMon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MonAnId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MonAnId }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
 </p>

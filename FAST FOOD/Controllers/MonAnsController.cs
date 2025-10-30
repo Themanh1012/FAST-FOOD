@@ -1,4 +1,5 @@
 ﻿using FAST_FOOD.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,11 +31,15 @@ namespace FAST_FOOD.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MonAn monAn = db.MonAns.Find(id);
+            var monAn = db.MonAns
+                  .Include(m => m.DanhMuc)
+                  .FirstOrDefault(m => m.MonAnId == id);
+
             if (monAn == null)
             {
                 return HttpNotFound();
             }
+
             return View(monAn);
         }
 
@@ -126,13 +131,63 @@ namespace FAST_FOOD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn )
+        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn , HttpPostedFileBase HinhAnhFile)
         {
             if (ModelState.IsValid)
             {
-               
+                
+                var monAnInDb = db.MonAns.Find(monAn.MonAnId);
+                if (monAnInDb == null)
+                {
+                    return HttpNotFound();
+                }
 
-                db.Entry(monAn).State = EntityState.Modified;
+
+                //UPDATE IMAGE
+
+                monAnInDb.TenMon = monAn.TenMon;
+                monAnInDb.Gia = monAn.Gia;
+                monAnInDb.DanhMucId = monAn.DanhMucId;
+                if (HinhAnhFile != null && HinhAnhFile.ContentLength > 0)
+                {
+                    var folderPath = Server.MapPath("~/Images/Products/");
+
+                    if (!Directory.Exists(folderPath))
+
+                        Directory.CreateDirectory(folderPath);
+
+
+
+                    var fileName = Path.GetFileNameWithoutExtension(HinhAnhFile.FileName);
+                    var extension = Path.GetExtension(HinhAnhFile.FileName);
+                    var newFileName = $"{fileName}" + "_" + DateTime.Now.Ticks + extension;
+                    var path = Path.Combine(folderPath, newFileName);
+
+                    HinhAnhFile.SaveAs(path);
+
+                    if (!string.IsNullOrEmpty(monAnInDb.HinhAnh) && !monAnInDb.HinhAnh.Contains("noimage.png"))
+                    {
+                        var oldImagePath = Server.MapPath(monAnInDb.HinhAnh);
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+                    monAnInDb.HinhAnh = "~/Images/Products/" + newFileName;
+
+
+                }
+                else
+                {
+                    // 🟢 Nếu không upload ảnh mới => giữ ảnh cũ
+                    monAnInDb.HinhAnh = monAn.HinhAnh;
+                }
+
+                //db.Entry(monAn).State = EntityState.Modified;
+
+
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -22,9 +22,12 @@
 
             if (!context.Danhmucs.Any())
             {
-                context.Danhmucs.Add(new Danhmuc { TenDanhMuc = "Gà rán" });
-                context.Danhmucs.Add(new Danhmuc { TenDanhMuc = "Mì ý" });
-                context.Danhmucs.Add(new Danhmuc { TenDanhMuc = "Cơm gà" });
+                context.Danhmucs.AddOrUpdate(
+                    d=> d.TenDanhMuc,
+                new Danhmuc{ TenDanhMuc = "Gà rán" },
+                new Danhmuc { TenDanhMuc = "Mì ý" },
+                new Danhmuc { TenDanhMuc = "Cơm gà" }
+                );
                 context.SaveChanges();
                     }
             

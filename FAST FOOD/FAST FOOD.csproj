@@ -130,6 +130,8 @@
     <Compile Include="Controllers\ChiTietDonHangsController.cs" />
     <Compile Include="Controllers\DanhmucsController.cs" />
     <Compile Include="Controllers\DonHangsController.cs" />
+    <Compile Include="Controllers\HinhThucThanhToansController.cs" />
+    <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonAnsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,12 +145,23 @@
     <Compile Include="Migrations\202510271615252_UpdateKFCModel.Designer.cs">
       <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510300215352_FixHoaDonForeignKeys.cs" />
+    <Compile Include="Migrations\202510300215352_FixHoaDonForeignKeys.Designer.cs">
+      <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.cs" />
+    <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.Designer.cs">
+      <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\HinhThucThanhToan.cs" />
+    <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KFCContext.cs" />
     <Compile Include="Models\MonAn.cs" />
+    <Compile Include="Models\Nhanvien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +184,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Products\hình ảnh_2025-10-30_233143320.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -223,10 +237,19 @@
     <Content Include="Views\ChiTietDonHangs\Details.cshtml" />
     <Content Include="Views\ChiTietDonHangs\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHangs\Index.cshtml" />
+    <Content Include="Views\HinhThucThanhToans\Create.cshtml" />
+    <Content Include="Views\HinhThucThanhToans\Delete.cshtml" />
+    <Content Include="Views\HinhThucThanhToans\Details.cshtml" />
+    <Content Include="Views\HinhThucThanhToans\Edit.cshtml" />
+    <Content Include="Views\HinhThucThanhToans\Index.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -261,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510271615252_UpdateKFCModel.resx">
       <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510300215352_FixHoaDonForeignKeys.resx">
+      <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.resx">
+      <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
