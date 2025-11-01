@@ -1,19 +1,19 @@
 ﻿@model FAST_FOOD.Models.MonAn
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Chỉnh sửa";
 }
 
 <h2>Chỉnh sửa món ăn </h2>
 
 
-@using (Html.BeginForm("Edit", "MonAns", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Chỉnh Sửa", "MonAns", FormMethod.Post, new { enctype = "multipart/form-data" }))
 
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>MonAn</h4>
+    
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MonAnId)
@@ -68,7 +68,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay về", "Index" , new {@class="btn btn-danger text-white"})
 </div>
 
 @section Scripts {

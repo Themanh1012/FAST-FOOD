@@ -1,26 +1,29 @@
 ﻿@model FAST_FOOD.Models.Danhmuc
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết Danh Mục";
 }
 
-<h2>Details</h2>
+<h2 class="text-info">Chi Tiết Danh Mục</h2>
+</hr>
 
-<div>
-    <h4>Danhmuc</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenDanhMuc)
+    <dl class="row">
+        <dt class="col-sm-3">
+            Mã Danh Mục
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDanhMuc)
+        <dd class="col-sm-9">
+            @Model.DanhMucId
         </dd>
-
+        <dt class="col-sm-3">
+            Tên Danh Mục
+        </dt>
+        <dd class="col-sm-9">
+            @Model.TenDanhMuc
+        </dd>
     </dl>
-</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DanhMucId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.DanhMucId }, new {@class="btn btn-warning text-white"}) |
+    @Html.ActionLink("🔙 Quay Lại", "Index" , null , new {@class="btn btn-secondary"})
 </p>

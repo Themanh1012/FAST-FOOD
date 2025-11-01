@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<FAST_FOOD.Models.MonAn>
-
+@using FAST_FOOD.Models
 @{
     ViewBag.Title = "Danh Sách Món Ăn";
 }
@@ -7,12 +7,12 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Thêm Món Mới", "Create" , null , new {@class="btn btn-primary"})
+    @Html.ActionLink("Thêm Món Mới", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-bordered" style="text-align:center">
     <tr>
         <th>
-           Tên Danh Mục
+            Tên Danh Mục
         </th>
         <th>
             Tên Món
@@ -26,29 +26,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
             </td>
-        <td>
-            @item.TenMon
-        </td>
-        <td>
-            @String.Format("{0:N0} đ", item.Gia) <!-- dùng bản này nếu Gia là decimal -->
-            @* hoặc dùng dòng dưới nếu Gia là decimal? *@
-            @* @(item.Gia.HasValue ? string.Format("{0:N0} đ", item.Gia.Value) : "Chưa có giá") *@
-        </td>
-        <td>
-            <img src="@Url.Content(string.IsNullOrEmpty(item.HinhAnh) ? "~/Images/noimage.png" : item.HinhAnh)"
-                 width="100" height="80" alt="@item.TenMon" />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.MonAnId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.MonAnId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MonAnId })
-        </td>
-    </tr>
-}
+            <td>
+                @item.TenMon
+            </td>
+            <td>
+                @String.Format("{0:N0} đ", item.Gia) <!-- dùng bản này nếu Gia là decimal -->
+                @* hoặc dùng dòng dưới nếu Gia là decimal? *@
+                @* @(item.Gia.HasValue ? string.Format("{0:N0} đ", item.Gia.Value) : "Chưa có giá") *@
+            </td>
+            <td>
+                <img src="@Url.Content(string.IsNullOrEmpty(item.HinhAnh) ? "~/Images/noimage.png" : item.HinhAnh)"
+                     width="100" height="80" alt="@item.TenMon" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MonAnId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MonAnId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MonAnId })
+            </td>
+        </tr>
+    }
 
 </table>
