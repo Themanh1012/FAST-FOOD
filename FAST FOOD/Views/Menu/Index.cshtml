@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FAST_FOOD.Models.Danhmuc>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center text-danger fw-bold mb-4">DANH MỤC MÓN ĂN</h2>
+    <div class="row g-4">
+        @foreach(var item in Model)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="card border-0 shadow-sm h-100 menu-card">
+                        <img src="@Url.Content(string.IsNullOrEmpty(item.HinhAnh) ? "~/Images/noimage.png" : item.HinhAnh)"
+                             class="card-img-top"
+                        <a href="#">content</a>lt="@item.TenDanhMuc"
+                        style="height:200px; object-fit:cover;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">@item.TenDanhMuc</h5>
+                        <a href="@Url.Action("DanhMuc","Menu", new {id = item.DanhMucId})"class="btn btn-outline-danger mt-2">
+                            Xem món &rsaquo;
+                        </a>
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+<style>
+    .menu-card {
+        transition: all 0.3s ease;
+    }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+</style>
+

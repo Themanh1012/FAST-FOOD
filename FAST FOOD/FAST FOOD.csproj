@@ -125,6 +125,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,13 +141,13 @@
     <Compile Include="Migrations\202510300215352_FixHoaDonForeignKeys.Designer.cs">
       <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.cs" />
-    <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.Designer.cs">
-      <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202511021329170_UpdateDB.cs" />
     <Compile Include="Migrations\202511021329170_UpdateDB.Designer.cs">
       <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511021427085_InitDB.cs" />
+    <Compile Include="Migrations\202511021427085_InitDB.Designer.cs">
+      <DependentUpon>202511021427085_InitDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
@@ -247,6 +248,9 @@
     <Content Include="Areas\Admin\Views\HoaDons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\DanhMuc.cshtml" />
+    <Content Include="Views\DanhMuc\DanhMuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,7 +258,6 @@
     <Folder Include="Areas\Customer\Controllers\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Views\Shared\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202510200838310_InitialCreate.resx">
@@ -266,11 +269,11 @@
     <EmbeddedResource Include="Migrations\202510300215352_FixHoaDonForeignKeys.resx">
       <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.resx">
-      <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511021329170_UpdateDB.resx">
       <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511021427085_InitDB.resx">
+      <DependentUpon>202511021427085_InitDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

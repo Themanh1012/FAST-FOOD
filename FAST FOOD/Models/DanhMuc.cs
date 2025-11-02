@@ -13,6 +13,8 @@ namespace FAST_FOOD.Models
         [Required, StringLength(100)]
         public string TenDanhMuc { get; set; }
 
+           public string HinhAnh { get; set; }
+
         //1:N
         public virtual ICollection<MonAn> MonAns { get; set; }
     }

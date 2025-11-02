@@ -1,0 +1,26 @@
+﻿@model FAST_FOOD.Models.Danhmuc
+@{
+    ViewBag.Title = "DanhMuc";
+    Layout = "_ViewStart";
+}
+
+
+<div class="container my-5">
+    <h2 class="text-center text-danger fw-bold mb-4">@Model.TenDanhMuc</h2>
+    <div class="row g-4">
+        @foreach(var mon in Model.MonAns)
+            {
+                <div class="col-md-3 col-sm-6">
+                            
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="@Url.Content(mon.HinhAnh ?? "~/Images/noimage.png")"
+                             class="card-img-top" alt="@mon.TenMon" style="height:200px; object-fit:cover" />
+                        <div class="card-body text-center">
+                            <h6 class="fw-bold">@mon.TenMon</h6>
+                            <p class="text-danger fw-semibold">@string.Format("{0:N0} đ", mon.Gia) </p>
+                        </div>
+                    </div>
+                   </div>
+            }
+    </div>
+</div>
