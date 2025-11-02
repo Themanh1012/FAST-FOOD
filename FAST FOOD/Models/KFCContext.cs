@@ -10,7 +10,8 @@ namespace FAST_FOOD.Models
     {
         public KFCContext(): base("KFCContext"){
                 this.Configuration.LazyLoadingEnabled = false;   
-            }
+                 this.Configuration.ProxyCreationEnabled = false;   
+        }
         public DbSet<Danhmuc> Danhmucs { get; set; }
        
         public DbSet<MonAn> MonAns { get; set; }
@@ -33,14 +34,29 @@ namespace FAST_FOOD.Models
             modelBuilder.Entity<ChiTietDonHang>()
                 .HasRequired(ct => ct.DonHang)
                 .WithMany(d => d.ChiTietDonHangs)
-                .HasForeignKey(n => n.DonHangId);
+                .HasForeignKey(ct => ct.DonHangId)
+                .WillCascadeOnDelete(true);
 
             //1:N MONAN - CHITIETDONHANG
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .HasRequired(ct => ct.MonAn)
                 .WithMany(d => d.ChiTietDonHangs)
-                .HasForeignKey(n => n.MonAnId);
+                .HasForeignKey(ct => ct.MonAnId)
+                .WillCascadeOnDelete(false);
+
+            //1:N HINHTHUCTHANHTOAN - DONHANG
+            modelBuilder.Entity<DonHang>()
+                .HasOptional(d => d.HinhThucThanhToan)
+                .WithMany()
+                .HasForeignKey(d => d.MaHTTT)
+                .WillCascadeOnDelete(false);
+
+            //1:1 :DOnhang co 1 hoa don
+            modelBuilder.Entity<HoaDon>()
+                .HasRequired(hd => hd.DonHang)
+                .WithMany()
+                .WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
 
            

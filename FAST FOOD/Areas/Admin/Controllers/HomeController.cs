@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FAST_FOOD.Controllers
+namespace FAST_FOOD.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Trang Quản Trị";
             return View();
         }
 

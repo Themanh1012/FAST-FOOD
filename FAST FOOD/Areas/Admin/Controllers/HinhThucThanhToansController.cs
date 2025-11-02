@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FAST_FOOD.Models;
 
-namespace FAST_FOOD.Controllers
+namespace FAST_FOOD.Areas.Admin.Controllers
 {
     public class HinhThucThanhToansController : Controller
     {

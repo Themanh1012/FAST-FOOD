@@ -10,7 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FAST_FOOD.Controllers
+namespace FAST_FOOD.Areas.Admin.Controllers
 {
     public class MonAnsController : Controller
     {
@@ -80,7 +80,7 @@ namespace FAST_FOOD.Controllers
                     HinhAnhFile.SaveAs(path);
 
                     //gan ten file trong model
-                 
+
                     monAn.HinhAnh = "~/Images/Products/" + fileName;
                 }
                 else
@@ -91,8 +91,8 @@ namespace FAST_FOOD.Controllers
                 //try
                 //{
                 db.MonAns.Add(monAn);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                db.SaveChanges();
+                return RedirectToAction("Index");
                 //}
                 //catch (Exception ex)
                 //{
@@ -131,11 +131,11 @@ namespace FAST_FOOD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn , HttpPostedFileBase HinhAnhFile)
+        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn, HttpPostedFileBase HinhAnhFile)
         {
             if (ModelState.IsValid)
             {
-                
+
                 var monAnInDb = db.MonAns.Find(monAn.MonAnId);
                 if (monAnInDb == null)
                 {

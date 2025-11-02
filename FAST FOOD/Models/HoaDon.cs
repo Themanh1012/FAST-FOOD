@@ -13,23 +13,29 @@ namespace FAST_FOOD.Models
         public int MaHoaDon { get; set; }
 
         //Khoa ngoai toi Donhang
+        [Required]
         public int MaDonHang { get; set; }
-        [ForeignKey(nameof(MaDonHang))]
-        public DonHang DonHang { get; set; }
+
+        [ForeignKey("MaDonHang")]
+        public virtual DonHang DonHang { get; set; }
 
         //Khoa ngoai toi Nhanvien
+        [Required]
         public int MaNV { get; set; }
         [ForeignKey(nameof(MaNV))]
         public Nhanvien Nhanvien { get; set; }
 
         //Khoa ngoai toi HinhThucThanhToan
 
-        [ForeignKey("HinhThucThanhToan")]
+       
+        [Required]
         public int MaHTTT { get; set; }
-        [ForeignKey(nameof(MaHTTT))]
-        public HinhThucThanhToan HinhThucThanhToan { get; set; }    
+
+        [ForeignKey("MaHTTT")]
+        public virtual HinhThucThanhToan HinhThucThanhToan { get; set; }    
 
         public DateTime NgayThanhToan { get; set; }  = DateTime.Now;
+        [Required]
         public decimal TongTien { get; set; }   
     }
 }

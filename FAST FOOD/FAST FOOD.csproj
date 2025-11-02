@@ -116,13 +116,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ChiTietDonHangsController.cs" />
-    <Compile Include="Controllers\DanhmucsController.cs" />
-    <Compile Include="Controllers\DonHangsController.cs" />
-    <Compile Include="Controllers\HinhThucThanhToansController.cs" />
-    <Compile Include="Controllers\HoaDonsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MonAnsController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiTietDonHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DanhmucsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HinhThucThanhToansController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
+    <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +143,10 @@
     <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.cs" />
     <Compile Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.Designer.cs">
       <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511021329170_UpdateDB.cs" />
+    <Compile Include="Migrations\202511021329170_UpdateDB.Designer.cs">
+      <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
@@ -180,6 +186,11 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewsStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\web.config" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -206,39 +217,44 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\MonAns\Create.cshtml" />
-    <Content Include="Views\MonAns\Delete.cshtml" />
-    <Content Include="Views\MonAns\Details.cshtml" />
-    <Content Include="Views\MonAns\Edit.cshtml" />
-    <Content Include="Views\MonAns\Index.cshtml" />
-    <Content Include="Views\Danhmucs\Create.cshtml" />
-    <Content Include="Views\Danhmucs\Delete.cshtml" />
-    <Content Include="Views\Danhmucs\Details.cshtml" />
-    <Content Include="Views\Danhmucs\Edit.cshtml" />
-    <Content Include="Views\Danhmucs\Index.cshtml" />
-    <Content Include="Views\DonHangs\Create.cshtml" />
-    <Content Include="Views\DonHangs\Delete.cshtml" />
-    <Content Include="Views\DonHangs\Details.cshtml" />
-    <Content Include="Views\DonHangs\Edit.cshtml" />
-    <Content Include="Views\DonHangs\Index.cshtml" />
-    <Content Include="Views\ChiTietDonHangs\Create.cshtml" />
-    <Content Include="Views\ChiTietDonHangs\Delete.cshtml" />
-    <Content Include="Views\ChiTietDonHangs\Details.cshtml" />
-    <Content Include="Views\ChiTietDonHangs\Edit.cshtml" />
-    <Content Include="Views\ChiTietDonHangs\Index.cshtml" />
-    <Content Include="Views\HinhThucThanhToans\Create.cshtml" />
-    <Content Include="Views\HinhThucThanhToans\Delete.cshtml" />
-    <Content Include="Views\HinhThucThanhToans\Details.cshtml" />
-    <Content Include="Views\HinhThucThanhToans\Edit.cshtml" />
-    <Content Include="Views\HinhThucThanhToans\Index.cshtml" />
-    <Content Include="Views\HoaDons\Create.cshtml" />
-    <Content Include="Views\HoaDons\Delete.cshtml" />
-    <Content Include="Views\HoaDons\Details.cshtml" />
-    <Content Include="Views\HoaDons\Edit.cshtml" />
-    <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MonAns\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MonAns\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\MonAns\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\MonAns\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MonAns\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Danhmucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Danhmucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Danhmucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Danhmucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Danhmucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HinhThucThanhToans\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HinhThucThanhToans\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HinhThucThanhToans\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HinhThucThanhToans\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HinhThucThanhToans\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Customer\Controllers\" />
+    <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Views\Shared\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202510200838310_InitialCreate.resx">
@@ -252,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510300220121_AddHoaDonNhanVienThanhToan.resx">
       <DependentUpon>202510300220121_AddHoaDonNhanVienThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511021329170_UpdateDB.resx">
+      <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

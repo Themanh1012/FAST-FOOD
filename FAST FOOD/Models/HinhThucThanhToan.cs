@@ -10,6 +10,10 @@ namespace FAST_FOOD.Models
     {
         [Key]
         public int MaHTTT { get; set; }
+
+        [Required,StringLength(100)]
+        [Display(Name = "Tên Hình Thức Thanh Toán")]
+         
         public string TenHinhThuc { get; set; }
     }
 }
