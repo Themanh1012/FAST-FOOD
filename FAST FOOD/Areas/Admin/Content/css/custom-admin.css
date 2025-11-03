@@ -1,0 +1,14 @@
+﻿.table-hover tbody tr:hover{
+    background-color: #f1f7ff;
+    transition:0.3s ease;
+}
+h3.text-primary i{
+    color: #4e73df;
+}
+.btn-success{
+    background-color: #1cc88a;
+    border:none;
+}
+.btn-success:hover{
+    background-color: #17a673;
+}

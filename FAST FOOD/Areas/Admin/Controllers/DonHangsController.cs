@@ -17,8 +17,12 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: DonHangs
         public ActionResult Index()
         {
-            return View(db.DonHangs.ToList());
+            var donHangs = db.DonHangs
+                             .Include(d => d.HinhThucThanhToan)
+                             .ToList();
+            return View(donHangs);
         }
+
 
         // GET: DonHangs/Details/5
         public ActionResult Details(int? id)
@@ -38,6 +42,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: DonHangs/Create
         public ActionResult Create()
         {
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT");
             return View();
         }
 
@@ -46,15 +51,16 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DonHangId,NgayDat,TenKhachHang")] DonHang donHang)
+        public ActionResult Create([Bind(Include = "TenKhachHang,DiaChi,SoDienThoai,TongTien,TrangThai,MaHTTT")] DonHang donHang)
         {
             if (ModelState.IsValid)
             {
+                donHang.NgayDat = DateTime.Now;
                 db.DonHangs.Add(donHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
             return View(donHang);
         }
 

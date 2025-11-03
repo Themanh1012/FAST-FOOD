@@ -1,79 +1,80 @@
-﻿@{
-    Layout = null;
-    ViewBag.Title = ViewBag.Title ?? "FAST FOOD Admin";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Quản trị hệ thống</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.min.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
 
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <link href="~/Content/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
 
-        nav.navbar {
-            background-color: #343a40;
-        }
+    <link href="~/Areas/Admin/Content/css/sb-admin-2.min.css" rel="stylesheet" />
+    <script src="~/Areas/Admin/js/sb-admin-2.min.js"></script>
+    <link href="~/Areas/Admin/Content/css/custom-admin.css" rel="stylesheet" />
+    <link href="~/Content/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
 
-        .navbar-brand, .nav-link {
-            color: #fff !important;
-        }
 
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 50px;
-        }
-    </style>
+    @RenderSection("styles", required: false)
 </head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home", new { area = "Admin" })">FAST FOOD ADMIN</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Danhmucs", new { area = "Admin" })">Danh Mục</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "MonAns", new { area = "Admin" })">Món Ăn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "DonHangs", new { area = "Admin" })">Đơn Hàng</a>
-                    </li>
-                </ul>
+<body id="page-top">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Admin/Home/Index">
+                <div class="sidebar-brand-text mx-3">Admin Panel</div>
+            </a>
+
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/Danhmucs">
+                    <i class="fas fa-list"></i>
+                    <span>Danh mục</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/MonAns">
+                    <i class="fas fa-utensils"></i>
+                    <span>Món ăn</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/HoaDons">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Hóa đơn</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/DonHangs">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span> Đơn Hàng</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content" class="p-4">
+                @RenderBody()
             </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="container mt-4">
-        @RenderBody()
-    </main>
 
-    <footer>
-        <p>&copy; @DateTime.Now.Year - FAST FOOD Admin Panel</p>
-    </footer>
+    <!-- JS -->
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Admin/js/sb-admin-2.min.js"></script>
 
-    <!-- Scripts -->
-    <script src="@Url.Content("~/Scripts/jquery-3.7.0.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.bundle.min.js")"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

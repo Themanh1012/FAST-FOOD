@@ -30,7 +30,27 @@
                 );
                 context.SaveChanges();
                     }
-            
+            context.DonHangs.AddOrUpdate(
+                new DonHang
+                {
+                    TenKhachHang = "Nguyễn Văn A",
+                    DiaChi = "QUận 12 ,tphcm",
+                    SoDienThoai = "999999999",
+                    NgayDat = DateTime.Now.AddDays(-1),
+                    TrangThai = "Đang xử lý",
+                    TongTien = 19990000,
+                },
+                new DonHang
+                {
+                    TenKhachHang = "Nguyễn Văn B",
+                    DiaChi = "TPHCM",
+                    SoDienThoai = "1111111",
+                    NgayDat = DateTime.Now,
+                    TrangThai = "Hoàn Tất",
+                    TongTien = 9999999,
+                }
+                );
+            context.SaveChanges();
         }
     }
 }

@@ -1,51 +1,63 @@
 ﻿@model IEnumerable<FAST_FOOD.Models.ChiTietDonHang>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-primary">
+            <i class="fas- fa-receipt"></i>Chi Tiết Đơn Hàng -
+            <span class="text-dark">@ViewBag.DonHang?.TenKhachHang</span>
+        </h3>
+        <a href="@Url.Action("Create", new {donHangId = ViewBag.DonHang.DonHangId})" class="btn  btn bg-success shadow-sm">
+            <i class="fas fa-plus-circle"></i> Thêm Món
+        </a>
+    </div>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th style="width: 35%">Tên Món</th>
+                        <th style="width: 15%">Số Lượng</th>
+                        <th style="width: 25%">Thành Tiền</th>
+                        <th style="width: 25%">Hành Động</th>
+                    </tr>
+                </thead>
+            <tbody>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DonHang.TenKhachHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MonAn.TenMon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThanhTien)
-        </th>
-        <th></th>
-    </tr>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-3">Chưa có món nào trong đơn hàng.</td>
+                </tr>
+            }
+            else
+            {
+            foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td class="text-start">@item.MonAn.TenMon</td>
+                    <td>@item.SoLuong</td>
+                    <td class="text-success fw-bold">@string.Format("{0:N0} đ", item.ThanhTien)</td>
+                    <td>
+                        @Html.ActionLink("Xóa", "Delete", new {id=item.ChiTietId},
+                       new {@class="btn btn-sm btn-danger" , @onclick="return confirm('Xóa món này khỏi đơn hàng?');"})
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonHang.TenKhachHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MonAn.TenMon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThanhTien)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ChiTietId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ChiTietId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ChiTietId })
-        </td>
-    </tr>
-}
-
-</table>
+            }
+                </tbody>
+                </table>
+        </div>
+    </div>
+    <div class="text-end mt-3">
+        <h4 class="fw-bold text-dark">
+            Tổng Cộng:
+            <span class="text-danger">@string.Format("{0:N0} đ", ViewBag.DonHang?.TongTien)</span>
+        </h4>
+    </div>
+</div>

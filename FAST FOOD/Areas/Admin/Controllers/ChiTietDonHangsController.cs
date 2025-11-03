@@ -15,10 +15,18 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         private KFCContext db = new KFCContext();
 
         // GET: ChiTietDonHangs
-        public ActionResult Index()
+        public ActionResult Index(int? donHangId)
         {
-            var chiTietDonHangs = db.ChiTietDonHangs.Include(c => c.DonHang).Include(c => c.MonAn);
-            return View(chiTietDonHangs.ToList());
+           if(donHangId ==null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var chiTietDonHangs = db.ChiTietDonHangs
+                 .Include(c => c.MonAn)
+                 .Include(c => c.DonHang)
+                 .Where(c => c.DonHangId == donHangId)
+                 .ToList();
+            ViewBag.DonHang = db.DonHangs.Find(donHangId);
+            return View(chiTietDonHangs);
         }
 
         // GET: ChiTietDonHangs/Details/5
@@ -37,10 +45,11 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         }
 
         // GET: ChiTietDonHangs/Create
-        public ActionResult Create()
+        public ActionResult Create(int donHangId)
         {
             ViewBag.DonHangId = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang");
-            ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon");
+            //ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon");
+            ViewBag.DonHangId = donHangId;
             return View();
         }
 
@@ -53,13 +62,26 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                //lay gia mon an 
+                var mon = db.MonAns.Find(chiTietDonHang.MonAnId);
+                chiTietDonHang.ThanhTien = mon.Gia * chiTietDonHang.SoLuong;
+                
+
                 db.ChiTietDonHangs.Add(chiTietDonHang);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                // cap nhat tong tien 
+                var don = db.DonHangs.Find(chiTietDonHang.DonHangId);
+                don.TongTien = db.ChiTietDonHangs
+                    .Where(c => c.DonHangId == don.DonHangId)
+                    .Sum(c => c.ThanhTien);
+                db.SaveChanges();
+                return RedirectToAction("Index" , new {donHangId = chiTietDonHang.DonHangId});
             }
 
-            ViewBag.DonHangId = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", chiTietDonHang.DonHangId);
-            ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon", chiTietDonHang.MonAnId);
+            //ViewBag.DonHangId = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", chiTietDonHang.DonHangId);
+            //ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon", chiTietDonHang.MonAnId);
             return View(chiTietDonHang);
         }
 
@@ -105,11 +127,9 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang chiTietDonHang = db.ChiTietDonHangs.Find(id);
-            if (chiTietDonHang == null)
-            {
-                return HttpNotFound();
-            }
+            var chiTietDonHang = db.ChiTietDonHangs.Include(c => c.MonAn).Include(c => c.DonHang)
+                .FirstOrDefault(c => c.ChiTietId == id);
+            if (chiTietDonHang == null) return HttpNotFound();
             return View(chiTietDonHang);
         }
 
@@ -118,10 +138,23 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ChiTietDonHang chiTietDonHang = db.ChiTietDonHangs.Find(id);
+            //ChiTietDonHang chiTietDonHang = db.ChiTietDonHangs.Find(id);
+            //db.ChiTietDonHangs.Remove(chiTietDonHang);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+            var chiTietDonHang = db.ChiTietDonHangs.Find(id);
+            int donHangId = chiTietDonHang.DonHangId;
             db.ChiTietDonHangs.Remove(chiTietDonHang);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            //cap nhat tong don
+            var don = db.DonHangs.Find(donHangId);
+            don.TongTien = db.ChiTietDonHangs
+                .Where(c => c.DonHangId == don.DonHangId)
+                .Sum(c => c.ThanhTien);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { donHangId });
         }
 
         protected override void Dispose(bool disposing)
