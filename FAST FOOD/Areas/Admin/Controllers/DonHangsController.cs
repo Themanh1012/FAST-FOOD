@@ -68,14 +68,13 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang donHang = db.DonHangs.Find(id);
+
+            var donHang = db.DonHangs.Find(id);
             if (donHang == null)
-            {
                 return HttpNotFound();
-            }
+
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
             return View(donHang);
         }
 
@@ -84,14 +83,18 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DonHangId,NgayDat,TenKhachHang")] DonHang donHang)
+        public ActionResult Edit(DonHang donHang)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(donHang).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Success"] = "Cập nhật đơn hàng thành công!";
                 return RedirectToAction("Index");
             }
+
+            // Gán lại danh sách chọn khi model không hợp lệ
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
             return View(donHang);
         }
 
@@ -118,6 +121,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             DonHang donHang = db.DonHangs.Find(id);
             db.DonHangs.Remove(donHang);
             db.SaveChanges();
+            TempData["Success"] = "Xóa đơn hàng thành công!";
             return RedirectToAction("Index");
         }
 
