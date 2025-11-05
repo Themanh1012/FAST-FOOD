@@ -20,7 +20,7 @@ namespace FAST_FOOD.Models
         public int MonAnId { get; set; }
         [ForeignKey("MonAnId")]
         public virtual MonAn MonAn { get; set; }
-
+        [Range(1, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
         public decimal ThanhTien {  get; set; }
         public object MaDonHang { get; internal set; }

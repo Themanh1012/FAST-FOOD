@@ -1,49 +1,67 @@
 ﻿@model FAST_FOOD.Models.DonHang
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sửa Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>DonHang</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.DonHangId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayDat, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayDat, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayDat, "", new { @class = "text-danger" })
-            </div>
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-edit"></i>Sửa đơn hàng</h4>
         </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m=>m.DonHangId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenKhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenKhachHang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m=> m.TenKhachHang)
+                    @Html.TextBoxFor(m=> m.TenKhachHang, new { @class = "form-control", placeholder = "Tên khách hàng" })
+                    @Html.ValidationMessageFor(m => m.TenKhachHang, "", new {@class="text-danger"})
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m=> m.DiaChi)
+                    @Html.TextBoxFor(m=>m.DiaChi, new {@class="form-control", placeholder="Địa chỉ"})
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m=>m.SoDienThoai)
+
+                    @Html.TextBoxFor(m=>m.SoDienThoai, new {@class="form-control", placeholder="Số điện thoại"})
+                </div>
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m=>m.TrangThai)
+                    @Html.TextBoxFor(m=>m.TrangThai, new {@class="form-control", placeholder="Trạng thái"})
+                </div>
+
+                <div calss="form-group mb-3">
+                    @Html.LabelFor(m=>m.TongTien)
+                    @Html.TextBoxFor(m=>m.TongTien, new {@class="form-control", placeholder="Tổng tiền"})
+                </div>
+
+                <div class="form-group mb-4">
+                    @Html.LabelFor(m=> m.MaHTTT, "Hình Thức Thanh Toán")
+                    @Html.DropDownList("MaHTTT", null, "Chọn hình thức", new {@class="form-select"})
+                </div>
+
+                <div class="d-flex justity-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>Lưu thay đổi
+                    </button>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

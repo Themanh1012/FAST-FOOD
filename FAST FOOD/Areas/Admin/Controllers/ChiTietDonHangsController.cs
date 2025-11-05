@@ -47,43 +47,45 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: ChiTietDonHangs/Create
         public ActionResult Create(int donHangId)
         {
-            ViewBag.DonHangId = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang");
-            //ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon");
-            ViewBag.DonHangId = donHangId;
-            return View();
+
+            var model = new ChiTietDonHang
+            {
+                DonHangId = donHangId
+            };
+            ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon");
+            return View(model);
         }
 
-        // POST: ChiTietDonHangs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChiTietId,DonHangId,MonAnId,SoLuong,ThanhTien")] ChiTietDonHang chiTietDonHang)
+        public ActionResult Create(ChiTietDonHang chiTiet)
         {
             if (ModelState.IsValid)
             {
 
-                //lay gia mon an 
-                var mon = db.MonAns.Find(chiTietDonHang.MonAnId);
-                chiTietDonHang.ThanhTien = mon.Gia * chiTietDonHang.SoLuong;
-                
+                if (chiTiet.SoLuong <= 0)
+                {
+                    ModelState.AddModelError("SoLuong", "Số lượng phải lớn hơn 0");
+                }
 
-                db.ChiTietDonHangs.Add(chiTietDonHang);
+                var mon = db.MonAns.Find(chiTiet.MonAnId);
+                if (mon != null)
+                {
+                    chiTiet.ThanhTien = mon.Gia * chiTiet.SoLuong;
+                }
+
+                db.ChiTietDonHangs.Add(chiTiet);
                 db.SaveChanges();
 
-                // cap nhat tong tien 
-                var don = db.DonHangs.Find(chiTietDonHang.DonHangId);
-                don.TongTien = db.ChiTietDonHangs
-                    .Where(c => c.DonHangId == don.DonHangId)
-                    .Sum(c => c.ThanhTien);
-                db.SaveChanges();
-                return RedirectToAction("Index" , new {donHangId = chiTietDonHang.DonHangId});
+                // ✅ cập nhật tổng tiền sau khi thêm
+                CapNhatTongTien(chiTiet.DonHangId);
+
+                return RedirectToAction("Index", new { donHangId = chiTiet.DonHangId });
             }
-
-            //ViewBag.DonHangId = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", chiTietDonHang.DonHangId);
-            //ViewBag.MonAnId = new SelectList(db.MonAns, "MonAnId", "TenMon", chiTietDonHang.MonAnId);
-            return View(chiTietDonHang);
+            ViewBag.MonAnId= new SelectList(db.MonAns, "MonAnId", "TenMon", chiTiet.MonAnId);   
+            return View(chiTiet);
         }
+
 
         // GET: ChiTietDonHangs/Edit/5
         public ActionResult Edit(int? id)
@@ -164,6 +166,18 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        private void CapNhatTongTien(int donHangId)
+        {
+            var donHang = db.DonHangs.FirstOrDefault(d => d.DonHangId == donHangId);
+            if (donHang != null)
+            {
+                var tongTien = db.ChiTietDonHangs
+                                 .Where(ct => ct.DonHangId == donHangId)
+                                 .Sum(ct => (decimal?)ct.ThanhTien) ?? 0;
+                donHang.TongTien = tongTien;
+                db.SaveChanges();
+            }
         }
     }
 }
