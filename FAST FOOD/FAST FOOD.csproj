@@ -2026,19 +2026,23 @@
     <Content Include="Areas\Admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.map" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.map" />
+
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customer\Views\Danhmucs\Index.cshtml" />
+
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+
     <Content Include="Areas\Customer\Views\Danhmucs\Details.cshtml" />
     <Content Include="Areas\Customer\Views\MonAns\Index.cshtml" />
     <Content Include="Areas\Customer\Views\MonAns\Details.cshtml" />
     <Content Include="Areas\Customer\Views\Carts\Index.cshtml" />
+
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
