@@ -19,11 +19,9 @@ namespace FAST_FOOD.Models
         [ForeignKey("MaDonHang")]
         public virtual DonHang DonHang { get; set; }
 
-        //Khoa ngoai toi Nhanvien
-        [Required]
-        public int MaNV { get; set; }
-        [ForeignKey(nameof(MaNV))]
-        public Nhanvien Nhanvien { get; set; }
+      
+    
+     
 
         //Khoa ngoai toi HinhThucThanhToan
 
