@@ -1,0 +1,32 @@
+﻿@model FAST_FOOD.Models.Danhmuc
+@{
+    ViewBag.Title = "Danh mục: " + Model.TenDanhMuc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-success mt-4">@Model.TenDanhMuc</h2>
+
+<div class="row mt-4">
+    @if (Model.MonAns != null && Model.MonAns.Any())
+    {
+        foreach (var mon in Model.MonAns)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="~/Images/@mon.HinhAnh" class="card-img-top" alt="@mon.TenMon" />
+                    <div class="card-body text-center">
+                        <h5>@mon.TenMon</h5>
+                        <p class="text-danger fw-bold">@mon.Gia.ToString("N0") đ</p>
+                        <a href="@Url.Action("Details", "MonAn", new { id = mon.MonAnId })">
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-center text-muted">Hiện chưa có món nào trong danh mục này.</p>
+    }
+</div>
