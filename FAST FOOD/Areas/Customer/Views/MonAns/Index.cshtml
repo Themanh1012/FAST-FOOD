@@ -1,0 +1,25 @@
+﻿@model IEnumerable<FAST_FOOD.Models.MonAn>
+@{
+    ViewBag.Title = "Danh sách món ăn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-success mt-4">Danh Sách Món Ăn</h2>
+
+<div class="row mt-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm">
+                <img src="@Url.Content(item.HinhAnh)" class="card-img-top" alt="@item.TenMon" />
+                <div class="card-body text-center">
+                    <h5>@item.TenMon</h5>
+                    <p class="text-danger fw-bold">@item.Gia.ToString("N0") đ</p>
+                    <a href="@Url.Action("Details", "MonAns", new { id = item.MonAnId })" class="btn btn-sm btn-outline-primary">
+                        Xem chi tiết
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

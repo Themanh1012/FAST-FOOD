@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FAST_FOOD.Models.Danhmuc>
+@{
+    ViewBag.Title = "Danh mục món ăn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-primary mt-4">🍔 Danh Mục Món Ăn</h2>
+
+<div class="row mt-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm text-center">
+                <img src="~/Images/@item.HinhAnh" class="card-img-top" alt="@item.TenDanhMuc" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.TenDanhMuc</h5>
+                    <a href="@Url.Action("Details", "Danhmucs", new { id = item.DanhMucId })" class="btn btn-primary">
+                        Xem món ăn
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
