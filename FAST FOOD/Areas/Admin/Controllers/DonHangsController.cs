@@ -42,9 +42,17 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: DonHangs/Create
         public ActionResult Create()
         {
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "MaDonHang");
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT");
-            return View();
+
+            var hoaDon = new HoaDon
+            {
+                NgayThanhToan = DateTime.Now
+            };
+
+            return View(hoaDon);
         }
+
 
         // POST: DonHangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -67,15 +75,13 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: DonHangs/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null) return HttpNotFound();
 
-            var donHang = db.DonHangs.Find(id);
-            if (donHang == null)
-                return HttpNotFound();
-
-            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
-            return View(donHang);
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "MaDonHang", hoaDon.MaDonHang);
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", hoaDon.MaHTTT);
+            return View(hoaDon);
         }
 
         // POST: DonHangs/Edit/5
@@ -94,7 +100,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             }
 
             // Gán lại danh sách chọn khi model không hợp lệ
-            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaDonHang", "MaDonHang", donHang.MaHTTT);
             return View(donHang);
         }
 
@@ -132,6 +138,29 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        
         }
+        // Ví dụ trong DonHangsController
+        public ActionResult XacNhanThanhToan(int id)
+        {
+            var donHang = db.DonHangs.Find(id);
+            if (donHang == null)
+                return HttpNotFound();
+
+            // Tạo hóa đơn mới
+            var hoaDon = new HoaDon
+            {
+                MaDonHang = donHang.MaDonHang,
+                MaHTTT = donHang.MaHTTT,  // nếu DonHang có thuộc tính này
+                TongTien = donHang.TongTien,
+                NgayThanhToan = DateTime.Now
+            };
+
+            db.HoaDons.Add(hoaDon);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "HoaDons");
+        }
+
     }
 }

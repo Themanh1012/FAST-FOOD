@@ -1,40 +1,37 @@
 ﻿@model FAST_FOOD.Models.MonAn
 
 @{
-    ViewBag.Title = "Xóa";
+    ViewBag.Title = "Xóa món ăn";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Xóa</h2>
+<h2 class="text-center text-danger mb-3">🗑️ Xóa Món Ăn</h2>
+<h4 class="text-center text-muted mb-4">Bạn có chắc chắn muốn xóa món này không?</h4>
 
-<h3>Bạn Có chắc xóa món ăn không?</h3>
-<div>
-    <h4>Món Ăn</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Tên Danh Mục</dt>
-        <dd>@(Model.DanhMuc != null ? Model.DanhMuc.TenDanhMuc : "Không có danh mục")</dd>
+<div class="card shadow-sm p-4" style="border-radius:12px;">
+    <dl class="row">
+        <dt class="col-sm-3">Tên danh mục</dt>
+        <dd class="col-sm-9">@Model.DanhMuc?.TenDanhMuc</dd>
 
-        <dt>Tên Món</dt>
-        <dd>@Model.TenMon</dd>
+        <dt class="col-sm-3">Tên món</dt>
+        <dd class="col-sm-9">@Model.TenMon</dd>
 
-        <dt>Giá</dt>
-        <dd>@String.Format("{0:N0} đ", Model.Gia)</dd>
+        <dt class="col-sm-3">Giá</dt>
+        <dd class="col-sm-9">@String.Format("{0:N0} đ", Model.Gia)</dd>
 
-        <dt>Hình Ảnh</dt>
-        <dd>
+        <dt class="col-sm-3">Hình ảnh</dt>
+        <dd class="col-sm-9">
             <img src="@Url.Content(string.IsNullOrEmpty(Model.HinhAnh) ? "~/Images/noimage.png" : Model.HinhAnh)"
-                 alt="@Model.TenMon" width="200" class="img-thumbnail" />
+                 alt="@Model.TenMon" width="180" class="img-thumbnail" />
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" /> |
-            @Html.ActionLink("Quay trở lại", "Index" , null , new {@class="btn btn-secondary"})
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-danger px-4">✅ Xóa món</button>
+            @Html.ActionLink("↩️ Hủy", "Index", null, new { @class = "btn btn-secondary px-4 ms-2" })
         </div>
     }
 </div>

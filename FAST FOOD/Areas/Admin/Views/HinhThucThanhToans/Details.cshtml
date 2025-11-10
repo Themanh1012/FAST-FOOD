@@ -1,26 +1,32 @@
 ﻿@model FAST_FOOD.Models.HinhThucThanhToan
-
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết Hình Thức Thanh Toán";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Chi Tiết Hình Thức Thanh Toán</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Mã HTTT:</dt>
+                <dd class="col-sm-9">@Model.MaHTTT</dd>
 
-<div>
-    <h4>HinhThucThanhToan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenHinhThuc)
-        </dt>
+                <dt class="col-sm-3">Tên hình thức:</dt>
+                <dd class="col-sm-9">@Model.TenHinhThuc</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenHinhThuc)
-        </dd>
+                <dt class="col-sm-3">Số đơn hàng liên quan:</dt>
+                <dd class="col-sm-9">@Model.DonHangs?.Count() ?? 0</dd>
+            </dl>
 
-    </dl>
+            <a href="@Url.Action("Edit", new { id = Model.MaHTTT })" class="btn btn-warning me-2">
+                <i class="bi bi-pencil"></i> Sửa
+            </a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHTTT }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

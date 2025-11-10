@@ -1,71 +1,45 @@
 ﻿@model FAST_FOOD.Models.MonAn
 
 @{
-    ViewBag.Title = "Tạo Món";
+    ViewBag.Title = "Thêm món ăn mới";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Thêm Món Ăn Mới</h2>
+<h2 class="text-center text-success mb-4">🍳 Thêm Món Ăn Mới</h2>
 
-
-@using (Html.BeginForm("Create", "MonAns", FormMethod.Post, new {enctype="multipart/form-data"})) 
+@using (Html.BeginForm("Create", "MonAns", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Thông Tin Món Ăn</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.TenMon, htmlAttributes: new { @class = "control-label col-md-2" })
 
-        <!--Tên Món-->
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TenMon, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TenMon, "", new { @class = "text-danger" })
+    <div class="card shadow-sm p-4" style="border-radius:12px;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.TenMon, "Tên món", new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(m => m.TenMon, new { @class = "form-control", placeholder = "Nhập tên món ăn", required = "required" })
+            @Html.ValidationMessageFor(m => m.TenMon, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Gia, "Giá (VNĐ)", new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(m => m.Gia, new { @class = "form-control", type = "number", step = "1000", placeholder = "Nhập giá món ăn", required = "required" })
+            @Html.ValidationMessageFor(m => m.Gia, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Danh mục", htmlAttributes: new { @class = "form-label fw-bold" })
+            @Html.DropDownList("DanhMucId", null, "-- Chọn danh mục --", new { @class = "form-select", required = "required" })
+            @Html.ValidationMessageFor(m => m.DanhMucId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Hình ảnh", htmlAttributes: new { @class = "form-label fw-bold" })
+            <input type="file" name="HinhAnhFile" class="form-control" accept="image/*" required />
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success px-4">✅ Lưu món ăn</button>
+            @Html.ActionLink("↩️ Quay lại", "Index", null, new { @class = "btn btn-secondary px-4 ms-2" })
         </div>
     </div>
-    <!--Giá-->
-    <div class="form-group">
-        @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" , required="required"}  })
-            @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @* Danh muc *@
-    <div class="form-group">
-        @Html.LabelFor(model => model.DanhMucId, "DanhMucId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("DanhMucId", null, "--Chọn danh mục--", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DanhMucId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <!--Hinh ANh-->
-    <div class="form-group">
-        <label>Hình ảnh </label>
-        <div class="col-md-10">
-            <input type="file" name="HinhAnhFile" class="form-control" />
-        </div>
-   
-    </div>
-   
-
-    @* Nut tạo *@
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Quay lại danh sách", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

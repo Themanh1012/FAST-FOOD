@@ -29,7 +29,7 @@
     {
        <tr>
 
-           <td>@item.DonHangId</td>
+           <td>@item.MaDonHang</td>
            <td>@item.TenKhachHang</td>
 
            <td>@String.Format("{0:N0} đ", item.TongTien)</td>
@@ -60,16 +60,16 @@
                }
            </td>
            <td>
-               <a href="@Url.Action("Edit", new { id = item.DonHangId })" class="btn btn-warning btn-sm mx-1" title="Sửa">
+               <a href="@Url.Action("Edit", new { id = item.MaDonHang })" class="btn btn-warning btn-sm mx-1" title="Sửa">
                    <i class="fas fa-edit"></i>
                </a>
 
-               <a href="@Url.Action("Index", "ChiTietDonHangs", new { area = "Admin", donHangId = item.DonHangId })"
+               <a href="@Url.Action("Index", "ChiTietDonHangs", new { area = "Admin", id = item.MaDonHang })"
                   class="btn btn-info btn-sm mx-1 text-white" title="Chi tiết">
                    <i class="fas fa-info-circle"></i> Chi tiết
                </a>
 
-               <a href="@Url.Action("Delete", new { id = item.DonHangId })" class="btn btn-danger btn-sm mx-1" title="Xóa">
+               <a href="@Url.Action("Delete", new { id = item.MaDonHang })" class="btn btn-danger btn-sm mx-1" title="Xóa">
                    <i class="fas fa-trash-alt"></i>
                </a>
            </td>

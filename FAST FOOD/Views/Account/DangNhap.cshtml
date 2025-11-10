@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-5" style="max-width: 400px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Đăng nhập hệ thống</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tên đăng nhập</label>
+                    <input type="text" name="TenDangNhap" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mật khẩu</label>
+                    <input type="password" name="MatKhau" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+                </button>
+                <p class="text-danger mt-2 text-center">@ViewBag.Error</p>
+            }
+            <div class="text-center mt-3">
+                <a href="@Url.Action("DangKy", "account")">Chưa có tài khoản? Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+</div>

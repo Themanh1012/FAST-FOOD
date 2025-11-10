@@ -121,7 +121,7 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             {
                 var ct = new ChiTietDonHang
                 {
-                    DonHangId = donHang.DonHangId,
+                    DonHangId = donHang.MaDonHang,
                     MonAnId = item.MonAnId,
                     SoLuong = item.SoLuong,
                     ThanhTien = item.ThanhTien

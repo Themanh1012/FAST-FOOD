@@ -7,13 +7,13 @@ namespace FAST_FOOD.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class FixHoaDonForeignKeys : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixHoaDonForeignKeys));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202510300215352_FixHoaDonForeignKeys"; }
+            get { return "202511100829073_Init"; }
         }
         
         string IMigrationMetadata.Source

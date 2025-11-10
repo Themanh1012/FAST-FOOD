@@ -19,7 +19,9 @@ namespace FAST_FOOD.Models
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
     
         public DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
+
         public DbSet<HoaDon> HoaDons { get; set; }
+        public DbSet<account> accounts { get; set; }    
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -59,7 +61,21 @@ namespace FAST_FOOD.Models
                 .WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
 
-           
+            // 1 Hình thức thanh toán - nhiều Đơn hàng
+            modelBuilder.Entity<DonHang>()
+                .HasRequired(d => d.HinhThucThanhToan)
+                .WithMany(h => h.DonHangs)
+                .HasForeignKey(d => d.MaHTTT)
+                .WillCascadeOnDelete(false);
+
+            // 1 Hình thức thanh toán - nhiều Hóa đơn
+            modelBuilder.Entity<HoaDon>()
+                .HasRequired(h => h.HinhThucThanhToan)
+                .WithMany()
+                .HasForeignKey(h => h.MaHTTT)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
