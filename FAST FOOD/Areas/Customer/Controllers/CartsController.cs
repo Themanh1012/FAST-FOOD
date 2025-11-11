@@ -86,31 +86,31 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         {
             var cart = GetCart();
             if (cart == null || !cart.Any())
+            {
                 return RedirectToAction("Index", "Home");
-
+            }
+                
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
             ViewBag.Total = cart.Sum(i => i.ThanhTien);
-            return View();
+            return View(cart);
         }
 
         // Nhận dữ liệu từ form Checkout
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Checkout(string TenKhachHang, string DiaChi, string SoDienThoai, int? MaHTTT)
+        public ActionResult Checkout(string TenKhachHang, string DiaChi, string SoDienThoai, int MaHTTT)
         {
             var cart = GetCart();
             if (!cart.Any())
                 return RedirectToAction("Index", "Home");
 
-            // ⚙️ Nếu người dùng không chọn hình thức thanh toán
-            // thì gán mặc định là "Chưa chọn" hoặc null
             var donHang = new DonHang
             {
                 TenKhachHang = TenKhachHang,
                 DiaChi = DiaChi,
                 SoDienThoai = SoDienThoai,
                 NgayDat = DateTime.Now,
-                MaHTTT = MaHTTT, // có thể null
+                MaHTTT = MaHTTT,
                 TrangThai = "Chờ xác nhận",
                 TongTien = cart.Sum(i => i.ThanhTien)
             };
@@ -118,7 +118,7 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             db.DonHangs.Add(donHang);
             db.SaveChanges();
 
-            // 🧾 Lưu chi tiết đơn hàng
+            // Lưu chi tiết đơn hàng
             foreach (var item in cart)
             {
                 var ct = new ChiTietDonHang
@@ -145,5 +145,15 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             return View();
         }
 
+        public ActionResult History()
+        {
+            // Lấy tất cả đơn hàng 
+            var donHangs = db.DonHangs
+                .Include(d => d.HinhThucThanhToan)
+                .OrderByDescending(d => d.NgayDat)
+                .ToList();
+
+            return View(donHangs);
+        }
     }
 }

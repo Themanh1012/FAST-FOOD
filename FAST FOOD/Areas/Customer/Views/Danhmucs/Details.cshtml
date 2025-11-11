@@ -1,32 +1,40 @@
 ﻿@model FAST_FOOD.Models.Danhmuc
 @{
-    ViewBag.Title = "Danh mục: " + Model.TenDanhMuc;
+    ViewBag.Title = "Danh mục - " + Model.TenDanhMuc;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center text-success mt-4">@Model.TenDanhMuc</h2>
+<div class="container mt-5">
+    <h2 class="text-center text-danger fw-bold mb-4">
+        🍔 @Model.TenDanhMuc
+    </h2>
 
-<div class="row mt-4">
-    @if (Model.MonAns != null && Model.MonAns.Any())
-    {
-        foreach (var mon in Model.MonAns)
+    <div class="row">
+        @if (Model.MonAns != null && Model.MonAns.Any())
         {
-            <div class="col-md-3 mb-4">
-                <div class="card shadow-sm">
-                    <img src="~/Images/@mon.HinhAnh" class="card-img-top" alt="@mon.TenMon" />
-                    <div class="card-body text-center">
-                        <h5>@mon.TenMon</h5>
-                        <p class="text-danger fw-bold">@mon.Gia.ToString("N0") đ</p>
-                        <a href="@Url.Action("Details", "MonAn", new { id = mon.MonAnId })">
-                            
-                        </a>
+            foreach (var mon in Model.MonAns)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <img src="@Url.Content(mon.HinhAnh ?? "~/Images/noimage.png")"
+                             class="card-img-top"
+                             alt="@mon.TenMon"
+                             style="height:220px; object-fit:cover;" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">@mon.TenMon</h5>
+                            <p class="text-muted">@mon.Gia.ToString("N0") đ</p>
+                            <a href="@Url.Action("Details", "MonAns", new { id = mon.MonAnId })"
+                               class="btn btn-outline-danger w-100">Xem chi tiết</a>
+                        </div>
                     </div>
                 </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center text-muted">
+                Chưa có món nào trong danh mục này.
             </div>
         }
-    }
-    else
-    {
-        <p class="text-center text-muted">Hiện chưa có món nào trong danh mục này.</p>
-    }
+    </div>
 </div>

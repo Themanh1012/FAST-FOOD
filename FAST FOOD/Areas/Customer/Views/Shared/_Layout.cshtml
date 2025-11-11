@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - FAST FOOD</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,20 +16,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("🍗 FAST FOOD", "Index", "MonAns", new { area = "Customer" }, new { @class = "navbar-brand fw-bold" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("🏠 Trang chủ", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("🍔 Món ăn", "Index", "MonAns", new { area = "Customer" }, null)</li>
+                    <li>@Html.ActionLink("🛒 Giỏ hàng", "Index", "Carts", new { area = "Customer" }, null)</li>
+                    <li>@Html.ActionLink("🧾 Lịch sử mua hàng", "Index", "LichSus", new { area = "Customer" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top: 80px;">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="text-center text-muted">
+            <p>&copy; @DateTime.Now.Year - FAST FOOD Website</p>
         </footer>
     </div>
 

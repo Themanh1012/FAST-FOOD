@@ -4,21 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center text-primary mt-4">🍔 Danh Mục Món Ăn</h2>
+<div class="container mt-5">
+    <h2 class="text-center text-danger fw-bold mb-4">🍗 Danh mục món ăn</h2>
 
-<div class="row mt-4">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-3 mb-4">
-            <div class="card shadow-sm text-center">
-                <img src="~/Images/@item.HinhAnh" class="card-img-top" alt="@item.TenDanhMuc" />
-                <div class="card-body">
-                    <h5 class="card-title">@item.TenDanhMuc</h5>
-                    <a href="@Url.Action("Details", "Danhmucs", new { id = item.DanhMucId })" class="btn btn-primary">
-                        Xem món ăn
-                    </a>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <img src="@Url.Content(item.HinhAnh ?? "~/Images/noimage.png")"
+                         class="card-img-top"
+                         alt="@item.TenDanhMuc"
+                         style="height:220px; object-fit:cover;" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark fw-bold">@item.TenDanhMuc</h5>
+                        <a href="@Url.Action("Details", "Danhmucs", new { id = item.DanhMucId })"
+                           class="btn btn-danger w-100">Xem món</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>

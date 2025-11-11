@@ -140,6 +140,7 @@
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Customer\Controllers\CartsController.cs" />
     <Compile Include="Areas\Customer\Controllers\DanhmucsController.cs" />
+    <Compile Include="Areas\Customer\Controllers\LichSusController.cs" />
     <Compile Include="Areas\Customer\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1871,6 +1872,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Products\Buger.jpg" />
+    <Content Include="Images\Products\ga-ran-vi-kfc-1_0c2450efe15d4b6f9e6bd2637b71d88d %281%29.jpg" />
+    <Content Include="Images\Products\garan_638974673934314634.png" />
+    <Content Include="Images\Products\garan_638974679042663687.png" />
+    <Content Include="Images\Products\ga_638974670552780388.png" />
+    <Content Include="Images\Products\ga_638974671126999817.png" />
     <Content Include="Images\Products\hình ảnh_2025-10-30_233143320.png" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
@@ -2029,6 +2036,10 @@
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customer\Views\Danhmucs\Index.cshtml" />
+    <Content Include="Images\Products\khoaitaychien.jpg" />
+    <Content Include="Images\Products\Myy.jpg" />
+    <Content Include="Images\Products\noodle.png" />
+    <Content Include="Images\Products\tải xuống.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2041,6 +2052,8 @@
     <Content Include="Areas\Customer\Views\Carts\Index.cshtml" />
     <Content Include="Areas\Customer\Views\Carts\Checkout.cshtml" />
     <Content Include="Areas\Customer\Views\Carts\Success.cshtml" />
+    <Content Include="Areas\Customer\Views\LichSus\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\LichSus\Details.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
