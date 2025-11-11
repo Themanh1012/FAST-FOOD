@@ -1,74 +1,50 @@
 ﻿@model FAST_FOOD.Models.HoaDon
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Chỉnh sửa hóa đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 class="text-center text-warning mb-4">✏️ Chỉnh Sửa Hóa Đơn</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "HoaDons", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>HoaDon</h4>
-        <hr />
+    @Html.HiddenFor(m => m.MaHoaDon)
+
+    <div class="card shadow-sm p-4" style="border-radius:12px;">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaHoaDon)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaDonHang, "MaDonHang", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaDonHang", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaDonHang, "", new { @class = "text-danger" })
-            </div>
+        <!-- Đơn hàng -->
+        <div class="mb-3">
+            @Html.LabelFor(m => m.MaDonHang, "Đơn hàng", new { @class = "form-label fw-bold" })
+            @Html.DropDownList("MaDonHang", null, "-- Chọn đơn hàng --", new { @class = "form-select" })
+            @Html.ValidationMessageFor(m => m.MaDonHang, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaNV, "MaNV", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaNV", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaNV, "", new { @class = "text-danger" })
-            </div>
+        <!-- Hình thức thanh toán -->
+        <div class="mb-3">
+            @Html.LabelFor(m => m.MaHTTT, "Hình thức thanh toán", new { @class = "form-label fw-bold" })
+            @Html.DropDownList("MaHTTT", null, "-- Chọn hình thức --", new { @class = "form-select" })
+            @Html.ValidationMessageFor(m => m.MaHTTT, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaHTTT, "MaHTTT", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaHTTT", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaHTTT, "", new { @class = "text-danger" })
-            </div>
+        <!-- Tổng tiền -->
+        <div class="mb-3">
+            @Html.LabelFor(m => m.TongTien, "Tổng tiền (VNĐ)", new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(m => m.TongTien, new { @class = "form-control", type = "number", step = "1000" })
+            @Html.ValidationMessageFor(m => m.TongTien, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayThanhToan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayThanhToan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayThanhToan, "", new { @class = "text-danger" })
-            </div>
+        <!-- Ngày thanh toán -->
+        <div class="mb-3">
+            @Html.LabelFor(m => m.NgayThanhToan, "Ngày thanh toán", new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(m => m.NgayThanhToan, new { @class = "form-control", type = "datetime-local", value = Model.NgayThanhToan.ToString("yyyy-MM-ddTHH:mm") })
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TongTien, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TongTien, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TongTien, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-warning text-white px-4">💾 Lưu thay đổi</button>
+            @Html.ActionLink("↩️ Quay lại", "Index", null, new { @class = "btn btn-secondary px-4 ms-2" })
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

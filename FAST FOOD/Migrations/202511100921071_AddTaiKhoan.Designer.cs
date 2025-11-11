@@ -7,13 +7,13 @@ namespace FAST_FOOD.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class UpdateDB : IMigrationMetadata
+    public sealed partial class AddTaiKhoan : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTaiKhoan));
         
         string IMigrationMetadata.Id
         {
-            get { return "202511021329170_UpdateDB"; }
+            get { return "202511100921071_AddTaiKhoan"; }
         }
         
         string IMigrationMetadata.Source

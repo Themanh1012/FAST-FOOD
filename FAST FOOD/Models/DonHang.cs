@@ -11,7 +11,7 @@ namespace FAST_FOOD.Models
     {
 
         [Key]
-        public int DonHangId {  get; set; }
+        public int MaDonHang {  get; set; }
 
         [Required]
         [Display(Name = "Ngày Đặt")]
@@ -35,8 +35,8 @@ namespace FAST_FOOD.Models
         [Display(Name = "Trạng Thái")]
         public string TrangThai {  get; set; }
 
-        [Display(Name = "Hình Thức Thanh Toán")]
-        public int? MaHTTT { get; set; }
+        [Required]
+        public int  MaHTTT { get; set; }
 
         [ForeignKey("MaHTTT")]
         public virtual HinhThucThanhToan HinhThucThanhToan { get; set; }
@@ -44,4 +44,4 @@ namespace FAST_FOOD.Models
       
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
     }
-}
+}   

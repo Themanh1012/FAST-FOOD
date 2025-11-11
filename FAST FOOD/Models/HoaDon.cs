@@ -19,19 +19,16 @@ namespace FAST_FOOD.Models
         [ForeignKey("MaDonHang")]
         public virtual DonHang DonHang { get; set; }
 
-        //Khoa ngoai toi Nhanvien
-        [Required]
-        public int MaNV { get; set; }
-        [ForeignKey(nameof(MaNV))]
-        public Nhanvien Nhanvien { get; set; }
+
+
+
 
         //Khoa ngoai toi HinhThucThanhToan
 
-       
-        [Required]
-        public int MaHTTT { get; set; }
 
-        [ForeignKey("MaHTTT")]
+        [Required]
+        [ForeignKey("HinhThucThanhToan")]
+        public int MaHTTT { get; set; }
         public virtual HinhThucThanhToan HinhThucThanhToan { get; set; }    
 
         public DateTime NgayThanhToan { get; set; }  = DateTime.Now;
