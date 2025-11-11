@@ -1,1 +1,65 @@
-﻿
+﻿@model List<FAST_FOOD.Models.CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal total = ViewBag.Total ?? 0;
+}
+
+<div class="container mt-5">
+    <h2 class="text-success text-center mb-4">🛒 Giỏ hàng của bạn</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-center text-muted">
+            Giỏ hàng trống.
+            <a href="@Url.Action("Index", "MonAns")" class="text-primary">Mua món ngay</a>
+        </p>
+    }
+    else
+    {
+        <table class="table table-bordered text-center align-middle shadow">
+            <thead class="table-light">
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên món</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@Url.Content(item.HinhAnh)" width="80" /></td>
+                        <td>@item.TenMon</td>
+                        <td>@item.Gia.ToString("N0") đ</td>
+                        <td>
+                            <form action="@Url.Action("UpdateQuantity", "Carts")" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.MonAnId" />
+                                <input type="number" name="quantity" value="@item.SoLuong" min="1" style="width:60px;" />
+                                <button type="submit" class="btn btn-sm btn-secondary">Cập nhật</button>
+                            </form>
+                        </td>
+                        <td>@item.ThanhTien.ToString("N0") đ</td>
+                        <td>
+                            <a href="@Url.Action("Remove", "Carts", new { id = item.MonAnId })"
+                               class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3">
+            <h4 class="fw-bold">
+                Tổng cộng:
+                <span class="text-danger">@total.ToString("N0") đ</span>
+            </h4>
+            <a href="@Url.Action("Checkout", "Carts")" class="btn btn-success mt-2">
+                🧾 Đặt hàng
+            </a>
+        </div>
+    }
+</div>

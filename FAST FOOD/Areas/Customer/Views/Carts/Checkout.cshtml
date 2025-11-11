@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal total = ViewBag.Total ?? 0;
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-success mb-4">Thông tin đặt hàng</h2>
+
+    @using (Html.BeginForm("Checkout", "Carts", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label fw-bold">Tên khách hàng</label>
+            <input type="text" name="TenKhachHang" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Địa chỉ giao hàng</label>
+            <input type="text" name="DiaChi" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Số điện thoại</label>
+            <input type="text" name="SoDienThoai" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Hình thức thanh toán</label>
+            @Html.DropDownList("MaHTTT", (SelectList)ViewBag.MaHTTT, "Chọn hình thức", new { @class = "form-select" })
+
+        </div>
+
+        <h4 class="text-end mb-4">
+            Tổng tiền:
+            <span class="text-danger fw-bold">@total.ToString("N0") đ</span>
+        </h4>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary btn-lg">Xác nhận đặt hàng</button>
+        </div>
+    }
+</div>
+
