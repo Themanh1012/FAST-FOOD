@@ -19,6 +19,8 @@ namespace FAST_FOOD.Areas.Admin
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
+            GlobalFilters.Filters.Add(new FAST_FOOD.Areas.Admin.Filters.AdminAuthorizeAttribute());
         }
     }
 }

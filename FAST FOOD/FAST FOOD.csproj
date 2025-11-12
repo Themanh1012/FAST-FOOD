@@ -124,6 +124,10 @@
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
+    <Compile Include="Areas\Admin\Filters\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Areas\Customer\Controllers\CartsController.cs" />
+    <Compile Include="Areas\Customer\Controllers\DanhmucsController.cs" />
+    <Compile Include="Areas\Customer\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,6 +156,14 @@
     <Compile Include="Migrations\202511030921053_db1.cs" />
     <Compile Include="Migrations\202511030921053_db1.Designer.cs">
       <DependentUpon>202511030921053_db1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511121101193_FixDangki.cs" />
+    <Compile Include="Migrations\202511121101193_FixDangki.Designer.cs">
+      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511121101193_FixDangki.cs" />
+    <Compile Include="Migrations\202511121101193_FixDangki.Designer.cs">
+      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
@@ -1849,6 +1861,7 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\account.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -1865,9 +1878,21 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Header01.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Products\522680132_122209900616176186_4684739841879607230_n_638974670779435974.jpg" />
+    <Content Include="Images\Products\burger.jpg" />
+    <Content Include="Images\Products\combo1nguoi.png" />
+    <Content Include="Images\Products\combonhom.jpg" />
+    <Content Include="Images\Products\drink.jpg" />
+    <Content Include="Images\Products\gaquay.jpg" />
+    <Content Include="Images\Products\garan_638974673934314634.png" />
+    <Content Include="Images\Products\garan_638974679042663687.png" />
+    <Content Include="Images\Products\ga_638974670552780388.png" />
+    <Content Include="Images\Products\ga_638974671126999817.png" />
     <Content Include="Images\Products\hình ảnh_2025-10-30_233143320.png" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
@@ -2023,6 +2048,13 @@
     <Content Include="Areas\Admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.map" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Customer\Views\Danhmucs\Index.cshtml" />
+    <Content Include="Images\Products\khuyenmai.jpg" />
+    <Content Include="Images\Products\monmoi.jpg" />
+    <Content Include="Images\Products\noodle.png" />
+    <Content Include="Images\Products\thucannhe.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2087,7 +2119,17 @@
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\DanhMuc.cshtml" />
-    <Content Include="Views\DanhMuc\DanhMuc.cshtml" />
+    <Content Include="Views\DanhMuc\Index.cshtml" />
+    <Content Include="Views\Account\DangNhap.cshtml" />
+    <Content Include="Views\Account\DangKy.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Banner.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header2.cshtml" />
+    <Content Include="Views\Shared\_Product.cshtml" />
+    <Content Include="Views\Account\QuenMatKhau.cshtml" />
+    <Content Include="Views\Account\DatLaiMatKhau.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2142,6 +2184,17 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202511100829073_Init.resx">
+      <DependentUpon>202511100829073_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511100921071_AddTaiKhoan.resx">
+      <DependentUpon>202511100921071_AddTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511121101193_FixDangki.resx">
+      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

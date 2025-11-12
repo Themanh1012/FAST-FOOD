@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = (FAST_FOOD.Models.account)Session["User"];
+}
+
+<section class="login-page d-flex justify-content-center align-items-center">
+    <div class="login-card shadow-lg">
+        <div class="text-center mb-4">
+            <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0"
+                 alt="KFC Logo" class="login-logo" />
+            <h4 class="fw-bold text-uppercase mt-3">Đăng nhập tài khoản</h4>
+        </div>
+
+
+        <!-- Form cập nhật thông tin -->
+        @using (Html.BeginForm("CapNhatTaiKhoan", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="MaTK" value="@user.MaTK" />
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Tên đăng nhập:</label>
+                <input type="text" class="form-control" value="@user.TenDangNhap" readonly />
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Họ tên:</label>
+                <input type="text" name="HoTen" class="form-control" value="@user.HoTen" />
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Email:</label>
+                <input type="email" name="Email" class="form-control" value="@user.Email" />
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Vai trò:</label>
+                <input type="text" class="form-control" value="@user.VaiTro" readonly />
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+                <button type="submit" class="btn btn-danger btn-sm px-3 py-1 fw-semibold">
+                    <i class="fa-solid fa-floppy-disk me-1"></i> Lưu thay đổi
+                </button>
+                <a href="@Url.Action("DangXuat", "Account")" class="btn btn-outline-dark btn-sm px-3 py-1 fw-semibold">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i> Đăng xuất
+                </a>
+            </div>
+
+        }
+
+        <!-- Form xóa tài khoản -->
+        <div class="text-center mt-4">
+            @using (Html.BeginForm("XoaTaiKhoan", "Account", FormMethod.Post, new { onsubmit = "return confirm('Bạn có chắc muốn xóa tài khoản không?');" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="MaTK" value="@user.MaTK" />
+                <button type="submit" class="btn btn-outline-danger w-100">
+                    <i class="fa-solid fa-user-slash me-1"></i> Xóa tài khoản
+                </button>
+            }
+        </div>
+    </div>
+</section>

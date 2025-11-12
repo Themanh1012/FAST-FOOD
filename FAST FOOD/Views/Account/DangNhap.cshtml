@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="login-page d-flex justify-content-center align-items-center">
+    <div class="login-card shadow-lg">
+        <div class="text-center mb-4">
+            <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0"
+                 alt="KFC Logo" class="login-logo" />
+            <h4 class="fw-bold text-uppercase mt-3">Đăng nhập tài khoản</h4>
+        </div>
+
+        <!-- Hiển thị thông báo -->
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.Error</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger text-center">@TempData["Error"]</div>
+        }
+        @if (TempData["Info"] != null)
+        {
+            <div class="alert alert-info text-center">@TempData["Info"]</div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success text-center">@TempData["Success"]</div>
+        }
+
+        <!-- Form đăng nhập -->
+        @using (Html.BeginForm("DangNhap", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Tên đăng nhập</label>
+                <input type="text" name="TenDangNhap" class="form-control login-input" placeholder="Nhập tên đăng nhập" required />
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Mật khẩu</label>
+                <input type="password" name="MatKhau" class="form-control login-input" placeholder="Nhập mật khẩu" required />
+            </div>
+
+            <button type="submit" class="btn btn-login w-100 mt-2">Đăng nhập</button>
+
+            <div class="text-center mt-3">
+                <a href="@Url.Action("QuenMatKhau", "Account")" class="forgot-link">Quên mật khẩu?</a>
+            </div>
+
+            <div class="text-center mt-3">
+                <p>
+                    Chưa có tài khoản?
+                    <a href="@Url.Action("DangKy", "Account")" class="text-danger fw-semibold">Đăng ký ngay</a>
+                </p>
+            </div>
+        }
+    </div>
+</section>

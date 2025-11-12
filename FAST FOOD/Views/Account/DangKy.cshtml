@@ -1,0 +1,77 @@
+﻿@model FAST_FOOD.Models.account
+@{
+    ViewBag.Title = "Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Bọc form riêng biệt, không bị ảnh hưởng bởi layout -->
+<section class="login-page d-flex justify-content-center align-items-center">
+    <div class="login-card shadow-lg">
+        <div class="text-center mb-4">
+            <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0"
+                 alt="KFC Logo" class="login-logo" />
+            <h4 class="fw-bold text-uppercase mt-3">Đăng nhập tài khoản</h4>
+        </div>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center shadow-sm mb-3">
+                <i class="fa-solid fa-circle-exclamation me-2"></i>@ViewBag.Error
+            </div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success text-center shadow-sm mb-3">
+                <i class="fa-solid fa-check-circle me-2"></i>@TempData["Success"]
+            </div>
+        }
+        @using (Html.BeginForm("DangKy", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3 text-start">
+                @Html.LabelFor(m => m.TenDangNhap, new { @class = "form-label fw-semibold" })
+                @Html.TextBoxFor(m => m.TenDangNhap, new { @class = "form-control", placeholder = "Nhập tên đăng nhập" })
+            </div>
+
+            <div class="mb-3 text-start">
+                @Html.LabelFor(m => m.HoTen, new { @class = "form-label fw-semibold" })
+                @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
+            </div>
+
+            <div class="mb-3 text-start">
+                @Html.LabelFor(m => m.Email, new { @class = "form-label fw-semibold" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
+            </div>
+            <div class="mb-3 text-start">
+                @Html.LabelFor(m => m.MatKhau, new { @class = "form-label fw-semibold" })
+                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3 text-start">
+                @Html.LabelFor(m => m.XacNhanMatKhau, new { @class = "form-label fw-semibold" })
+                @Html.PasswordFor(m => m.XacNhanMatKhau, new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
+                @Html.ValidationMessageFor(m => m.XacNhanMatKhau, "", new { @class = "text-danger" })
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-danger w-100 mt-3 fw-semibold">
+                <i class="fa-solid fa-user-plus me-2"></i>Đăng ký
+            </button>
+
+            <div class="text-center mt-3">
+                <p class="mb-0">
+                    Đã có tài khoản?
+                    <a href="@Url.Action("DangNhap", "Account")" class="text-danger fw-semibold text-decoration-none">Đăng nhập ngay</a>
+                </p>
+            </div>
+        }
+    </div>
+   
+    </section>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

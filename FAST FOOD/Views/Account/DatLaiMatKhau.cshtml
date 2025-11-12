@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Đặt lại mật khẩu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="login-page d-flex justify-content-center align-items-center">
+    <div class="login-card shadow-lg">
+        <div class="text-center mb-4">
+            <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0"
+                 alt="KFC Logo" class="login-logo" />
+            <h4 class="fw-bold text-uppercase mt-3">Đặt lại mật khẩu</h4>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.Error</div>
+        }
+
+        @using (Html.BeginForm("DatLaiMatKhau", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="token" value="@ViewBag.Token" />
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Mật khẩu mới</label>
+                <input type="password" name="MatKhau" class="form-control" required />
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Xác nhận mật khẩu</label>
+                <input type="password" name="XacNhanMatKhau" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-danger w-100 mt-2">Đặt lại mật khẩu</button>
+        }
+    </div>
+</section>
