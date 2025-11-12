@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using FAST_FOOD.Models;
 
@@ -12,83 +9,91 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 {
     public class HoaDonsController : Controller
     {
-        private KFCContext db = new KFCContext();
+        private readonly KFCContext db = new KFCContext();
 
-        // GET: HoaDons
+        // GET: Admin/HoaDons
         public ActionResult Index()
         {
+
             var hoaDons = db.HoaDons.Include(h => h.DonHang).Include(h => h.HinhThucThanhToan);
             return View(hoaDons.ToList());
+
+            var hoaDons = db.HoaDons
+                            .Include(h => h.DonHang)
+                            .Include(h => h.HinhThucThanhToan)
+                            .ToList();
+            return View(hoaDons);
+
         }
 
-        // GET: HoaDons/Details/5
+        // GET: Admin/HoaDons/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HoaDon hoaDon = db.HoaDons.Find(id);
+
+            var hoaDon = db.HoaDons
+                .Include(h => h.DonHang)
+                .Include(h => h.HinhThucThanhToan)
+                .FirstOrDefault(h => h.MaHoaDon == id);
+
             if (hoaDon == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(hoaDon);
         }
 
-        // GET: HoaDons/Create
+        // GET: Admin/HoaDons/Create
         public ActionResult Create()
         {
-            ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang");
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang");
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
+
             
+
+
             return View();
         }
 
-        // POST: HoaDons/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Admin/HoaDons/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHoaDon,MaDonHang,MaNV,MaHTTT,NgayThanhToan,TongTien")] HoaDon hoaDon)
+        public ActionResult Create(HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
+                hoaDon.NgayThanhToan = DateTime.Now; // tự động set ngày thanh toán
                 db.HoaDons.Add(hoaDon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-          
+
             return View(hoaDon);
         }
 
-        // GET: HoaDons/Edit/5
+        // GET: Admin/HoaDons/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HoaDon hoaDon = db.HoaDons.Find(id);
+
+            var hoaDon = db.HoaDons.Find(id);
             if (hoaDon == null)
-            {
                 return HttpNotFound();
-            }
-            ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
+
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-      
+
             return View(hoaDon);
         }
 
-        // POST: HoaDons/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Admin/HoaDons/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHoaDon,MaDonHang,MaNV,MaHTTT,NgayThanhToan,TongTien")] HoaDon hoaDon)
+        public ActionResult Edit(HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -96,33 +101,39 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
+
+            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-            
+
             return View(hoaDon);
         }
 
-        // GET: HoaDons/Delete/5
+        // GET: Admin/HoaDons/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HoaDon hoaDon = db.HoaDons.Find(id);
+
+            var hoaDon = db.HoaDons
+                .Include(h => h.DonHang)
+                .Include(h => h.HinhThucThanhToan)
+                .FirstOrDefault(h => h.MaHoaDon == id);
+
             if (hoaDon == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(hoaDon);
         }
 
-        // POST: HoaDons/Delete/5
+        // POST: Admin/HoaDons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HoaDon hoaDon = db.HoaDons.Find(id);
+            var hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null)
+                return HttpNotFound();
+
             db.HoaDons.Remove(hoaDon);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -131,9 +142,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 db.Dispose();
-            }
             base.Dispose(disposing);
         }
     }

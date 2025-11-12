@@ -1,0 +1,42 @@
+﻿@model FAST_FOOD.Models.MonAn
+@{
+    ViewBag.Title = "Chi tiết món ăn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Hình món ăn -->
+        <div class="col-md-5 text-center">
+            <img src="@Url.Content(Model.HinhAnh)"
+                 class="img-fluid rounded shadow-sm"
+                 alt="@Model.TenMon"
+                 style="max-height: 350px; object-fit: cover;" />
+        </div>
+
+        <!-- Thông tin món ăn -->
+        <div class="col-md-7">
+            <h2 class="text-success fw-bold">@Model.TenMon</h2>
+            <p class="fs-4 text-danger fw-bold">@Model.Gia.ToString("N0") đ</p>
+
+            <p>
+                <strong>Danh mục:</strong>
+                <span class="text-secondary">@Model.DanhMuc?.TenDanhMuc</span>
+            </p>
+
+            <p class="text-muted">Thưởng thức hương vị tuyệt vời của món ăn này tại cửa hàng của chúng tôi!</p>
+
+            <!-- Nút thêm vào giỏ hàng -->
+            <a href="@Url.Action("AddToCart", "Cart", new { id = Model.MonAnId })"
+               class="btn btn-success btn-lg">
+                🛒 Thêm vào giỏ hàng
+            </a>
+
+            <!-- Nút quay lại -->
+            <a href="@Url.Action("Index", "MonAns")"
+               class="btn btn-secondary btn-lg ms-2">
+                ← Quay lại
+            </a>
+        </div>
+    </div>
+</div>

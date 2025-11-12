@@ -1,33 +1,45 @@
 ﻿@model IEnumerable<FAST_FOOD.Models.HinhThucThanhToan>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý Hình Thức Thanh Toán";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
 }
 
-<h2>Index</h2>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-primary">Danh sách Hình Thức Thanh Toán</h2>
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Thêm mới
+        </a>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenHinhThuc)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenHinhThuc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaHTTT }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaHTTT }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaHTTT })
-        </td>
-    </tr>
-}
-
-</table>
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-primary">
+            <tr>
+                <th>Mã HTTT</th>
+                <th>Tên Hình Thức</th>
+                <th class="text-center" style="width:180px;">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaHTTT</td>
+                    <td>@item.TenHinhThuc</td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Edit", new { id = item.MaHTTT })" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil"></i> Sửa
+                        </a>
+                        <a href="@Url.Action("Details", new { id = item.MaHTTT })" class="btn btn-sm btn-info text-white">
+                            <i class="bi bi-eye"></i> Xem
+                        </a>
+                        <a href="@Url.Action("Delete", new { id = item.MaHTTT })" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,58 +1,32 @@
 ﻿@model FAST_FOOD.Models.HoaDon
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết hóa đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center text-info mb-4">🔍 Chi Tiết Hóa Đơn</h2>
 
-<div>
-    <h4>HoaDon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DonHang.TenKhachHang)
-        </dt>
+<div class="card shadow-sm p-4" style="border-radius:12px;">
+    <dl class="row">
+        <dt class="col-sm-3">Mã hóa đơn</dt>
+        <dd class="col-sm-9">@Model.MaHoaDon</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DonHang.TenKhachHang)
-        </dd>
+        <dt class="col-sm-3">Mã đơn hàng</dt>
+        <dd class="col-sm-9">@Model.MaDonHang</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhThucThanhToan.TenHinhThuc)
-        </dt>
+        <dt class="col-sm-3">Hình thức thanh toán</dt>
+        <dd class="col-sm-9">@Model.HinhThucThanhToan?.TenHTTT</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhThucThanhToan.TenHinhThuc)
-        </dd>
+        <dt class="col-sm-3">Ngày thanh toán</dt>
+        <dd class="col-sm-9">@Model.NgayThanhToan.ToString("dd/MM/yyyy HH:mm")</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nhanvien.HoTen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nhanvien.HoTen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayThanhToan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayThanhToan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
-
+        <dt class="col-sm-3">Tổng tiền</dt>
+        <dd class="col-sm-9">@String.Format("{0:N0} đ", Model.TongTien)</dd>
     </dl>
+
+    <div class="text-center mt-3">
+        @Html.ActionLink("✏️ Chỉnh sửa", "Edit", new { id = Model.MaHoaDon }, new { @class = "btn btn-warning text-white px-4" })
+        @Html.ActionLink("↩️ Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary px-4 ms-2" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHoaDon }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

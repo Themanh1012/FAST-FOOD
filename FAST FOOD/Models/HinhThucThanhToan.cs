@@ -15,5 +15,12 @@ namespace FAST_FOOD.Models
         [Display(Name = "Tên Hình Thức Thanh Toán")]
          
         public string TenHinhThuc { get; set; }
+
+        // Quan hệ 1-n với DonHang
+        public virtual ICollection<DonHang> DonHangs { get; set; }
+        public HinhThucThanhToan()
+        {
+            DonHangs = new HashSet<DonHang>();
+        }
     }
 }

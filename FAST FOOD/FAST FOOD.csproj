@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FAST_FOOD</RootNamespace>
     <AssemblyName>FAST FOOD</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,8 +89,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -102,6 +103,7 @@
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
@@ -111,11 +113,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -130,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
+    <Compile Include="App_Start\BundleConfig3.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -140,19 +139,39 @@
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
+
     <Compile Include="Areas\Admin\Filters\AdminAuthorizeAttribute.cs" />
+
+    <Compile Include="Areas\Customer\Controllers\CartsController.cs" />
+    <Compile Include="Areas\Customer\Controllers\DanhmucsController.cs" />
+    <Compile Include="Areas\Customer\Controllers\MonAnsController.cs" />
+
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\202511121210011__UDDB.cs" />
     <Compile Include="Migrations\202511121210011__UDDB.Designer.cs">
       <DependentUpon>202511121210011__UDDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\account.cs" />
+
+    <Compile Include="Migrations\202511100829073_Init.cs" />
+    <Compile Include="Migrations\202511100829073_Init.Designer.cs">
+      <DependentUpon>202511100829073_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511100921071_AddTaiKhoan.cs" />
+    <Compile Include="Migrations\202511100921071_AddTaiKhoan.Designer.cs">
+      <DependentUpon>202511100921071_AddTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\account.cs" />
+    <Compile Include="Models\CartItem.cs" />
+
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DonHang.cs" />
@@ -2037,16 +2056,23 @@
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customer\Views\Danhmucs\Index.cshtml" />
+
     <Content Include="Images\Products\khuyenmai.jpg" />
     <Content Include="Images\Products\monmoi.jpg" />
     <Content Include="Images\Products\noodle.png" />
     <Content Include="Images\Products\thucannhe.jpg" />
+
+
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Customer\Views\Danhmucs\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\MonAns\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\MonAns\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\Carts\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2105,6 +2131,7 @@
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\DanhMuc.cshtml" />
+
     <Content Include="Views\DanhMuc\Index.cshtml" />
     <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Account\DangKy.cshtml" />
@@ -2116,12 +2143,19 @@
     <Content Include="Views\Account\QuenMatKhau.cshtml" />
     <Content Include="Views\Account\DatLaiMatKhau.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+
+    <Content Include="Views\DanhMuc\DanhMuc.cshtml" />
+    <Content Include="Views\Account\DangNhap.cshtml" />
+    <Content Include="Views\Account\DangKy.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Customer\Controllers\" />
     <Folder Include="Areas\Customer\Data\" />
+
+    <Folder Include="Data\" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2151,8 +2185,16 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+
     <EmbeddedResource Include="Migrations\202511121210011__UDDB.resx">
       <DependentUpon>202511121210011__UDDB.cs</DependentUpon>
+
+    <EmbeddedResource Include="Migrations\202511100829073_Init.resx">
+      <DependentUpon>202511100829073_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511100921071_AddTaiKhoan.resx">
+      <DependentUpon>202511100921071_AddTaiKhoan.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
