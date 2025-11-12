@@ -2198,7 +2198,7 @@
 
     <EmbeddedResource Include="Migrations\202511121210011__UDDB.resx">
       <DependentUpon>202511121210011__UDDB.cs</DependentUpon>
-
+ </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511100829073_Init.resx">
       <DependentUpon>202511100829073_Init.cs</DependentUpon>
     </EmbeddedResource>
