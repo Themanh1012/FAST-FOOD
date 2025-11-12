@@ -14,11 +14,16 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: Admin/HoaDons
         public ActionResult Index()
         {
+
+            var hoaDons = db.HoaDons.Include(h => h.DonHang).Include(h => h.HinhThucThanhToan);
+            return View(hoaDons.ToList());
+
             var hoaDons = db.HoaDons
                             .Include(h => h.DonHang)
                             .Include(h => h.HinhThucThanhToan)
                             .ToList();
             return View(hoaDons);
+
         }
 
         // GET: Admin/HoaDons/Details/5
@@ -43,6 +48,10 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         {
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang");
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
+
+            
+
+
             return View();
         }
 
@@ -61,6 +70,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
+
             return View(hoaDon);
         }
 
@@ -76,6 +86,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
+
             return View(hoaDon);
         }
 
@@ -93,6 +104,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
+
             return View(hoaDon);
         }
 

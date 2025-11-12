@@ -1,0 +1,88 @@
+﻿body {
+}
+.profile-page {
+    background: linear-gradient(180deg, #fff 0%, #fff5f5 100%);
+    min-height: 100vh;
+}
+
+.login-card {
+    border: 1px solid #eee;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .login-card input {
+        background-color: #fafafa;
+    }
+.profile-card {
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+.profile-page .form-control {
+    background-color: #fafafa;
+    border-radius: 10px;
+}
+
+.profile-page .btn-danger {
+    background-color: #e4002b;
+    border-color: #e4002b;
+}
+
+    .profile-page .btn-danger:hover {
+        background-color: #c10024;
+        border-color: #c10024;
+    }
+
+/*ĐĂNG KÍ*/
+
+.register-container {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #fff, #fff7f7);
+    padding-top: 140px; /* chừa cho header */
+    z-index: 1;
+}
+
+.register-box {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 35px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+    .register-box h4 {
+        font-weight: 800;
+        color: #c41230;
+    }
+
+/*QUEN MK*/
+.forgot-link {
+    color: #c41230;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+    .forgot-link:hover {
+        color: #a00f25;
+        text-decoration: underline;
+    }
+
+.btn-sm {
+    font-size: 14px;
+    border-radius: 6px;
+}

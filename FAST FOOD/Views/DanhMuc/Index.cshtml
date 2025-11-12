@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Danh mục món ăn";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Banner")
+
+<section class="category-section container py-5">
+    <h2 class="mb-4 text-uppercase fw-bold text-center">Danh mục món ăn</h2>
+
+    <div class="row text-center">
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="/Menu/KhuyenMai" class="category-item">
+                <img src="~/Content/images/khuyenmai.jpg" class="img-fluid rounded" alt="Khuyến mãi" />
+                <h5 class="mt-2">Khuyến mãi</h5>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="/Menu/MonMoi" class="category-item">
+                <img src="~/Content/images/monmoi.jpg" class="img-fluid rounded" alt="Món mới" />
+                <h5 class="mt-2">Món mới</h5>
+            </a>
+        </div>
+        <!-- các mục khác -->
+    </div>
+</section>
