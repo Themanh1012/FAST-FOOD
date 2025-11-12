@@ -153,7 +153,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             //cap nhat tong don
             var don = db.DonHangs.Find(donHangId);
             don.TongTien = db.ChiTietDonHangs
-                .Where(c => c.DonHangId == don.DonHangId)
+                .Where(c => c.DonHangId == don.MaDonHang)
                 .Sum(c => c.ThanhTien);
             db.SaveChanges();
             return RedirectToAction("Index", new { donHangId });
@@ -169,7 +169,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         }
         private void CapNhatTongTien(int donHangId)
         {
-            var donHang = db.DonHangs.FirstOrDefault(d => d.DonHangId == donHangId);
+            var donHang = db.DonHangs.FirstOrDefault(d => d.MaDonHang == donHangId);
             if (donHang != null)
             {
                 var tongTien = db.ChiTietDonHangs

@@ -6,7 +6,6 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using BCrypt.Net;
-    using FAST_FOOD.Models;
     using BC = BCrypt.Net.BCrypt;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FAST_FOOD.Models.KFCContext>
@@ -18,13 +17,13 @@
 
         protected override void Seed(FAST_FOOD.Models.KFCContext context)
         {
-            if(!context.accounts.Any(a => a.TenDangNhap == "admin"))
+            if (!context.accounts.Any(a => a.TenDangNhap == "admin"))
             {
                 var admin = new account
                 {
                     TenDangNhap = "admin",
                     MatKhau = BC.HashPassword("@Admin123"),
-                    VaiTro =  "Admin",
+                    VaiTro = "Admin",
                     HoTen = "Quản Trị Viên",
                     Email = "admin123@gmail.com"
 

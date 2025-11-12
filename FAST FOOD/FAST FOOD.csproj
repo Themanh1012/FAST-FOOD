@@ -49,6 +49,9 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,8 +69,21 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -125,47 +141,18 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Admin\Filters\AdminAuthorizeAttribute.cs" />
-    <Compile Include="Areas\Customer\Controllers\CartsController.cs" />
-    <Compile Include="Areas\Customer\Controllers\DanhmucsController.cs" />
-    <Compile Include="Areas\Customer\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202510200838310_InitialCreate.cs" />
-    <Compile Include="Migrations\202510200838310_InitialCreate.Designer.cs">
-      <DependentUpon>202510200838310_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510271615252_UpdateKFCModel.cs" />
-    <Compile Include="Migrations\202510271615252_UpdateKFCModel.Designer.cs">
-      <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510300215352_FixHoaDonForeignKeys.cs" />
-    <Compile Include="Migrations\202510300215352_FixHoaDonForeignKeys.Designer.cs">
-      <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511021329170_UpdateDB.cs" />
-    <Compile Include="Migrations\202511021329170_UpdateDB.Designer.cs">
-      <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511021427085_InitDB.cs" />
-    <Compile Include="Migrations\202511021427085_InitDB.Designer.cs">
-      <DependentUpon>202511021427085_InitDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511030921053_db1.cs" />
-    <Compile Include="Migrations\202511030921053_db1.Designer.cs">
-      <DependentUpon>202511030921053_db1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511121101193_FixDangki.cs" />
-    <Compile Include="Migrations\202511121101193_FixDangki.Designer.cs">
-      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511121101193_FixDangki.cs" />
-    <Compile Include="Migrations\202511121101193_FixDangki.Designer.cs">
-      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
+    <Compile Include="Migrations\202511121210011__UDDB.cs" />
+    <Compile Include="Migrations\202511121210011__UDDB.Designer.cs">
+      <DependentUpon>202511121210011__UDDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\account.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DonHang.cs" />
@@ -173,7 +160,6 @@
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KFCContext.cs" />
     <Compile Include="Models\MonAn.cs" />
-    <Compile Include="Models\Nhanvien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2136,27 +2122,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Customer\Controllers\" />
     <Folder Include="Areas\Customer\Data\" />
-    <Folder Include="Areas\Customer\Views\Shared\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202510200838310_InitialCreate.resx">
-      <DependentUpon>202510200838310_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510271615252_UpdateKFCModel.resx">
-      <DependentUpon>202510271615252_UpdateKFCModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510300215352_FixHoaDonForeignKeys.resx">
-      <DependentUpon>202510300215352_FixHoaDonForeignKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511021329170_UpdateDB.resx">
-      <DependentUpon>202511021329170_UpdateDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511021427085_InitDB.resx">
-      <DependentUpon>202511021427085_InitDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511030921053_db1.resx">
-      <DependentUpon>202511030921053_db1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2186,14 +2151,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202511100829073_Init.resx">
-      <DependentUpon>202511100829073_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511100921071_AddTaiKhoan.resx">
-      <DependentUpon>202511100921071_AddTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511121101193_FixDangki.resx">
-      <DependentUpon>202511121101193_FixDangki.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202511121210011__UDDB.resx">
+      <DependentUpon>202511121210011__UDDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

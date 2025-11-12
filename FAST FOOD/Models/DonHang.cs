@@ -11,7 +11,7 @@ namespace FAST_FOOD.Models
     {
 
         [Key]
-        public int DonHangId {  get; set; }
+        public int MaDonHang {  get; set; }
 
         [Required]
         [Display(Name = "Ngày Đặt")]

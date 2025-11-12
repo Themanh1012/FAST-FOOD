@@ -17,7 +17,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: HoaDons
         public ActionResult Index()
         {
-            var hoaDons = db.HoaDons.Include(h => h.DonHang).Include(h => h.HinhThucThanhToan).Include(h => h.Nhanvien);
+            var hoaDons = db.HoaDons.Include(h => h.DonHang).Include(h => h.HinhThucThanhToan);
             return View(hoaDons.ToList());
         }
 
@@ -41,7 +41,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         {
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang");
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
-            ViewBag.MaNV = new SelectList(db.Nhanviens, "MaNV", "HoTen");
+            
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-            ViewBag.MaNV = new SelectList(db.Nhanviens, "MaNV", "HoTen", hoaDon.MaNV);
+          
             return View(hoaDon);
         }
 
@@ -79,7 +79,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             }
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-            ViewBag.MaNV = new SelectList(db.Nhanviens, "MaNV", "HoTen", hoaDon.MaNV);
+      
             return View(hoaDon);
         }
 
@@ -98,7 +98,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             }
             ViewBag.MaDonHang = new SelectList(db.DonHangs, "DonHangId", "TenKhachHang", hoaDon.MaDonHang);
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc", hoaDon.MaHTTT);
-            ViewBag.MaNV = new SelectList(db.Nhanviens, "MaNV", "HoTen", hoaDon.MaNV);
+            
             return View(hoaDon);
         }
 
