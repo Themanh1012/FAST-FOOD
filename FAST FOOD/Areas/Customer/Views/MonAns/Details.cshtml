@@ -21,13 +21,13 @@
 
             <p>
                 <strong>Danh mục:</strong>
-                <span class="text-secondary">@Model.DanhMuc?.TenDanhMuc</span>
+                <span class="text-secondary">@Model.DanhMuc.TenDanhMuc</span>
             </p>
 
             <p class="text-muted">Thưởng thức hương vị tuyệt vời của món ăn này tại cửa hàng của chúng tôi!</p>
 
             <!-- Nút thêm vào giỏ hàng -->
-            <a href="@Url.Action("AddToCart", "Cart", new { id = Model.MonAnId })"
+            <a href="@Url.Action("AddToCart", "Carts", new { id = Model.MonAnId })"
                class="btn btn-success btn-lg">
                 🛒 Thêm vào giỏ hàng
             </a>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FAST_FOOD.Models.DonHang>
+@{
+    ViewBag.Title = "Lịch sử mua hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-success mb-4">🧾 Lịch sử mua hàng</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-center text-muted">Bạn chưa có đơn hàng nào.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover shadow-sm text-center align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Hình thức thanh toán</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaDonHang</td>
+                        <td>@item.NgayDat.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@String.Format("{0:N0} đ", item.TongTien)</td>
+
+                        <td>
+                            @{
+                                string colorClass = "text-muted"; // mặc định
+                                if (item.TrangThai == "Chờ xác nhận")
+                                {
+                                    colorClass = "text-warning fw-bold"; // vàng
+                                }
+                                else if (item.TrangThai == "Quá hạn")
+                                {
+                                    colorClass = "text-danger fw-bold"; // đỏ
+                                }
+                                else if (item.TrangThai == "Hoàn tất")
+                                {
+                                    colorClass = "text-success fw-bold"; // xanh
+                                }
+                            }
+
+                            <span class="@colorClass">@item.TrangThai</span>
+                        </td>
+
+                        <td>@(item.HinhThucThanhToan != null ? item.HinhThucThanhToan.TenHinhThuc : "Chưa chọn")</td>
+                        <td>
+                            <a href="@Url.Action("Details", "LichSus", new { id = item.MaDonHang })"
+                               class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+

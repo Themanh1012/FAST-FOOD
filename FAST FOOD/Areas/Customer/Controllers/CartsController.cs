@@ -86,11 +86,13 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         {
             var cart = GetCart();
             if (cart == null || !cart.Any())
+            {
                 return RedirectToAction("Index", "Home");
-
-            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT");
+            }
+                
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
             ViewBag.Total = cart.Sum(i => i.ThanhTien);
-            return View();
+            return View(cart);
         }
 
         // Nhận dữ liệu từ form Checkout
@@ -143,5 +145,15 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             return View();
         }
 
+        public ActionResult History()
+        {
+            // Lấy tất cả đơn hàng 
+            var donHangs = db.DonHangs
+                .Include(d => d.HinhThucThanhToan)
+                .OrderByDescending(d => d.NgayDat)
+                .ToList();
+
+            return View(donHangs);
+        }
     }
 }
