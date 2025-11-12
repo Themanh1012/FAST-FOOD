@@ -17,12 +17,13 @@ namespace FAST_FOOD.Models
         public DbSet<MonAn> MonAns { get; set; }
         public DbSet<DonHang> DonHangs { get; set; }
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-    
+
         public DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
 
         public DbSet<HoaDon> HoaDons { get; set; }
         public DbSet<account> accounts { get; set; }    
 
+        public DbSet<account> accounts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //1:N DanhMUc - MONAN

@@ -7,16 +7,73 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="~/Content/Header01.css" />
+    <link rel="stylesheet" href="~/Content/account.css" />
     <!-- Font Awesome Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
+    @Html.Partial("_Header")
+    @Html.Partial("_Header2")
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    @Html.Partial("_Product");
 
-    @RenderBody()
+    @Html.Partial("_Footer")
 
     <script src="~/Scripts/popper.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy dữ liệu từ TempData qua Razor
+        var success = '@TempData["Success"]';
+        var error = '@TempData["Error"]';
+        var info = '@TempData["Info"]';
+
+        // Nếu có thông báo, hiển thị toast
+        if (success && success.trim() !== "") {
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: success,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        } else if (error && error.trim() !== "") {
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: error,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true
+            });
+        } else if (info && info.trim() !== "") {
+            Swal.fire({
+                toast: true,
+                icon: 'info',
+                title: info,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    });
+</script>

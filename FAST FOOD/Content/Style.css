@@ -1,0 +1,266 @@
+﻿    .category-item {
+        text-decoration: none;
+        color: #000;
+        transition: transform 0.3s ease;
+    }
+
+        .category-item:hover {
+            transform: scale(1.05);
+            color: #c41230;
+        }
+
+        .category-item img {
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    /* Tổng thể */
+    body {
+        background-color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Tiêu đề danh mục */
+    h3 {
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #222;
+    }
+
+    /* Căn chỉnh card */
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        background-color: #fafafa;
+    }
+
+        /* Hiệu ứng hover nổi */
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Ảnh trong card */
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.4s ease;
+        }
+
+        /* Phóng to ảnh khi hover */
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+    /* Phần nội dung card */
+    .card-body {
+        padding: 12px 5px;
+        background: #fff;
+    }
+
+        .card-body h6 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: #222;
+            transition: color 0.3s ease;
+        }
+
+            /* Mũi tên > có khoảng cách nhẹ */
+            .card-body h6::after {
+                content: '';
+            }
+
+    /* Đổi màu khi hover */
+    .card:hover h6 {
+        color: #c41230; /* Màu đỏ KFC */
+    }
+
+    /* Link trong card */
+    .card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .card img {
+            height: 160px;
+        }
+    }
+    /* ---- Tiêu đề danh mục ---- */
+    .section-title {
+        display: flex;
+        align-items: center;
+    }
+
+        .section-title h3 {
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #222;
+            text-transform: uppercase;
+            font-size: 22px;
+        }
+
+    /* ---- Đường kẻ ngang ---- */
+    .title-line {
+        height: 2px;
+        background-color: #c41230; /* Màu đỏ đặc trưng của KFC */
+        flex-grow: 1;
+        border-radius: 5px;
+        opacity: 0.8;
+    }
+
+    /* Khi responsive, thu nhỏ đường kẻ */
+@media (max-width: 768px) {
+    .title-line {
+        width: 40%;
+    }
+}
+    .section-title h3 {
+        font-size: 18px;
+    }
+    /* ========== LOGIN PAGE STYLING ========== */
+/* ================= LOGIN PAGE (KFC STYLE) ================= */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #ffffff 0%, #fff8f8 100%);
+    padding-top: 80px;
+}
+
+/* Card login */
+.login-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 45px;
+    width: 380px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+    border: 1px solid #f3f3f3;
+}
+
+    .login-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+/* Logo */
+.login-logo {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+    .login-logo:hover {
+        transform: scale(1.05);
+    }
+
+/* Tiêu đề */
+.login-card h4 {
+    font-weight: 800;
+    color: #111;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+
+/* Form */
+.login-card label {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Input */
+.login-input {
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    transition: all 0.25s ease;
+    padding-left: 12px;
+    font-size: 15px;
+    background-color: #fafafa;
+}
+
+    .login-input:focus {
+        border-color: #c41230; /* đỏ KFC */
+        box-shadow: 0 0 5px rgba(196, 18, 48, 0.25);
+        background-color: #fff;
+    }
+
+/* Button */
+.btn-login {
+    width: 100%;
+    background-color: #c41230;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 10px 0;
+    font-size: 16px;
+    transition: all 0.25s ease;
+    margin-top: 10px;
+}
+
+    .btn-login:hover {
+        background-color: #a00f25;
+        box-shadow: 0 4px 12px rgba(196, 18, 48, 0.25);
+        transform: translateY(-1px);
+    }
+
+/* Forgot link */
+.forgot-link {
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .forgot-link:hover {
+        color: #c41230;
+    }
+
+/* Alert */
+.alert {
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 10px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-card {
+        width: 90%;
+        padding: 30px;
+    }
+}
+.swal2-popup.swal2-toast {
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.swal2-icon-success {
+    color: #28a745 !important;
+}
+
+.swal2-icon-error {
+    color: #e4002b !important; /* đỏ KFC */
+}
+
+.swal2-title {
+    font-size: 16px !important;
+}

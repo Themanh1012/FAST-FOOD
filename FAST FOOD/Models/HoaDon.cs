@@ -21,8 +21,6 @@ namespace FAST_FOOD.Models
 
 
 
-
-
         //Khoa ngoai toi HinhThucThanhToan
 
 
