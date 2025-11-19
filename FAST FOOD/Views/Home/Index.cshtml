@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<FAST_FOOD.Models.Danhmuc>
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,6 +8,33 @@
 @Html.Partial("_Banner")
 
 
+
+
+
+<section class="menu-section  menu-container">
+    <h2 class="menu-title">DANH MỤC MÓN ĂN</h2>
+    <div class="menu-line"></div>
+
+    <div class="menu-grid">
+        @foreach (var item in Model)
+        {
+            <a class="menu-card" href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = item.DanhMucId })">
+                <div class="menu-img">
+                    <img src="@Url.Content(item.HinhAnh)" />
+
+
+
+                </div>
+                @{
+                    var ten = item.TenDanhMuc.Replace(">", "").Trim();
+                }
+                <div class="menu-text">
+                    @item.TenDanhMuc >
+                </div>
+            </a>
+        }
+    </div>
+</section>
+
+
 <!--Menu-->
-
-

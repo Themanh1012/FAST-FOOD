@@ -1,28 +1,33 @@
-﻿@model IEnumerable<FAST_FOOD.Models.Danhmuc>
+﻿@model FAST_FOOD.Models.DanhMucViewModel
 @{
-    ViewBag.Title = "Danh mục món ăn";
+    ViewBag.Title = Model.DanhMuc.TenDanhMuc;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center text-danger fw-bold mb-4">🍗 Danh mục món ăn</h2>
+<link rel="stylesheet" href="~/Areas/Customer/Content/product.css" />
 
-    <div class="row">
-        @foreach (var item in Model)
+<section class="category-menu menu01">
+    <div class="menu-horizontal">
+        @foreach (var dm in Model.Danhmucs)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-0 h-100">
-                    <img src="@Url.Content(item.HinhAnh ?? "~/Images/noimage.png")"
-                         class="card-img-top"
-                         alt="@item.TenDanhMuc"
-                         style="height:220px; object-fit:cover;" />
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-dark fw-bold">@item.TenDanhMuc</h5>
-                        <a href="@Url.Action("Details", "Danhmucs", new { id = item.DanhMucId })"
-                           class="btn btn-danger w-100">Xem món</a>
-                    </div>
-                </div>
-            </div>
+            <a class="menu-tab @(dm.DanhMucId == Model.DanhMuc.DanhMucId ? "active" : "")"
+               href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = dm.DanhMucId })">
+                @dm.TenDanhMuc
+            </a>
         }
     </div>
+</section>
+
+<h2 class="category-title">@Model.DanhMuc.TenDanhMuc</h2>
+
+<div class="product-grid">
+    @foreach (var m in Model.MonAns)
+    {
+        <div class="product-card">
+            <img src="@Url.Content(m.HinhAnh)" />
+            <h3>@m.TenMon</h3>
+            <p class="text-danger fw-bold">@m.Gia.ToString("N0") đ</p>
+            <a class="btn btn-danger">Thêm</a>
+        </div>
+    }
 </div>

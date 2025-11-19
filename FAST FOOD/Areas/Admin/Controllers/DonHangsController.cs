@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FAST_FOOD.Areas.Admin.Filters;
+using FAST_FOOD.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,10 +8,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FAST_FOOD.Models;
 
 namespace FAST_FOOD.Areas.Admin.Controllers
 {
+    [AdminAuthorize]
     public class DonHangsController : Controller
     {
         private KFCContext db = new KFCContext();
@@ -75,6 +77,9 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // GET: DonHangs/Edit/5
         public ActionResult Edit(int? id)
         {
+            System.Diagnostics.Debug.WriteLine("==> Connection: " + db.Database.Connection.ConnectionString);
+            System.Diagnostics.Debug.WriteLine("==> Danhmuc count: " + db.Danhmucs.Count());
+
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             HoaDon hoaDon = db.HoaDons.Find(id);
             if (hoaDon == null) return HttpNotFound();

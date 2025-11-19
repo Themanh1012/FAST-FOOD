@@ -7,13 +7,13 @@ namespace FAST_FOOD.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class _UDDB : IMigrationMetadata
+    public sealed partial class _fixProduct : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_UDDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_fixProduct));
         
         string IMigrationMetadata.Id
         {
-            get { return "202511121210011__UDDB"; }
+            get { return "202511191323529__fixProduct"; }
         }
         
         string IMigrationMetadata.Source

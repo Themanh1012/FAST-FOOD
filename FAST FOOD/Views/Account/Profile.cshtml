@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Web
+@{
     ViewBag.Title = "Thông tin tài khoản";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var user = (FAST_FOOD.Models.account)Session["User"];
@@ -40,15 +41,24 @@
                 <input type="text" class="form-control" value="@user.VaiTro" readonly />
             </div>
 
-            <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-3 flex-wrap">
                 <button type="submit" class="btn btn-danger btn-sm px-3 py-1 fw-semibold">
                     <i class="fa-solid fa-floppy-disk me-1"></i> Lưu thay đổi
                 </button>
-                <a href="@Url.Action("DangXuat", "Account")" class="btn btn-outline-dark btn-sm px-3 py-1 fw-semibold">
+
+                <a href="@Url.Action("DangXuat", "Account")"
+                   class="btn btn-outline-dark btn-sm px-3 py-1 fw-semibold">
                     <i class="fa-solid fa-right-from-bracket me-1"></i> Đăng xuất
                 </a>
-            </div>
 
+                @if (user.VaiTro == "Admin")
+                {
+                    <a href="@Url.Action("Index", "Home", new { area = "Admin" })"
+                       class="btn btn-warning btn-sm px-3 py-1 fw-semibold">
+                        <i class="fa-solid fa-user-shield me-1"></i> Quản trị
+                    </a>
+                }
+            </div>
         }
 
         <!-- Form xóa tài khoản -->
@@ -64,3 +74,9 @@
         </div>
     </div>
 </section>
+<style>
+    .login-card .btn {
+        min-width: 120px;
+        text-align: center;
+    }
+</style>

@@ -1,5 +1,6 @@
 ﻿namespace FAST_FOOD.Migrations
 {
+    using FAST_FOOD.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -16,7 +17,6 @@
 
         protected override void Seed(FAST_FOOD.Models.KFCContext context)
         {
-
             if (!context.accounts.Any(a => a.TenDangNhap == "admin"))
             {
                 var admin = new account
@@ -31,8 +31,6 @@
                 context.accounts.Add(admin);
                 context.SaveChanges();
             }
-
-         
         }
     }
 }

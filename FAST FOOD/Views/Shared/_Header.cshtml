@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Web
+
 @{
     ViewBag.Title = "_Header";
 }
@@ -6,9 +7,9 @@
 <nav class="navbar kfc-header fixed-top header">
     <div class="container-fluid">
         <div class="logo-box">
-            <a href="@Url.Action("Index", "Home")">
-            <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0" class="navbar-brand" width="60" alt="KFC Logo" />
-                </a>
+            <a href="@Url.Action("Index", "Home", new { area = "" })">
+                <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0" class="navbar-brand" width="60" alt="KFC Logo" />
+            </a>
 
         </div>
         <div class="middle">
@@ -22,70 +23,103 @@
             <div class="cart-container">
 
 
-
-                <div class="cart-icon" id="cartIcon">
+                <a href="@Url.Action("Index", "Carts", new { area = "Customer" })" class="cart-icon"  id="cartIcon">
                     <i class="fa-solid fa-basket-shopping"></i>
-                    <span class="cart-badge" id="cartCount">0</span>
-                </div>
+                    <span class="cart-badge" id="cartCount">
+                        @(Session["Cart"] != null ? ((List<FAST_FOOD.Models.CartItem>)Session["Cart"]).Sum(x => x.SoLuong) : 0)
+                    </span>
+                </a>
+               
             </div>
-   
-
-           
-
-                <div class="icon-login">
-                    @if (Session["User"] != null)
-                    {
-                        <a href="@Url.Action("Profile", "Account")" class="login-link">
-                            <i class="fa-solid fa-user-check"></i>
-                        </a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("DangNhap", "Account")" class="login-link">
-                            <i class="fa-regular fa-user"></i>
-                        </a>
-                    }
-                </div>
 
 
+
+
+            <div class="icon-login">
+                @if (Session["User"] != null)
+                {
+                    <a href="@Url.Action("Profile", "Account", new { area = "" })" class="login-link">
+                        <i class="fa-solid fa-user-check"></i>
+                    </a>
+                }
+                else
+                {
+            <a href="@Url.Action("Profile", "Account", new { area = "" })" class="login-link">
+                <i class="fa-regular fa-user"></i>
+            </a>
+                }
             </div>
+
+
+
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
 
             <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
+
+                <!-- ⭐ DANH MỤC MÓN ĂN -->
+                <h6 class="fw-bold text-uppercase text-danger mb-3">Danh mục món ăn</h6>
+
+                <ul class="list-unstyled mb-4 off-menu">
+                    <li><a href="#" class="off-link">Khuyến mãi ></a></li>
+                    <li><a href="#" class="off-link">Món mới ></a></li>
+                    <li><a href="#" class="off-link">Combo 1 người ></a></li>
+                    <li><a href="#" class="off-link">Combo nhóm ></a></li>
+                    <li><a href="#" class="off-link">Gà rán - Gà quay ></a></li>
+                    <li><a href="#" class="off-link">Burger - Cơm - Mì Ý ></a></li>
+                    <li><a href="#" class="off-link">Thức ăn nhẹ ></a></li>
+                    <li><a href="#" class="off-link">Thức uống & Tráng miệng ></a></li>
+                    <li><a href="#" class="off-link">Bảng thành phần dị ứng ></a></li>
                 </ul>
-                <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+
+                <hr />
+
+                <!-- ⭐ VỀ KFC -->
+                <h6 class="fw-bold text-uppercase text-danger mb-3">Về KFC</h6>
+                <ul class="list-unstyled mb-4 off-menu">
+                    <li><a href="#" class="off-link">Câu chuyện của chúng tôi ></a></li>
+                    <li><a href="#" class="off-link">Tin khuyến mãi ></a></li>
+                    <li><a href="#" class="off-link">Tin tức KFC ></a></li>
+                    <li><a href="#" class="off-link">Tuyển dụng ></a></li>
+                    <li><a href="#" class="off-link">Đặt tiệc sinh nhật ></a></li>
+                    <li><a href="#" class="off-link">Đơn lớn giá hời ></a></li>
+                </ul>
+
+                <hr />
+
+                <!-- ⭐ LIÊN HỆ -->
+                <h6 class="fw-bold text-uppercase text-danger mb-3">Liên hệ KFC</h6>
+                <ul class="list-unstyled mb-4 off-menu">
+                    <li><a href="#" class="off-link">Theo dõi đơn hàng ></a></li>
+                    <li><a href="#" class="off-link">Liên hệ KFC ></a></li>
+                </ul>
+
+                <hr />
+
+                <!-- ⭐ CHÍNH SÁCH -->
+                <h6 class="fw-bold text-uppercase text-danger mb-3">Chính sách</h6>
+                <ul class="list-unstyled off-menu">
+                    <li><a href="#" class="off-link">Chính sách hoạt động ></a></li>
+                    <li><a href="#" class="off-link">Chính sách và quy định ></a></li>
+                    <li><a href="#" class="off-link">Chính sách bảo mật thông tin ></a></li>
+                </ul>
+
+                <!-- ⭐ ICON ZALO + MESSENGER -->
+                <div class="mt-4 d-flex gap-3">
+                    <a href="#"><img src="https://static.kfcvietnam.com.vn/images/web/Zalo.svg" width="45" /></a>
+                    <a href="#"><img src="https://static.kfcvietnam.com.vn/images/web/mes.svg" width="45" /></a>
+                </div>
+
             </div>
+
         </div>
     </div>
 </nav>

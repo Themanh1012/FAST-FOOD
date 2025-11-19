@@ -8,10 +8,13 @@ namespace FAST_FOOD.Models
 {
     public class KFCContext: DbContext
     {
-        public KFCContext(): base("KFCContext"){
-                this.Configuration.LazyLoadingEnabled = false;   
-                 this.Configuration.ProxyCreationEnabled = false;   
+        public KFCContext()
+      : base(@"Data Source=MANH\MANH;Initial Catalog=KFC;Integrated Security=True;MultipleActiveResultSets=True;")
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
+
         public DbSet<Danhmuc> Danhmucs { get; set; }
        
         public DbSet<MonAn> MonAns { get; set; }
@@ -21,11 +24,13 @@ namespace FAST_FOOD.Models
         public DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
 
         public DbSet<HoaDon> HoaDons { get; set; }
-        public DbSet<account> accounts { get; set; }    
+       
 
         public DbSet<account> accounts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Danhmuc>().ToTable("Danhmucs");
+
             //1:N DanhMUc - MONAN
             modelBuilder.Entity<MonAn>()
                 .HasRequired(m => m.DanhMuc)

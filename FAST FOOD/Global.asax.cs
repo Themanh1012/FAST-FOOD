@@ -16,6 +16,10 @@ namespace FAST_FOOD
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            foreach (var route in System.Web.Routing.RouteTable.Routes)
+            {
+                System.Diagnostics.Debug.WriteLine(route);
+            }
         }
     }
 }

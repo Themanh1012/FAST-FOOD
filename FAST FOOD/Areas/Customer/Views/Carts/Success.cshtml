@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container text-center mt-5">
+<div class="container success-page  text-center mt-5">
     <h2 class="text-success">🎉 Đặt hàng thành công!</h2>
     <p class="fs-5 text-muted mt-3">Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi!</p>
     <a href="@Url.Action("Index", "MonAns")" class="btn btn-primary mt-3">
@@ -12,3 +12,8 @@
     </a>
 </div>
 
+<style>
+    .success-page {
+        margin-top: 150px !important;
+    }
+</style>

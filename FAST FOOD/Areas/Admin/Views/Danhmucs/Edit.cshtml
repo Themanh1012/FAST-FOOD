@@ -1,40 +1,40 @@
 ﻿@model FAST_FOOD.Models.Danhmuc
-
 @{
-    ViewBag.Title = "Chỉnh sửa danh mục";
+    ViewBag.Title = "Sửa Danh Mục";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="text-warning">Chỉnh sửa danh mục</h2>
+<h2 class="text-success mb-3">@ViewBag.Title</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Danhmucs", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model=>model.DanhMucId)
-<div class="form-horizontal">
- <div class="form-group mb-3">
-        @Html.LabelFor(model => model.TenDanhMuc, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TenDanhMuc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TenDanhMuc, "", new { @class = "text-danger" })
-        </div>
+    @Html.HiddenFor(m => m.DanhMucId)
+    <div class="mb-3">
+        @Html.LabelFor(m => m.TenDanhMuc, new { @class = "form-label fw-bold" })
+        @Html.TextBoxFor(m => m.TenDanhMuc, new { @class = "form-control", placeholder = "Nhập tên danh mục..." })
+        @Html.ValidationMessageFor(m => m.TenDanhMuc, "", new { @class = "text-danger" })
     </div>
 
-    <div class="form-group mt-3">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Cập Nhật" class="btn btn-warning text-white" />
-            @Html.ActionLink("Huỷ","Index",null, new {@class="btn btn-secondary ms-2"})
-        </div>
+    <div class="mb-3">
+        <label class="form-label fw-bold">Hình ảnh</label>
+        <input type="file" name="UploadImage" class="form-control" accept="image/*" onchange="previewImage(event)" />
     </div>
-</div>
 
+    <div class="text-center mb-3">
+        <img id="preview" src="@Model?.HinhAnh" alt="Ảnh danh mục" style="max-width: 200px; max-height: 150px; object-fit: cover; border-radius: 8px;" />
+    </div>
+
+    <button type="submit" class="btn btn-success px-4">Lưu</button>
+    @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-secondary ms-2" })
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById('preview').src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

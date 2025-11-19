@@ -8,23 +8,24 @@
 <h2 class="text-info">Chi Tiết Danh Mục</h2>
 </hr>
 
-    <dl class="row">
-        <dt class="col-sm-3">
-            Mã Danh Mục
-        </dt>
+<dl class="row">
+    <dt class="col-sm-3">Tên Danh Mục</dt>
+    <dd class="col-sm-9">@Model.TenDanhMuc</dd>
 
-        <dd class="col-sm-9">
-            @Model.DanhMucId
-        </dd>
-        <dt class="col-sm-3">
-            Tên Danh Mục
-        </dt>
-        <dd class="col-sm-9">
-            @Model.TenDanhMuc
-        </dd>
-    </dl>
+    <dt class="col-sm-3">Hình Ảnh</dt>
+    <dd class="col-sm-9">
+        @if (!string.IsNullOrEmpty(Model.HinhAnh))
+        {
+            <img src="@Model.HinhAnh" alt="@Model.TenDanhMuc" style="max-width:200px; max-height:150px; object-fit:cover; border-radius:8px;" />
+        }
+        else
+        {
+            <span class="text-muted">Chưa có ảnh</span>
+        }
+    </dd>
+</dl>
 
 <p>
-    @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.DanhMucId }, new {@class="btn btn-warning text-white"}) |
-    @Html.ActionLink("🔙 Quay Lại", "Index" , null , new {@class="btn btn-secondary"})
+    @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.DanhMucId }, new { @class = "btn btn-warning text-white" }) |
+    @Html.ActionLink("🔙 Quay Lại", "Index", null, new { @class = "btn btn-secondary" })
 </p>

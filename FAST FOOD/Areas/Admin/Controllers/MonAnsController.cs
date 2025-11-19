@@ -1,4 +1,5 @@
-﻿using FAST_FOOD.Models;
+﻿using FAST_FOOD.Areas.Admin.Filters;
+using FAST_FOOD.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace FAST_FOOD.Areas.Admin.Controllers
 {
+    [AdminAuthorize]
     public class MonAnsController : Controller
     {
         private KFCContext db = new KFCContext();
@@ -56,7 +58,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn, HttpPostedFileBase HinhAnhFile)
+        public ActionResult Create([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId,MoTa")] MonAn monAn, HttpPostedFileBase HinhAnhFile)
         {
             if (ModelState.IsValid)
             {
@@ -131,7 +133,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId")] MonAn monAn, HttpPostedFileBase HinhAnhFile)
+        public ActionResult Edit([Bind(Include = "MonAnId,TenMon,Gia,HinhAnh,DanhMucId,MoTa")] MonAn monAn, HttpPostedFileBase HinhAnhFile)
         {
             if (ModelState.IsValid)
             {
@@ -148,6 +150,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 monAnInDb.TenMon = monAn.TenMon;
                 monAnInDb.Gia = monAn.Gia;
                 monAnInDb.DanhMucId = monAn.DanhMucId;
+                monAnInDb.MoTa = monAn.MoTa;
                 if (HinhAnhFile != null && HinhAnhFile.ContentLength > 0)
                 {
                     var folderPath = Server.MapPath("~/Images/Products/");

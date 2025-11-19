@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="~/Content/Style.css" />
     <link rel="stylesheet" href="~/Content/Header01.css" />
     <link rel="stylesheet" href="~/Content/account.css" />
+    <link rel="stylesheet" href="~/Content/product.css" />
     <!-- Font Awesome Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/Scripts/Shop.js" ></script>
 
 </head>
 <body>
@@ -22,8 +24,7 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
-    @Html.Partial("_Product");
-
+ 
     @Html.Partial("_Footer")
 
     <script src="~/Scripts/popper.js"></script>
@@ -36,7 +37,7 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<script>
+@*<script>
     document.addEventListener("DOMContentLoaded", function () {
         // Lấy dữ liệu từ TempData qua Razor
         var success = '@TempData["Success"]';
@@ -76,4 +77,4 @@
             });
         }
     });
-</script>
+</script>*@

@@ -8,23 +8,9 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: Admin/Home
         public ActionResult Index()
         {
-            ViewBag.Title = "Trang Quản Trị";
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

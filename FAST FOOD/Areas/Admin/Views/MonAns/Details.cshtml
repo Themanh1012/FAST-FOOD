@@ -23,6 +23,9 @@
             <img src="@Url.Content(string.IsNullOrEmpty(Model.HinhAnh) ? "~/Images/noimage.png" : Model.HinhAnh)"
                  alt="@Model.TenMon" width="180" class="img-thumbnail" />
         </dd>
+
+        <dt class="col-sm-3">Mô tả</dt>
+        <dd class="col-sm-9">@Model.MoTa</dd>
     </dl>
 
     <div class="text-center mt-3">

@@ -7,13 +7,13 @@ namespace FAST_FOOD.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class Init : IMigrationMetadata
+    public sealed partial class AddMoTaToMonAn : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddMoTaToMonAn));
         
         string IMigrationMetadata.Id
         {
-            get { return "202511100829073_Init"; }
+            get { return "202511191659184_AddMoTaToMonAn"; }
         }
         
         string IMigrationMetadata.Source

@@ -19,7 +19,10 @@ namespace FAST_FOOD.Models
         
         public string HinhAnh { get; set; }
 
-      
+
+        [StringLength(500)]
+        public string MoTa { get; set; }
+
         //khoa ngoai
 
         public int DanhMucId {  get; set; }

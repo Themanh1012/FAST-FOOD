@@ -264,3 +264,16 @@
 .swal2-title {
     font-size: 16px !important;
 }
+
+section.container {
+    margin-top: 20px !important; /* tăng khoảng cách */
+}
+.section-title {
+    margin-top: 20px;
+}
+.produc01{
+    padding-top:20px !important;
+}
+.mt-5 {
+    padding-top: 20px !important;
+}
