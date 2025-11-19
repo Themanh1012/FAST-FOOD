@@ -95,10 +95,16 @@ namespace FAST_FOOD.Controllers
         // ------------------- ĐĂNG XUẤT -------------------
         public ActionResult DangXuat()
         {
-            Session.Clear();
+            Session["User"] = null;
+            Session["Role"] = null;
+            Session["HoTen"] = null;
+
+            Session["Cart"] = null;  // 🔥 BẮT BUỘC phải có dòng này
+            TempData.Clear();
             TempData["Info"] = "Bạn đã đăng xuất.";
             return RedirectToAction("DangNhap", "Account");
         }
+
 
         // ------------------- QUÊN MẬT KHẨU -------------------
         public ActionResult QuenMatKhau() => View();
@@ -242,5 +248,6 @@ namespace FAST_FOOD.Controllers
             }
             return RedirectToAction("DangNhap");
         }
+
     }
 }

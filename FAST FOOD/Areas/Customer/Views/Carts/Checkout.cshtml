@@ -7,88 +7,158 @@
 
 <div class="container checkout-page mt-5">
     <div class="row">
-        <!-- CỘT TRÁI: Thông tin khách hàng -->
+
+        <!-- CỘT TRÁI -->
         <div class="col-md-7">
-            <h2 class="text-success mb-4 text-center">
-                <i class="bi bi-person-lines-fill"></i> Thông tin đặt hàng
-            </h2>
+            <h2 class="text-success mb-4 text-center">Thông tin đặt hàng</h2>
 
             @using (Html.BeginForm("Checkout", "Carts", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
                 <div class="card p-4 shadow-sm">
+
                     <div class="mb-3">
                         <label class="form-label fw-bold">Tên khách hàng</label>
-                        <input type="text" name="TenKhachHang" class="form-control" placeholder="Nhập họ tên của bạn" required />
+                        <input type="text" name="TenKhachHang" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Địa chỉ giao hàng</label>
-                        <input type="text" name="DiaChi" class="form-control" placeholder="Nhập địa chỉ nhận hàng" required />
+                        <input type="text" name="DiaChi" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Số điện thoại</label>
-                        <input type="tel" name="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại liên hệ" required />
+                        <input type="tel" name="SoDienThoai" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Ghi chú đơn hàng</label>
-                        <textarea name="GhiChu" class="form-control" rows="2" placeholder="Ví dụ: Giao buổi trưa, thêm tương ớt..."></textarea>
+                        <textarea name="GhiChu" class="form-control" rows="2"></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Hình thức thanh toán</label>
-                        @Html.DropDownList("MaHTTT", (SelectList)ViewBag.MaHTTT, "Chọn hình thức", new { @class = "form-select" })
+                    <!-- Hình thức thanh toán -->
+                    <h5 class="mt-3 fw-bold text-primary">Phương thức thanh toán</h5>
+                    <div class="payment-methods">
+                        @foreach (var p in (SelectList)ViewBag.MaHTTT)
+                        {
+                            string icon = "~/Content/pay/default.png";
+
+                            if (p.Text.Contains("Tiền mặt"))
+                            {
+                                icon = "~/Content/pay/cash.png";
+                            }
+                            else if (p.Text.Contains("Momo"))
+                            {
+                                icon = "~/Content/pay/momo.png";
+                            }
+                            else if (p.Text.Contains("Visa"))
+                            {
+                                icon = "~/Content/pay/visa.png";
+                            }
+                            else if (p.Text.Contains("VNPay"))
+                            {
+                                icon = "~/Content/pay/vnpay.png";
+                            }
+                            else if (p.Text.Contains("Zalo"))
+                            {
+                                icon = "~/Content/pay/zalo.png";
+                            }
+
+                            <label class="payment-option">
+                                <input type="radio" name="MaHTTT" value="@p.Value" required />
+                                <img src="@Url.Content(icon)" class="pay-icon" />
+                                @*@p.Text*@
+                            </label>
+                        }
                     </div>
+
+                    <button type="submit" class="btn btn-danger w-100 mt-4 fw-bold">
+                        Xác nhận đặt hàng
+                    </button>
+
                 </div>
             }
         </div>
 
-            <!-- CỘT PHẢI: Tóm tắt đơn hàng -->
-            <div class="col-md-5">
-                <h2 class="text-center text-danger mb-4"><i class="bi bi-cart4"></i> Giỏ hàng của bạn</h2>
+        <!-- CỘT PHẢI -->
+        <div class="col-md-5">
+            <h2 class="text-danger text-center mb-4">Giỏ hàng của bạn</h2>
 
-                <div class="card shadow-sm p-4">
-                    <ul class="list-group list-group-flush mb-3">
-                        @foreach (var item in Model)
-                        {
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
+            <div class="card shadow-sm p-4">
 
-                                    <img src="@Url.Content(item.HinhAnh)" alt="@item.TenMon"
-                                         width="80" class="rounded shadow-sm"
-                                         style="object-fit: cover; margin-right: 15px;" />
+                <ul class="list-group list-group-flush mb-3">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
 
-                                    <div>
-                                        <strong>@item.TenMon</strong><br />
-                                        <small class="text-muted">@item.Gia.ToString("N0") đ x @item.SoLuong</small>
-                                    </div>
+                            <div class="d-flex align-items-center">
+                                <img src="@Url.Content(item.HinhAnh)" width="80"
+                                     class="rounded shadow-sm me-3" />
+                                <div>
+                                    <strong>@item.TenMon</strong><br />
+                                    <small class="text-muted">
+                                        @item.Gia.ToString("N0") đ x @item.SoLuong
+                                    </small>
                                 </div>
-                                <span class="fw-bold text-danger">@item.ThanhTien.ToString("N0") đ</span>
-                            </li>
-                        }
-                    </ul>
+                            </div>
 
-                    <hr />
-                    <div class="d-flex justify-content-between">
-                        <span class="fw-bold">Tổng cộng:</span>
-                        <span class="fw-bold fs-5 text-danger">@total.ToString("N0") đ</span>
-                    </div>
+                            <strong class="text-danger fs-6">@item.ThanhTien.ToString("N0") đ</strong>
 
-                    <button type="submit" class="btn btn-danger w-100 mt-4 fw-bold">
-                        <i class="bi bi-check-circle"></i> Xác nhận đặt hàng
-                    </button>
-                </div>
+                        </li>
+                    }
+                </ul>
+
+                <hr />
+
                 
+                </div>
+
             </div>
         </div>
+
     </div>
+</div>
+
 <style>
     .checkout-page {
         margin-top: 140px !important;
     }
+
+    .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .payment-option {
+        border: 1px solid #ddd;
+        padding: 8px 12px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row; /* luôn nằm ngang */
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: .2s;
+        height: 55px; /* chiều cao chuẩn */
+        line-height: 1; /* tránh giãn dòng */
+    }
+
+        .payment-option:hover {
+            background: #fff6f6;
+            border-color: #d3232a;
+        }
+
+        .payment-option input[type="radio"] {
+            transform: scale(1.2);
+        }
+
+    .pay-icon {
+        width: 32px !important;
+        height: 32px !important;
+        object-fit: contain !important;
+        display: block;
+    }
 </style>
-
-

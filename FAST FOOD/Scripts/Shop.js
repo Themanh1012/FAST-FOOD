@@ -58,3 +58,72 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+var success = '@TempData["Success"]';
+var error = '@TempData["Error"]';
+var info = '@TempData["Info"]';
+
+if (success && success.trim() !== "") {
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: success,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+}
+      
+    // 🔥 AJAX thêm vào giỏ hàng
+    function addToCart(monId) {
+
+        $.ajax({
+            url: '/Customer/Carts/AddToCartAjax',
+            type: 'POST',
+            data: { id: monId },
+
+            success: function (res) {
+
+                if (res.status === "notlogin") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Bạn chưa đăng nhập',
+                        text: 'Đăng nhập để thêm món vào giỏ!',
+                        confirmButtonText: 'Đăng nhập ngay'
+                    }).then(() => {
+                        window.location.href = '/Account/DangNhap';
+                    });
+                }
+                else if (res.status === "success") {
+                    Swal.fire({
+                        toast: true,
+                        icon: 'success',
+                        title: 'Đã thêm vào giỏ!',
+                        position: 'top-end',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+
+                    // cập nhật số lượng giỏ hàng
+                    document.getElementById("cartCount").innerText = res.count;
+                }
+            }
+        });
+    }
+
+
+
+//left _right menu 2
+
+
+    const recList = document.getElementById("recList");
+
+    function slideLeft() {
+        recList.scrollBy({ left: -300, behavior: "smooth" });
+    }
+
+    function slideRight() {
+        recList.scrollBy({ left: 300, behavior: "smooth" });
+    }
+

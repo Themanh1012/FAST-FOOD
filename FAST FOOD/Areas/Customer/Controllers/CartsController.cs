@@ -16,6 +16,9 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         // Lấy giỏ hàng từ Session
         private List<CartItem> GetCart()
         {
+            if (Session["User"] == null)
+                return null; // sẽ được chặn ở AddToCart
+
             var cart = Session["Cart"] as List<CartItem>;
             if (cart == null)
             {
@@ -28,18 +31,23 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         // Thêm món ăn vào giỏ
         public ActionResult AddToCart(int id)
         {
+            // Kiểm tra đăng nhập
+            if (Session["User"] == null)
+            {
+                TempData["Info"] = "Bạn cần đăng nhập trước khi thêm vào giỏ hàng!";
+                return RedirectToAction("DangNhap", "Account", new { area = "" });
+            }
+
             var mon = db.MonAns.Find(id);
             if (mon == null)
                 return HttpNotFound();
 
             var cart = GetCart();
             var item = cart.FirstOrDefault(c => c.MonAnId == id);
+
             if (item != null)
-            {
                 item.SoLuong++;
-            }
             else
-            {
                 cart.Add(new CartItem
                 {
                     MonAnId = mon.MonAnId,
@@ -48,11 +56,11 @@ namespace FAST_FOOD.Areas.Customer.Controllers
                     HinhAnh = mon.HinhAnh,
                     SoLuong = 1
                 });
-            }
 
-            return RedirectToAction("Index");
+            TempData["Success"] = "Đã thêm món vào giỏ hàng!"; // ⭐ THÔNG BÁO
+
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
-
         // Hiển thị giỏ hàng
         public ActionResult Index()
         {
@@ -86,14 +94,17 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         {
             var cart = GetCart();
             if (cart == null || !cart.Any())
-            {
                 return RedirectToAction("Index", "Home");
-            }
-                
-            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHinhThuc");
+
+            // GIẢI PHÁP CHUẨN: đúng tên trường trong DB
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans.ToList(),
+                                            "MaHTTT",
+                                            "TenHinhThuc");
+
             ViewBag.Total = cart.Sum(i => i.ThanhTien);
             return View(cart);
         }
+
 
         // Nhận dữ liệu từ form Checkout
         [HttpPost]
@@ -144,7 +155,36 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             ViewBag.Message = TempData["Message"];
             return View();
         }
+        [HttpPost]
+        public JsonResult AddToCartAjax(int id)
+        {
+            if (Session["User"] == null)
+                return Json(new { status = "notlogin" });
 
+            var mon = db.MonAns.Find(id);
+            if (mon == null)
+                return Json(new { status = "error" });
+
+            var cart = GetCart();
+            var item = cart.FirstOrDefault(x => x.MonAnId == id);
+
+            if (item != null)
+                item.SoLuong++;
+            else
+                cart.Add(new CartItem
+                {
+                    MonAnId = mon.MonAnId,
+                    TenMon = mon.TenMon,
+                    Gia = mon.Gia,
+                    HinhAnh = mon.HinhAnh,
+                    SoLuong = 1
+                });
+
+            // cập nhật số lượng tổng
+            int totalCount = cart.Sum(x => x.SoLuong);
+
+            return Json(new { status = "success", count = totalCount });
+        }
         public ActionResult History()
         {
             // Lấy tất cả đơn hàng 

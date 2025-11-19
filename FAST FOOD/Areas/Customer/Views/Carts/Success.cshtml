@@ -1,14 +1,15 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Đặt hàng thành công";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container success-page  text-center mt-5">
+<div class="container success-page text-center mt-5">
     <h2 class="text-success">🎉 Đặt hàng thành công!</h2>
     <p class="fs-5 text-muted mt-3">Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi!</p>
-    <a href="@Url.Action("Index", "MonAns")" class="btn btn-primary mt-3">
-        ← Tiếp tục mua hàng
+
+    <a href="@Url.Action("Index", "Home", new { area = "" })"
+       class="btn btn-primary mt-3">
+        ← Quay về trang chủ
     </a>
 </div>
 

@@ -37,7 +37,7 @@
 
                         <form action="@Url.Action("AddToCart", "Carts", new { area = "Customer" })" method="post" class="mt-2">
                             <input type="hidden" name="id" value="@m.MonAnId" />
-                            <button type="submit" class="kfc-btn">Thêm</button>
+                            <button type="submit" class="kfc-btn" onclick="addToCart(@m.MonAnId)">Thêm</button>
                         </form>
 
                     </div>

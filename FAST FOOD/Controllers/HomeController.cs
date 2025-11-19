@@ -14,7 +14,9 @@ namespace FAST_FOOD.Controllers
         {
             // Lấy tất cả danh mục từ database
             var danhMucs = db.Danhmucs.ToList();
+           
 
+            ViewBag.Suggest = db.MonAns.Take(10).ToList();
             // Trả danh sách danh mục qua View
             return View(danhMucs);
         }

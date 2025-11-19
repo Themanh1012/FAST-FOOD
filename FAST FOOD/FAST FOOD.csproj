@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietDonHangsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhmucsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HinhThucThanhToansController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
@@ -171,6 +172,14 @@
     <Compile Include="Migrations\202511191659184_AddMoTaToMonAn.Designer.cs">
       <DependentUpon>202511191659184_AddMoTaToMonAn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202511191944138__AddDashBoard.cs" />
+    <Compile Include="Migrations\202511191944138__AddDashBoard.Designer.cs">
+      <DependentUpon>202511191944138__AddDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511192022053__UdUser.cs" />
+    <Compile Include="Migrations\202511192022053__UdUser.Designer.cs">
+      <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\account.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -182,6 +191,9 @@
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KFCContext.cs" />
     <Compile Include="Models\MonAn.cs" />
+    <Compile Include="Models\TopProductViewModel.cs" />
+    <Compile Include="Models\UserOrderDetailViewModel.cs" />
+    <Compile Include="Models\UserOrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1888,12 +1900,33 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Header01.css" />
+    <Content Include="Content\pay\cash.png" />
+    <Content Include="Content\pay\default.png" />
+    <Content Include="Content\pay\momo.png" />
+    <Content Include="Content\pay\visa.png" />
+    <Content Include="Content\pay\vnpay.png" />
+    <Content Include="Content\pay\zalo.png" />
     <Content Include="Content\product.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Products\1-GA-XOT.png" />
+    <Content Include="Images\Products\1PCS.jpg" />
+    <Content Include="Images\Products\20TH-T11.jpg" />
+    <Content Include="Images\Products\2PCS.jpg" />
+    <Content Include="Images\Products\3-GA-XOT.jpg" />
+    <Content Include="Images\Products\3PCS.jpg" />
+    <Content Include="Images\Products\3_Nuggests.jpg" />
+    <Content Include="Images\Products\5_Nuggests.jpg" />
+    <Content Include="Images\Products\6-GA-XOT.jpg" />
+    <Content Include="Images\Products\6COB-3P.jpg" />
     <Content Include="Images\Products\Buger.jpg" />
+    <Content Include="Images\Products\COM-GA-MAM-TOI.jpg" />
+    <Content Include="Images\Products\COMBO-DAM-DA.jpg" />
+    <Content Include="Images\Products\COMBO-DAM-VI.jpg" />
+    <Content Include="Images\Products\COM_BBQ.jpg" />
+    <Content Include="Images\Products\GA-LAC-PHO-MAI-ALC.jpg" />
     <Content Include="Images\Products\ga-ran-vi-kfc-1_0c2450efe15d4b6f9e6bd2637b71d88d %281%29.jpg" />
     <Content Include="Images\Products\522680132_122209900616176186_4684739841879607230_n_638974670779435974.jpg" />
     <Content Include="Images\Products\burger.jpg" />
@@ -1905,6 +1938,8 @@
     <Content Include="Images\Products\garan_638974679042663687.png" />
     <Content Include="Images\Products\ga_638974670552780388.png" />
     <Content Include="Images\Products\ga_638974671126999817.png" />
+    <Content Include="Images\Products\GA_BBQ_1.jpg" />
+    <Content Include="Images\Products\GA_BBQ_2.jpg" />
     <Content Include="Images\Products\hình ảnh_2025-10-30_233143320.png" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
@@ -2063,9 +2098,24 @@
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customer\Views\Danhmucs\Index.cshtml" />
+    <Content Include="Images\Products\hình ảnh_2025-11-20_001034296.png" />
+    <Content Include="Images\Products\KHOAI-BO-TOI-ALC.jpg" />
+    <Content Include="Images\Products\KHOAI-PHO-MAI-ALC.jpg" />
     <Content Include="Images\Products\khoaitaychien.jpg" />
+    <Content Include="Images\Products\MIGAXUXI-DOI.jpg" />
+    <Content Include="Images\Products\MIGAXUXI-GA-RAN.jpg" />
+    <Content Include="Images\Products\MIGAXUXI-GA-VIEN.jpg" />
+    <Content Include="Images\Products\MIGAXUXI.jpg" />
     <Content Include="Images\Products\Myy.jpg" />
+    <Content Include="Images\Products\NGON_DIENNN.jpg" />
     <Content Include="Images\Products\noodle.png" />
+    <Content Include="Images\Products\PHILE-XOT.jpg" />
+    <Content Include="Images\Products\PHO-MAI.jpg" />
+    <Content Include="Images\Products\POP-L.jpg" />
+    <Content Include="Images\Products\POPCORN-XOT.jpg" />
+    <Content Include="Images\Products\QUAY_DIENNN.jpg" />
+    <Content Include="Images\Products\SALAD-HAT-GA-VIEN.jpg" />
+    <Content Include="Images\Products\SALAD-XOT-ME-RANG.jpg" />
     <Content Include="Images\Products\tải xuống.jpg" />
     <Content Include="Images\Products\khuyenmai.jpg" />
     <Content Include="Images\Products\monmoi.jpg" />
@@ -2079,6 +2129,9 @@
     <Content Include="Areas\Customer\Views\Carts\Success.cshtml" />
     <Content Include="Areas\Customer\Views\LichSus\Index.cshtml" />
     <Content Include="Areas\Customer\Views\LichSus\Details.cshtml" />
+    <Content Include="Images\Products\VUI_DIENNN.jpg" />
+    <Content Include="Images\Products\XIN_DIENNN.jpg" />
+    <Content Include="Images\Products\YUZU.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2087,6 +2140,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Customer\Views\Danhmucs\Category.cshtml" />
     <Content Include="Areas\Customer\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\UserDetail.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2200,6 +2257,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511191659184_AddMoTaToMonAn.resx">
       <DependentUpon>202511191659184_AddMoTaToMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511191944138__AddDashBoard.resx">
+      <DependentUpon>202511191944138__AddDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511192022053__UdUser.resx">
+      <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

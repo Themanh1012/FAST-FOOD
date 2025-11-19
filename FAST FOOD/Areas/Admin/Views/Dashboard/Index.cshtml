@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4 fw-bold admin-title">📊 Dashboard Quản Trị</h2>
+
+<<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="stat-card stat-blue">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <h4>Tổng doanh thu</h4>
+            @(ViewBag.TotalRevenue != null ? ((decimal)ViewBag.TotalRevenue).ToString("N0") : "0")
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-green">
+            <i class="fa-solid fa-calendar-day"></i>
+            <h4>Doanh thu hôm nay</h4>
+            @(ViewBag.TotalRevenue != null ? ((decimal)ViewBag.TotalRevenue).ToString("N0") : "0")
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-orange">
+            <i class="fa-solid fa-box"></i>
+            <h4>Tổng đơn hàng</h4>
+            <p>@ViewBag.TotalOrders</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-red">
+            <i class="fa-solid fa-user-group"></i>
+            <h4>Khách hàng</h4>
+            <p>@ViewBag.UserCount</p>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-5" />
+
+<h3 class="fw-bold mb-3">👥 Khách hàng gần đây</h3>
+
+<table class="table admin-table shadow-sm">
+    <thead>
+        <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Số đơn</th>
+            <th>Tổng tiền</th>
+            <th>Lần cuối mua</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var u in ViewBag.UserOrders)
+        {
+            <tr>
+                <td>@u.HoTen</td>
+                <td>@u.Email</td>
+                <td><span class="badge bg-primary">@u.TotalOrders</span></td>
+                <td class="text-danger fw-bold">@u.TotalMoney.ToString("N0") đ</td>
+                <td>@(u.LastOrder?.ToString("dd/MM/yyyy") ?? "-")</td>
+                <td>
+                    <a href="@Url.Action("UserDetail","Dashboard", new { id = u.UserId })"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-eye"></i> Xem
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .admin-title {
+        font-size: 32px;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        transition: 0.25s;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .stat-card {
+        padding: 25px;
+        border-radius: 14px;
+        color: white;
+        text-align: center;
+        height: 150px; /* 🔥 Giúp 4 ô luôn đều */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Căn giữa icon + text */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .stat-card i {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+
+    .stat-blue {
+        background: #3b82f6;
+    }
+    /* Tổng doanh thu */
+    .stat-green {
+        background: #22c55e;
+    }
+    /* Doanh thu hôm nay */
+    .stat-orange {
+        background: #f59e0b;
+    }
+    /* Tổng đơn */
+    .stat-red {
+        background: #ef4444;
+    }  
+    .admin-table {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .admin-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .admin-table tr:hover {
+            background: #f4f8ff;
+        }
+</style>
