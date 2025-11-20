@@ -65,7 +65,8 @@ namespace FAST_FOOD.Areas.Customer.Controllers
         public ActionResult Index()
         {
             var cart = GetCart();
-            ViewBag.Total = cart.Sum(i => i.ThanhTien);
+
+            ViewBag.Total = cart.Any() ? cart.Sum(i => i.ThanhTien) : 0;
             return View(cart);
         }
 
