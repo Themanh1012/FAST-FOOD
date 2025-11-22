@@ -4,39 +4,100 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+         width="60" class="mb-3" />
+</div>
+
 <div class="container mt-5">
-    <div class="row">
-        <!-- Hình món ăn -->
-        <div class="col-md-5 text-center">
+
+    <div class="row align-items-center">
+
+        <!-- Hình ảnh -->
+        <div class="col-md-6 text-center">
             <img src="@Url.Content(Model.HinhAnh)"
-                 class="img-fluid rounded shadow-sm"
-                 alt="@Model.TenMon"
-                 style="max-height: 350px; object-fit: cover;" />
+                 class="img-fluid shadow rounded-4"
+                 style="max-height: 380px; object-fit: cover;" />
         </div>
 
-        <!-- Thông tin món ăn -->
-        <div class="col-md-7">
-            <h2 class="text-success fw-bold">@Model.TenMon</h2>
-            <p class="fs-4 text-danger fw-bold">@Model.Gia.ToString("N0") đ</p>
+        <!-- Thông tin -->
+        <div class="col-md-6">
 
-            <p>
-                <strong>Danh mục:</strong>
-                <span class="text-secondary">@Model.DanhMuc.TenDanhMuc</span>
-            </p>
+            <div style="
+        border: 1px solid #e5e5e5;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        background: #fff;
+    ">
 
-            <p class="text-muted">Thưởng thức hương vị tuyệt vời của món ăn này tại cửa hàng của chúng tôi!</p>
+                <!-- Tên -->
+                <h1 class="fw-bold" style="color:#d60000;">
+                    @Model.TenMon
+                </h1>
 
-            <!-- Nút thêm vào giỏ hàng -->
-            <a href="@Url.Action("AddToCart", "Carts", new { id = Model.MonAnId })"
-               class="btn btn-success btn-lg">
-                🛒 Thêm vào giỏ hàng
-            </a>
+                <!-- Giá -->
+                <h3 class="fw-bold" style="color:#d60000;">
+                    @Model.Gia.ToString("N0") đ
+                </h3>
 
-            <!-- Nút quay lại -->
-            <a href="@Url.Action("Index", "MonAns")"
-               class="btn btn-secondary btn-lg ms-2">
-                ← Quay lại
-            </a>
+                <!-- Danh mục -->
+                <p class="mt-3 fs-5">
+                    <strong>Danh mục:</strong>
+                    <span class="text-secondary">@Model.DanhMuc.TenDanhMuc</span>
+                </p>
+
+                <!-- Mô tả -->
+                <p class="text-muted mb-4" style="font-size: 15px;">
+                    Thưởng thức hương vị tuyệt vời của món ăn này tại cửa hàng của chúng tôi!
+                </p>
+
+                <!-- Buttons -->
+                <div class="d-flex gap-3 mt-4">
+
+                    <!-- Thêm vào giỏ -->
+                    <a href="@Url.Action("AddToCart", "Carts", new { id = Model.MonAnId })"
+                       class="btn btn-danger btn-lg fw-bold px-4">
+                        🛒 Thêm vào giỏ hàng
+                    </a>
+
+                    <!-- Quay lại -->
+                    <a href="@Url.Action("Index", "MonAns")"
+                       class="btn btn-lg fw-bold back-btn px-4"
+                       style="background:#f3f3f3; border-radius:10px;">
+                        ← Quay lại
+                    </a>
+
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* Nút thêm vào giỏ hàng */
+    .add-cart-btn {
+        background: #28a745;
+        color: white;
+        border-radius: 12px;
+        transition: 0.2s;
+    }
+
+        .add-cart-btn:hover {
+            background: #d60000 !important;
+            color: #fff !important;
+        }
+
+    /* Nút quay lại */
+    .back-btn {
+        background: #e5e5e5;
+        color: #333;
+        border-radius: 12px;
+        transition: 0.2s;
+    }
+
+        .back-btn:hover {
+            background: #cfcfcf;
+        }
+</style>
