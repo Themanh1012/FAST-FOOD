@@ -5,114 +5,142 @@
     decimal total = ViewBag.Total ?? 0;
 }
 
-<div class="container checkout-page mt-5">
-    <div class="row">
+<div class="mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+         width="110" class="mb-3" />
+</div>
+
+<div class="container mt-5">
+    <div class="row g-4">
 
         <!-- CỘT TRÁI -->
-        <div class="col-md-7">
-            <h2 class="text-success mb-4 text-center">Thông tin đặt hàng</h2>
-
+        <div class="col-md-6">
             @using (Html.BeginForm("Checkout", "Carts", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
+                <div class="card shadow-sm p-4" style="border-radius:20px; border:1px solid #e5e5e5;">
 
-                <div class="card p-4 shadow-sm">
+                    <!-- TIÊU ĐỀ -->
+                    <h3 class="text-center mb-4" style="font-size:28px; font-weight:700; color:#d60000;">
+                        Thông tin đặt hàng
+                    </h3>
 
+                    <!-- Tên khách hàng -->
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Tên khách hàng</label>
-                        <input type="text" name="TenKhachHang" class="form-control" required />
+                        <label class="form-label fw-bold" style="color:#444;">Tên khách hàng</label>
+                        <input type="text" name="TenKhachHang"
+                               class="form-control form-control-lg"
+                               style="border-radius:12px; border:1px solid #ccc;"
+                               required />
                     </div>
 
+                    <!-- Địa chỉ giao hàng -->
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Địa chỉ giao hàng</label>
-                        <input type="text" name="DiaChi" class="form-control" required />
+                        <label class="form-label fw-bold" style="color:#444;">Địa chỉ giao hàng</label>
+                        <input type="text" name="DiaChi"
+                               class="form-control form-control-lg"
+                               style="border-radius:12px; border:1px solid #ccc;"
+                               required />
                     </div>
 
+                    <!-- Số điện thoại -->
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Số điện thoại</label>
-                        <input type="tel" name="SoDienThoai" class="form-control" required />
+                        <label class="form-label fw-bold" style="color:#444;">Số điện thoại</label>
+                        <input type="tel" name="SoDienThoai"
+                               class="form-control form-control-lg"
+                               style="border-radius:12px; border:1px solid #ccc;"
+                               required />
                     </div>
 
+                    <!-- Ghi chú -->
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Ghi chú đơn hàng</label>
-                        <textarea name="GhiChu" class="form-control" rows="2"></textarea>
+                        <label class="form-label fw-bold" style="color:#444;">Ghi chú đơn hàng</label>
+                        <textarea name="GhiChu" rows="2"
+                                  class="form-control form-control-lg"
+                                  style="border-radius:12px; border:1px solid #ccc;"></textarea>
                     </div>
 
-                    <!-- Hình thức thanh toán -->
-                    <h5 class="mt-3 fw-bold text-primary">Phương thức thanh toán</h5>
-                    <div class="payment-methods">
+                    <hr class="my-4" />
+
+                    <!-- Phương thức thanh toán -->
+                    <h5 class="fw-bold mb-3" style="color:#d60000;">Phương thức thanh toán</h5>
+
+                    <div class="row row-cols-2 g-3">
                         @foreach (var p in (SelectList)ViewBag.MaHTTT)
                         {
                             string icon = "~/Content/pay/default.png";
 
-                            if (p.Text.Contains("Tiền mặt"))
-                            {
-                                icon = "~/Content/pay/cash.png";
-                            }
-                            else if (p.Text.Contains("Momo"))
-                            {
-                                icon = "~/Content/pay/momo.png";
-                            }
-                            else if (p.Text.Contains("Visa"))
-                            {
-                                icon = "~/Content/pay/visa.png";
-                            }
-                            else if (p.Text.Contains("VNPay"))
-                            {
-                                icon = "~/Content/pay/vnpay.png";
-                            }
-                            else if (p.Text.Contains("Zalo"))
-                            {
-                                icon = "~/Content/pay/zalo.png";
-                            }
+                            if (p.Text.Contains("Tiền mặt")) { icon = "~/Content/pay/cash.png"; }
+                            if (p.Text.Contains("Momo")) { icon = "~/Content/pay/momo.png"; }
+                            if (p.Text.Contains("Visa")) { icon = "~/Content/pay/visa.png"; }
+                            if (p.Text.Contains("VNPay")) { icon = "~/Content/pay/vnpay.png"; }
+                            if (p.Text.Contains("Zalo")) { icon = "~/Content/pay/zalo.png"; }
 
-                            <label class="payment-option">
-                                <input type="radio" name="MaHTTT" value="@p.Value" required />
-                                <img src="@Url.Content(icon)" class="pay-icon" />
-                                @*@p.Text*@
-                            </label>
+                            <div class="col">
+                                <label class="border rounded p-3 d-flex align-items-center gap-3"
+                                       style="border-radius:14px; cursor:pointer;">
+                                    <input type="radio" name="MaHTTT" value="@p.Value" required />
+                                    <img src="@Url.Content(icon)" style="width:32px;height:32px;object-fit:contain;" />
+                                    <span class="fw-semibold">@p.Text</span>
+                                </label>
+                            </div>
                         }
                     </div>
 
-                    <button type="submit" class="btn btn-danger w-100 mt-4 fw-bold">
+                    <button type="submit"
+                            class="btn btn-danger btn-lg w-100 mt-4 fw-bold"
+                            style="border-radius:12px; font-size:20px;">
                         Xác nhận đặt hàng
                     </button>
 
                 </div>
             }
-        </div>
+            </div>
+
+
 
         <!-- CỘT PHẢI -->
         <div class="col-md-5">
-            <h2 class="text-danger text-center mb-4">Giỏ hàng của bạn</h2>
+            <div class="card shadow-lg p-4" style="border-radius:20px;">
 
-            <div class="card shadow-sm p-4">
+                <h3 class="text-center fw-bold text-danger mb-4">Giỏ hàng của bạn</h3>
 
-                <ul class="list-group list-group-flush mb-3">
-                    @foreach (var item in Model)
-                    {
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                @foreach (var item in Model)
+                {
+                    <div class="p-3 mb-4 border rounded-4 shadow-sm bg-white"
+                         style="border-radius:18px !important;">
 
-                            <div class="d-flex align-items-center">
-                                <img src="@Url.Content(item.HinhAnh)" width="80"
-                                     class="rounded shadow-sm me-3" />
+                        <div class="d-flex">
+
+                            <!-- ẢNH MÓN ĂN -->
+                            <img src="@Url.Content(item.HinhAnh)"
+                                 style="width:150px;height:130px;
+                                object-fit:cover;border-radius:15px;"
+                                 class="me-3 shadow-sm" />
+
+                            <!-- THÔNG TIN -->
+                            <div class="flex-grow-1 d-flex flex-column justify-content-between">
+
                                 <div>
-                                    <strong>@item.TenMon</strong><br />
-                                    <small class="text-muted">
-                                        @item.Gia.ToString("N0") đ x @item.SoLuong
-                                    </small>
+                                    <div class="fw-bold fs-5">@item.TenMon</div>
+                                    <div class="text-muted small mt-1">
+                                        @item.Gia.ToString("N0") đ × @item.SoLuong
+                                    </div>
+                                </div>
+
+                                <div class="fw-bold text-danger fs-4 text-end mt-2">
+                                    @item.ThanhTien.ToString("N0") đ
                                 </div>
                             </div>
 
-                            <strong class="text-danger fs-6">@item.ThanhTien.ToString("N0") đ</strong>
+                        </div>
+                    </div>
+                }
 
-                        </li>
-                    }
-                </ul>
-
-                <hr />
-
-                
+                <!-- Tổng cộng -->
+                <div class="mt-4 p-3 bg-light rounded-4 shadow-sm d-flex justify-content-between">
+                    <span class="fw-bold fs-4">Tổng cộng:</span>
+                    <span class="fw-bold text-danger fs-4">@ViewBag.Total.ToString("N0") đ</span>
                 </div>
 
             </div>
@@ -121,44 +149,11 @@
     </div>
 </div>
 
-<style>
-    .checkout-page {
-        margin-top: 140px !important;
-    }
 
-    .payment-methods {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
 
-    .payment-option {
-        border: 1px solid #ddd;
-        padding: 8px 12px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: row; /* luôn nằm ngang */
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        transition: .2s;
-        height: 55px; /* chiều cao chuẩn */
-        line-height: 1; /* tránh giãn dòng */
-    }
 
-        .payment-option:hover {
-            background: #fff6f6;
-            border-color: #d3232a;
-        }
 
-        .payment-option input[type="radio"] {
-            transform: scale(1.2);
-        }
 
-    .pay-icon {
-        width: 32px !important;
-        height: 32px !important;
-        object-fit: contain !important;
-        display: block;
-    }
-</style>
+
+
+

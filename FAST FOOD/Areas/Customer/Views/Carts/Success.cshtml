@@ -3,18 +3,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container success-page text-center mt-5">
-    <h2 class="text-success">🎉 Đặt hàng thành công!</h2>
-    <p class="fs-5 text-muted mt-3">Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi!</p>
+<div class="container text-center py-5" style="max-width: 700px;">
 
+    <div class="mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+             width="90" class="mb-3" />
+    </div>
+
+    <!-- TIÊU ĐỀ -->
+    <h1 class="fw-bold" style="color:#d00000;">
+        🎉 Đặt hàng thành công!
+    </h1>
+
+    <p class="mt-3 fs-5 text-secondary">
+        Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi ❤️ <br>
+        Đơn hàng của bạn đang được xử lý!
+    </p>
+
+    <!-- NÚT TRANG CHỦ -->
     <a href="@Url.Action("Index", "Home", new { area = "" })"
-       class="btn btn-primary mt-3">
-        ← Quay về trang chủ
+       class="btn btn-danger btn-lg px-4 mt-4 shadow-sm"
+       style="border-radius: 10px;">
+        ⬅ Quay về trang chủ
     </a>
+
+    <!-- NÚT XEM LỊCH SỬ -->
+    <div class="mt-3">
+        <a href="@Url.Action("Index", "LichSus", new { area = "Customer" })"
+           class="btn btn-outline-danger btn-lg px-4"
+           style="border-radius: 10px;">
+            🧾 Xem lịch sử đơn hàng
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-muted small mt-5">
+        © @DateTime.Now.Year KFC Việt Nam — All rights reserved.
+    </div>
+
 </div>
 
-<style>
-    .success-page {
-        margin-top: 150px !important;
-    }
-</style>

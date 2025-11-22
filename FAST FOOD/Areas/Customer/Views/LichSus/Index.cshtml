@@ -4,63 +4,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center text-success mb-4">🧾 Lịch sử mua hàng</h2>
+<div class="mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+         width="110" class="mb-3" />
+</div>
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="text-center fw-bold mb-4" style="color:#d3232a;">
+        🧾 Lịch sử mua hàng
+    </h2>
 
     @if (!Model.Any())
     {
-        <p class="text-center text-muted">Bạn chưa có đơn hàng nào.</p>
+        <div class="alert alert-secondary text-center fw-bold py-4">
+            Bạn chưa có đơn hàng nào.
+        </div>
     }
     else
     {
-        <table class="table table-bordered table-hover shadow-sm text-center align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Mã đơn</th>
-                    <th>Ngày đặt</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Hình thức thanh toán</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.MaDonHang</td>
-                        <td>@item.NgayDat.ToString("dd/MM/yyyy HH:mm")</td>
-                        <td>@String.Format("{0:N0} đ", item.TongTien)</td>
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-0">
 
-                        <td>
-                            @{
-                                string colorClass = "text-muted"; // mặc định
-                                if (item.TrangThai == "Chờ xác nhận")
-                                {
-                                    colorClass = "text-warning fw-bold"; // vàng
-                                }
-                                else if (item.TrangThai == "Quá hạn")
-                                {
-                                    colorClass = "text-danger fw-bold"; // đỏ
-                                }
-                                else if (item.TrangThai == "Hoàn tất")
-                                {
-                                    colorClass = "text-success fw-bold"; // xanh
-                                }
-                            }
+                <table class="table table-hover text-center align-middle mb-0">
+                    <thead class="text-white" style="background:#d3232a;">
+                        <tr>
+                            <th>Mã đơn</th>
+                            <th>Ngày đặt</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Thanh toán</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                            <span class="@colorClass">@item.TrangThai</span>
-                        </td>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold">@item.MaDonHang</td>
+                                <td>@item.NgayDat.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td class="fw-bold">@String.Format("{0:N0} đ", item.TongTien)</td>
 
-                        <td>@(item.HinhThucThanhToan != null ? item.HinhThucThanhToan.TenHinhThuc : "Chưa chọn")</td>
-                        <td>
-                            <a href="@Url.Action("Details", "LichSus", new { id = item.MaDonHang })"
-                               class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                                <td>
+                                    @{
+                                        string colorClass = "text-muted";
+                                        if (item.TrangThai == "Chờ xác nhận") { colorClass = "text-warning fw-bold"; }
+                                        else if (item.TrangThai == "Quá hạn") { colorClass = "text-danger fw-bold"; }
+                                        else if (item.TrangThai == "Hoàn tất") { colorClass = "text-success fw-bold"; }
+                                    }
+                                    <span class="@colorClass">@item.TrangThai</span>
+                                </td>
+
+                                <td>@(item.HinhThucThanhToan?.TenHinhThuc ?? "Chưa chọn")</td>
+
+                                <td>
+                                    <a href="@Url.Action("Details", "LichSus", new { id = item.MaDonHang })"
+                                       class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                        Xem chi tiết
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
     }
 </div>
 

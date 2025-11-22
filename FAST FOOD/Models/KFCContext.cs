@@ -9,7 +9,7 @@ namespace FAST_FOOD.Models
     public class KFCContext: DbContext
     {
         public KFCContext()
-      : base(@"Data Source=MANH\MANH;Initial Catalog=KFC;Integrated Security=True;MultipleActiveResultSets=True;")
+      : base()
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;

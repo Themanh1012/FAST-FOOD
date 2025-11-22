@@ -23,6 +23,6 @@ namespace FAST_FOOD.Models
         [Range(1, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
         public decimal ThanhTien {  get; set; }
-        public object MaDonHang { get; internal set; }
+        
     }
 }
