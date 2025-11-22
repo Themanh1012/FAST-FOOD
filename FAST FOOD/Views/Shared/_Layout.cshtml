@@ -6,25 +6,30 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
     <link rel="stylesheet" href="~/Content/Site.css" />
     <link rel="stylesheet" href="~/Content/Style.css" />
+
+
+    <link rel="stylesheet" href="~/Content/product.css" />
+
     <link rel="stylesheet" href="~/Content/Header01.css" />
     <link rel="stylesheet" href="~/Content/account.css" />
-    <link rel="stylesheet" href="~/Content/product.css" />
     <!-- Font Awesome Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/Scripts/Shop.js" ></script>
+
 
 </head>
+
 <body>
     @Html.Partial("_Header")
     @Html.Partial("_Header2")
     <div class="container-fluid">
         @RenderBody()
     </div>
- 
+
     @Html.Partial("_Footer")
 
     <script src="~/Scripts/popper.js"></script>
@@ -33,9 +38,64 @@
     }
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/Shop.js"></script>
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script>
+        AOS.init({
+            duration: 650,
+            easing: "ease-out-quart",
+            once: true
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const recList = document.getElementById("recList");
+            if (!recList) return;
+
+            const itemWidth = 300;
+
+            // Nhân đôi danh sách để tạo hiệu ứng loop mượt
+            recList.innerHTML += recList.innerHTML;
+
+            // MAX = 1 nửa chiều dài vì đã nhân đôi
+            const maxScroll = recList.scrollWidth / 2;
+
+            // ----- NÚT QUA PHẢI -----
+            window.slideRight = function () {
+                recList.scrollBy({ left: itemWidth, behavior: "smooth" });
+
+                // Nếu qua quá nửa thì quay lại đầu
+                setTimeout(() => {
+                    if (recList.scrollLeft >= maxScroll) {
+                        recList.scrollLeft = 0;
+                    }
+                }, 300);
+            };
+
+            // ----- NÚT QUA TRÁI -----
+            window.slideLeft = function () {
+                recList.scrollBy({ left: -itemWidth, behavior: "smooth" });
+
+                // Nếu lùi quá 0 thì nhảy về cuối
+                setTimeout(() => {
+                    if (recList.scrollLeft <= 0) {
+                        recList.scrollLeft = maxScroll - itemWidth;
+                    }
+                }, 300);
+            };
+        });
+    </script>
+
+
 </body>
+
 </html>
 @*<script>
     document.addEventListener("DOMContentLoaded", function () {

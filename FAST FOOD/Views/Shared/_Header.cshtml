@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "_Header";
+   
 }
 
 <nav class="navbar kfc-header fixed-top header">
@@ -13,23 +14,33 @@
 
         </div>
         <div class="middle">
-            <a class="navbar-brand" href="#">Thực Đơn</a>
-            <a class="navbar-brand" href="#">Khuyến Mãi</a>
+
+            <a class="navbar-brand"
+               href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">
+                Thực Đơn
+            </a>
+
+            <a class="navbar-brand"
+               href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">
+                Khuyến Mãi
+            </a>
             <a class="navbar-brand" href="#">Dịch Vụ Tiệc</a>
             <a class="navbar-brand" href="#">Hệ Thống Nhà Hàng</a>
+
         </div>
+
 
         <div class="right-header">
             <div class="cart-container">
 
 
-                <a href="@Url.Action("Index", "Carts", new { area = "Customer" })" class="cart-icon"  id="cartIcon">
+                <a href="@Url.Action("Index", "Carts", new { area = "Customer" })" class="cart-icon" id="cartIcon">
                     <i class="fa-solid fa-basket-shopping"></i>
-                    <span class="cart-badge" id="cartCount">
-                        @(Session["Cart"] != null ? ((List<FAST_FOOD.Models.CartItem>)Session["Cart"]).Sum(x => x.SoLuong) : 0)
+                    <span class="cart-badge" id="cartCount" data-lock="true">
+                        @(Session["Cart"] != null ? ((List<FAST_FOOD.Models.CartItem>)Session["Cart"]).Sum(x => x.SoLuong) : 0) 
                     </span>
                 </a>
-               
+
             </div>
 
 
@@ -41,12 +52,15 @@
                     <a href="@Url.Action("Profile", "Account", new { area = "" })" class="login-link">
                         <i class="fa-solid fa-user-check"></i>
                     </a>
+
                 }
                 else
                 {
             <a href="@Url.Action("Profile", "Account", new { area = "" })" class="login-link">
-                <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-user-large"></i>
+
             </a>
+
                 }
             </div>
 
@@ -113,10 +127,18 @@
                 </ul>
 
                 <!-- ⭐ ICON ZALO + MESSENGER -->
-                <div class="mt-4 d-flex gap-3">
-                    <a href="#"><img src="https://static.kfcvietnam.com.vn/images/web/Zalo.svg" width="45" /></a>
-                    <a href="#"><img src="https://static.kfcvietnam.com.vn/images/web/mes.svg" width="45" /></a>
+                <!-- ⭐ FOOTER MINI TRONG OFFCANVAS -->
+                <div class="offcanvas-footer mt-4 text-center">
+                    <div class="social-icons mb-3 d-flex justify-content-center gap-4">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+
+                    <p class="copy-text">Copyright © 2023 KFC Vietnam</p>
                 </div>
+
 
             </div>
 

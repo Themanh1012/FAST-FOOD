@@ -179,7 +179,7 @@ input, select, textarea {
 .banner-wrapper {
     padding-left: 1px; /* lề trái */
     padding-right: 1px;
-    padding-top: 115px !important;
+    padding-top: 140px !important;
     max-width: 100vw;
     width: 100%;
 }

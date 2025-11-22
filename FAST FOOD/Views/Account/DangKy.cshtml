@@ -5,7 +5,7 @@
 }
 
 <!-- Bọc form riêng biệt, không bị ảnh hưởng bởi layout -->
-<section class="login-page d-flex justify-content-center align-items-center">
+<section class="login-page d-flex justify-content-center ">
     <div class="login-card shadow-lg">
         <div class="text-center mb-4">
             <img src="https://static.kfcvietnam.com.vn/images/web/kfc-logo.svg?v=5.0"
@@ -29,27 +29,27 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="mb-3 text-start">
+            <div class="mb-2 text-start">
                 @Html.LabelFor(m => m.TenDangNhap, new { @class = "form-label fw-semibold" })
                 @Html.TextBoxFor(m => m.TenDangNhap, new { @class = "form-control", placeholder = "Nhập tên đăng nhập" })
             </div>
 
-            <div class="mb-3 text-start">
+            <div class="mb-2 text-start">
                 @Html.LabelFor(m => m.HoTen, new { @class = "form-label fw-semibold" })
                 @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
             </div>
 
-            <div class="mb-3 text-start">
+            <div class="mb-2 text-start">
                 @Html.LabelFor(m => m.Email, new { @class = "form-label fw-semibold" })
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
             </div>
-            <div class="mb-3 text-start">
+            <div class="mb-2 text-start">
                 @Html.LabelFor(m => m.MatKhau, new { @class = "form-label fw-semibold" })
                 @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
                 @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mb-3 text-start">
+            <div class="mb-2 text-start">
                 @Html.LabelFor(m => m.XacNhanMatKhau, new { @class = "form-label fw-semibold" })
                 @Html.PasswordFor(m => m.XacNhanMatKhau, new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
                 @Html.ValidationMessageFor(m => m.XacNhanMatKhau, "", new { @class = "text-danger" })

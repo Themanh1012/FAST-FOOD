@@ -86,3 +86,7 @@
     font-size: 14px;
     border-radius: 6px;
 }
+.login-page {
+    padding-top: 150px !important; /* tạo khoảng trống dưới header */
+    padding-bottom: 40px;
+}

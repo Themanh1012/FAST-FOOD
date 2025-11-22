@@ -5,8 +5,8 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 50px;
+    justify-content: space-between;
+    padding: 0 40px;
     z-index: 9999;
     color: #000 !important;
 }
@@ -26,16 +26,18 @@
 /* Menu trung tâm */
 .middle {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     align-items: center;
 }
 
     .middle a {
-        color: #000 !important; /* ✅ chữ đen */
-        font-weight: 600;
+        color: #000 !important;
+        font-weight: 700;
         text-transform: uppercase;
         text-decoration: none;
         transition: color 0.3s ease;
+        font-size: 18px; /* ⭐ to hơn cho đúng KFC */
+        letter-spacing: 0.5px; /* ⭐ chữ đẹp hơn */
     }
 
         .middle a:hover {
@@ -46,77 +48,66 @@
 .right-header {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 12px !important; /* ⭐ giảm khoảng cách */
+    padding-right: 10px;
 }
 
-/* Giỏ hàng */
-.cart-container {
-    position: relative;
+/* Giỏ hàng KFC-style (đỏ + bo lớn) */
+.cart-icon {
+    position: relative; /* ⭐ FIX CHÍNH */
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #e4002b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    font-size: 20px !important;
+}
+
+
+/* Badge nhỏ gọn hơn */
+.cart-badge {
+    position: absolute;
+    top: 3px; /* kéo xuống một chút để không chạm mép */
+    right: 3px; /* kéo vào trong để không dính sát viền */
+    background: #ffffff;
+    color: #e4002b;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 2px #e4002b;
+    /* ⭐ Bọc viền đỏ quanh badge giúp số 0 không trôi ra nền trắng */
+}
+
+/* Icon người dùng */
+.icon-login a {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 25px;
-}
-
-.cart-icon {
-    position: relative;
-    background-color: #dc3545; /* đỏ KFC */
-    color: #fff;
     font-size: 22px;
-    padding: 10px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    border: 1.5px solid #ccc; /* ⭐ giống KFC */
+    transition: 0.2s;
 }
-
-    .cart-icon:hover {
-        background-color: #c41230; /* đỏ đậm khi hover */
-        transform: scale(1.1);
-    }
-
-/* --- Badge hiển thị số lượng --- */
-.cart-badge {
-    position: absolute;
-    top: 2px; /* Dịch xuống nhẹ để dính hơn */
-    right: 2px; /* Sát mép phải hơn */
-    background-color: #fff;
-    color: #dc3545;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 1px 5px;
-    border-radius: 50%;
-    line-height: 1.1;
-    border: 1.5px solid #dc3545;
-    min-width: 16px;
-    text-align: center;
+.icon-login i {
+    font-size: 23px !important;
+    color: #000 !important;
+    display: inline-block !important;
 }
-
-    /* Nếu giỏ rỗng -> ẩn badge */
-    .cart-badge:empty {
-        display: none;
-    }
-.cart-icon {
-    padding: 8px;
-}
-/* Đảm bảo icon căn giữa */
-.fa-basket-shopping {
-    vertical-align: middle;
-}
-
-/* Đăng nhập icon */
-.icon-login a {
-    color: #000 !important; /* ✅ chữ đen */
-    font-size: 22px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
+    /* Hover đẹp */
     .icon-login a:hover {
-        color: #c41230;
+        border-color: #e4002b;
+        color: #e4002b !important;
     }
 
 /* Nút 3 gạch (menu di động) */
@@ -159,22 +150,174 @@
         color: #555;
     }
 /* Reset toàn bộ link trong offcanvas menu */
+/* =======================================
+   ⭐ OFFCANVAS MENU MOBILE CHUẨN KFC
+   ======================================= */
+
+/* Khoảng cách các tiêu đề lớn như DANH MỤC MÓN ĂN */
+.offcanvas-body h6 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #d3222a !important;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px !important;
+    margin-top: 10px !important;
+}
+
+/* List item đẹp hơn */
 .off-menu li {
-    margin-bottom: 10px;
+    padding: 6px 0 10px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #f2f2f2;
 }
 
+/* Item link */
 .off-link {
-    text-decoration: none !important;
-    border: none !important;
-    border-bottom: none !important;
-    color: #000 !important;
-    display: block;
-    padding: 6px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-    .off-link:hover {
-        text-decoration: none !important;
-        border: none !important;
-        border-bottom: none !important;
-        color: #000 !important; /* hoặc #555 */
+    /* Icon ">" giống KFC */
+    .off-link::after {
+        content: "›";
+        font-size: 18px;
+        color: #777;
+        margin-left: 8px;
+        transition: 0.2s;
     }
+
+    .off-link:hover::after {
+        color: #d3222a;
+    }
+
+    /* Hover trạng thái */
+    .off-link:hover {
+        color: #d3222a !important;
+    }
+
+/* Line mỏng chia section */
+.offcanvas-body hr {
+    margin: 18px 0;
+    opacity: 0.25;
+    border-top: 1px solid #ddd;
+}
+
+/* Footer mini đẹp hơn */
+.offcanvas-footer {
+    padding: 30px 10px;
+}
+
+    .offcanvas-footer .social-icons a {
+        font-size: 22px;
+        color: #444;
+    }
+
+    .offcanvas-footer .copy-text {
+        color: #777;
+        font-size: 12px;
+    }
+
+
+.copy-text {
+    color: #555;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+
+/*FOOTER*/
+
+.kfc-footer {
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 50px 0 20px;
+    font-size: 14px;
+}
+
+    .kfc-footer .footer-columns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+    }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+            .footer-col ul li a:hover {
+                color: #fff;
+            }
+
+.app-buttons img {
+    width: 130px;
+    margin: 5px 0;
+}
+
+.footer-social {
+    margin-top: 35px;
+    display: flex;
+    gap: 20px;
+}
+
+    .footer-social a {
+        color: #ccc;
+        font-size: 22px;
+        transition: 0.3s;
+    }
+
+        .footer-social a:hover {
+            color: #fff;
+        }
+
+.footer-divider {
+    border-color: #444;
+    margin: 40px 0;
+}
+
+.footer-company {
+    color: #ddd;
+    line-height: 1.7;
+}
+
+    .footer-company h4 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+.footer-bottom {
+    text-align: center;
+    color: #aaa;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
