@@ -91,11 +91,16 @@
             <h4 class="fw-bold text-danger m-0">@total.ToString("N0") đ</h4>
         </div>
 
-        <div class="text-center mt-3">
+        <div class="d-flex justify-content-end gap-3 mt-3">
+            <a href="@Url.Action("Index", "LichSus", new { area = "Customer" })"
+               class="btn btn-outline-secondary fw-bold px-4 py-2"
+               style="border-radius:10px;">
+                📄 Xem hóa đơn
+            </a>
             <a href="@Url.Action("Checkout", "Carts")"
                class="btn fw-bold px-4 py-2"
                style="font-size:18px;border-radius:10px;background:#d60000;color:white;">
-                🧾 Đặt hàng
+                🛒 Đặt hàng
             </a>
         </div>
 
