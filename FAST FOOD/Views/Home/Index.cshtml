@@ -61,7 +61,10 @@
                         <h4>@m.TenMon</h4>
                         <p class="price">@m.Gia.ToString("N0") đ</p>
                         <h5 class="desc">@m.MoTa</h5>
-                        <button class="add-btn">Thêm</button>
+
+                        <a href="@Url.Action("Details", "MonAns", new { area = "Customer", id = m.MonAnId })"
+                           class="add-btn">Thêm</a>
+
                     </div>
                 }
             </div>
@@ -99,7 +102,7 @@
     }
 
     /* Card */
-    .rec-item {
+    .rec-item  {
         width: 260px;
         background: #fff;
         border-radius: 14px;
@@ -144,20 +147,27 @@
         -webkit-box-orient: vertical;
     }
 
+    /* Nút Thêm  KFC */
     .add-btn {
-        width: 100%;
-        padding: 10px;
-        border-radius: 40px;
+        display: block;
+        width: 120px;
+        margin: 12px auto 0;
+        padding: 10px 0;
+        border-radius: 30px;
         border: none;
-        background: #eee;
-        margin-top: 10px;
-        font-weight: bold;
-        transition: 0.25s;
+        background: #f2f2f2; /* xám nhạt */
+        color: #333; /* chữ đen */
+        font-weight: 700;
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none !important; /* bỏ gạch chân */
+        transition: 0.25s ease;
     }
 
         .add-btn:hover {
-            background: #d3232a;
-            color: #fff;
+            background: #d60000; /* đỏ KFC */
+            color: #fff !important;
+            transform: translateY(-2px); /* hiệu ứng nhẹ như KFC */
         }
 
     /* Nút điều hướng */
