@@ -1,13 +1,10 @@
 ﻿using System;
-
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
 
 namespace FAST_FOOD.Models
 {
@@ -20,7 +17,7 @@ namespace FAST_FOOD.Models
         [Required, StringLength(100, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 ký tự trở lên.")]
         [Display(Name = "Tên đăng nhập")]
         public string TenDangNhap { get; set; }
-
+            
         [Required, StringLength(255, MinimumLength = 6, ErrorMessage = "Mật khẩu phải từ 6 ký tự trở lên.")]
         [Display(Name = "Mật khẩu")]
         public string MatKhau { get; set; }
@@ -32,7 +29,7 @@ namespace FAST_FOOD.Models
 
         [Required]
         [Display(Name = "Vai trò")]
-        public string VaiTro { get; set; } = "User";
+        public string VaiTro { get; set; } = "Khách hàng ";
 
         [StringLength(100)]
         [Display(Name = "Họ tên")]

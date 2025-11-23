@@ -189,5 +189,21 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             return RedirectToAction("Index", "HoaDons");
         }
 
+        public ActionResult TuChoi(int id)
+        {
+            var donHang = db.DonHangs.Find(id);
+
+            if (donHang == null)
+                return HttpNotFound();
+
+            if (donHang.TrangThai == "Chờ xác nhận")
+            {
+                donHang.TrangThai = "Đã Hủy"; // hoặc "Từ chối"
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
