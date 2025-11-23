@@ -39,35 +39,50 @@
                @if (item.TrangThai == "Đang xử lý")
                {
                    <span class="badge bg-warning text-dark">
-                       <i class="fas fa-hourglass-half"></i>@item.TrangThai
+                       <i class="fas fa-hourglass-half"></i> @item.TrangThai
+                   </span>
+               }
+               else if (item.TrangThai == "Đã xác nhận")
+               {
+                   <span class="badge bg-info text-white">
+                       <i class="fas fa-check-circle"></i> @item.TrangThai
                    </span>
                }
                else if (item.TrangThai == "Hoàn Tất")
                {
                    <span class="badge bg-success">
-                       <i class="fas fa-check-circle"></i>@item.TrangThai
+                       <i class="fas fa-check-circle"></i> @item.TrangThai
                    </span>
                }
                else if (item.TrangThai == "Đã Hủy")
                {
                    <span class="badge bg-danger">
-                       <i class="fas fa-times-circle"></i>@item.TrangThai
+                       <i class="fas fa-times-circle"></i> @item.TrangThai
                    </span>
                }
                else
                {
                    <span class="badge bg-secondary">@item.TrangThai</span>
                }
+
            </td>
            <td>
                <a href="@Url.Action("Edit", new { id = item.MaDonHang })" class="btn btn-warning btn-sm mx-1" title="Sửa">
                    <i class="fas fa-edit"></i>
                </a>
 
-               <a href="@Url.Action("Index", "ChiTietDonHangs", new { area = "Admin", id = item.MaDonHang })"
-                  class="btn btn-info btn-sm mx-1 text-white" title="Chi tiết">
+               <a href="@Url.Action("Index", "ChiTietDonHangs", new { area = "Admin", donHangId = item.MaDonHang })"
+                  class="btn btn-info btn-sm mx-1 text-white">
                    <i class="fas fa-info-circle"></i> Chi tiết
                </a>
+
+               @if (item.TrangThai == "Chờ xác nhận")
+               {
+                   <a href="@Url.Action("XacNhan", "DonHangs", new { area = "Admin", id = item.MaDonHang })"
+                      class="btn btn-success btn-sm mx-1">
+                       <i class="fas fa-check-circle"></i> Xác nhận
+                   </a>
+               }
 
                <a href="@Url.Action("Delete", new { id = item.MaDonHang })" class="btn btn-danger btn-sm mx-1" title="Xóa">
                    <i class="fas fa-trash-alt"></i>

@@ -116,9 +116,11 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             if (!cart.Any())
                 return RedirectToAction("Index", "Home");
 
+            var user = (account)Session["User"];   // ⭐ LẤY THÔNG TIN USER ĐĂNG NHẬP
+
             var donHang = new DonHang
             {
-                TenKhachHang = TenKhachHang,
+                TenKhachHang = user.HoTen,        // ⭐ DÙNG TÊN USER — KHÔNG DÙNG TÊN FORM
                 DiaChi = DiaChi,
                 SoDienThoai = SoDienThoai,
                 NgayDat = DateTime.Now,
@@ -130,22 +132,19 @@ namespace FAST_FOOD.Areas.Customer.Controllers
             db.DonHangs.Add(donHang);
             db.SaveChanges();
 
-            // Lưu chi tiết đơn hàng
             foreach (var item in cart)
             {
-                var ct = new ChiTietDonHang
+                db.ChiTietDonHangs.Add(new ChiTietDonHang
                 {
                     DonHangId = donHang.MaDonHang,
                     MonAnId = item.MonAnId,
                     SoLuong = item.SoLuong,
                     ThanhTien = item.ThanhTien
-                };
-                db.ChiTietDonHangs.Add(ct);
+                });
             }
 
             db.SaveChanges();
 
-            // Xóa giỏ sau khi đặt hàng
             Session["Cart"] = null;
             TempData["Message"] = "Đặt hàng thành công!";
             return RedirectToAction("Success");
