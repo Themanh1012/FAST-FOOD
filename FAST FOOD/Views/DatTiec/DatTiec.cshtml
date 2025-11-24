@@ -1,0 +1,182 @@
+﻿@model FAST_FOOD.Models.DatTiec
+@{
+    ViewBag.Title = "Đặt Tiệc";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/DatTiec.css" rel="stylesheet" />
+<div class="container booking-container-wrapper">
+    @* --- Banner Đặt Tiệc --- *@
+    <div class="row">
+        <div class="col-md-12">
+            @* Thay [URL_HINH_BANNER] bằng đường dẫn thực tế của ảnh banner *@
+
+            <img src="https://kfcvn-static.cognizantorderserv.com/images/email/birthdaybanner.jpg" alt="Banner Đặt Tiệc KFC" class="banner-img" />
+        </div>
+    </div>
+
+    <div class="booking-container">
+        <h2 class="section-header">Đặt Tiệc Cùng KFC</h2>
+        <p class="subtitle">Vui lòng cung cấp thông tin chi tiết về buổi tiệc của bạn, chúng tôi sẽ liên hệ để tư vấn và hoàn tất việc đặt tiệc.</p>
+
+        @using (Html.BeginForm("XuLyDatTiec", "DatTiec", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                @* Cột TRÁI: THÔNG TIN LIÊN HỆ *@
+                <div class="col-md-6">
+                    <h4 class="subsection-title">Thông Tin Liên Hệ</h4>
+
+                    <div class="form-group mb-3">
+                        
+                        @Html.TextBoxFor(m => m.HoTenNguoiDat, new { @class = "form-control", placeholder = "Họ và tên người đặt *" })
+                        @Html.ValidationMessageFor(m => m.HoTenNguoiDat, "", new { @class = "text-danger" })
+                       
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control", placeholder = "Số điện thoại *" })
+                        @Html.ValidationMessageFor(m => m.SoDienThoai, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Email *" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Cột PHẢI: THÔNG TIN BUỔI TIỆC *@
+                <div class="col-md-6">
+                    <h4 class="subsection-title">Thông Tin Buổi Tiệc</h4>
+
+                    <div class="form-group mb-3">
+                        @Html.TextBoxFor(m => m.DiaChiToChuc, new { @class = "form-control", placeholder = "Địa chỉ chi tiết (Số nhà - Đường) *" })
+                        @Html.ValidationMessageFor(m => m.DiaChiToChuc, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.DropDownListFor(m => m.TinhThanhPho, (List<SelectListItem>)ViewBag.TinhThanhPhoList, new { @class = "form-control", id = "TinhThanhPho" })
+                        @Html.ValidationMessageFor(m => m.TinhThanhPho, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.DropDownListFor(m => m.QuanHuyen, (List<SelectListItem>)ViewBag.QuanHuyenList, new { @class = "form-control", id = "QuanHuyen" })
+                        @Html.ValidationMessageFor(m => m.QuanHuyen, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.DropDownListFor(m => m.PhuongXa, new SelectList(Enumerable.Empty<SelectListItem>()), "Phường/Xã", new { @class = "form-control", id = "PhuongXa" })
+                        @Html.ValidationMessageFor(m => m.PhuongXa, "", new { @class = "text-danger" })
+                    </div>
+
+                    @* Thời gian tổ chức (Căn hàng ngang) *@
+                    <div class="form-group mb-3">
+                        <label class="control-label" style="display: block; font-weight: bold; margin-bottom: 5px; color: #555;">Thời gian tổ chức *</label>
+                        <div class="date-select-group">
+                            @Html.DropDownList("Ngay", new SelectList(Enumerable.Range(1, 31)), "Ngày", new { @class = "form-control" })
+                            @Html.DropDownList("Thang", new SelectList(Enumerable.Range(1, 12)), "Tháng", new { @class = "form-control" })
+                            @Html.DropDownList("Nam", new SelectList(Enumerable.Range(DateTime.Now.Year, 5)), "Năm", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ThoiGianToChuc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label" style="display: block; font-weight: bold; margin-bottom: 5px; color: #555;">Số lượng người tham dự *</label>
+                        @Html.DropDownListFor(m => m.SoLuongNguoiThamDu, new SelectList(new List<string> { "10-20 người", "21-50 người", "Trên 50 người" }), "Số lượng", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.SoLuongNguoiThamDu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            @* Checkbox Điều khoản *@
+            <div class="form-group mt-4 text-center">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.DongYDieuKhoan)
+                    <label for="@Html.IdFor(m => m.DongYDieuKhoan)" class="control-label">
+                        Tôi đã đọc và đồng ý với các <a href="@Url.Action("HoatDong", "ChinhSach")">Chính sách Hoạt động</a> và <a href="@Url.Action("BaoMat", "ChinhSach")">Chính sách Bảo mật Thông tin</a> của KFC Việt Nam.
+                    </label>
+                    @Html.ValidationMessageFor(m => m.DongYDieuKhoan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @* Nút Submit *@
+            <div class="form-group mt-5 text-center">
+                <button type="submit" class="btn btn-submit">
+                    XÁC NHẬN ĐẶT TIỆC
+                </button>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // ---------------------------------------------------------
+            // 1. SỰ KIỆN KHI CHỌN TỈNH/THÀNH PHỐ
+            // ---------------------------------------------------------
+            $("#TinhThanhPho").change(function () {
+                var maTinh = $(this).val();
+
+                // BƯỚC QUAN TRỌNG: Reset cả Quận/Huyện và Phường/Xã về mặc định
+                // Nếu không reset Phường/Xã, dữ liệu cũ sẽ vẫn còn đó
+                $("#QuanHuyen").empty();
+                $("#QuanHuyen").append('<option value="">Quận/Huyện</option>');
+
+                $("#PhuongXa").empty();
+                $("#PhuongXa").append('<option value="">Phường/Xã</option>');
+
+                // Nếu đã chọn một tỉnh (giá trị không rỗng)
+                if (maTinh !== "") {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("GetQuanHuyenByTinh", "DatTiec")", // Gọi Controller lấy Quận/Huyện
+                        data: { maTinh: maTinh },
+                        success: function (data) {
+                            // Duyệt qua danh sách trả về và thêm vào Dropdown
+                            $.each(data, function (index, item) {
+                                // Bỏ qua mục mặc định vì ta đã thêm ở trên rồi
+                                if (item.Value !== "") {
+                                    $("#QuanHuyen").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Lỗi tải Quận/Huyện: " + error);
+                        }
+                    });
+                }
+            });
+
+            // ---------------------------------------------------------
+            // 2. SỰ KIỆN KHI CHỌN QUẬN/HUYỆN
+            // ---------------------------------------------------------
+            $("#QuanHuyen").change(function () {
+                var tenQuan = $(this).val();
+
+                // Reset Phường/Xã về mặc định
+                $("#PhuongXa").empty();
+                $("#PhuongXa").append('<option value="">Phường/Xã</option>');
+
+                // Nếu đã chọn một quận (giá trị không rỗng)
+                if (tenQuan !== "") {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("GetPhuongXaByQuan", "DatTiec")", // Gọi Controller lấy Phường/Xã
+                        data: { tenQuan: tenQuan },
+                        success: function (data) {
+                            $.each(data, function (index, item) {
+                                if (item.Value !== "") {
+                                    $("#PhuongXa").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Lỗi tải Phường/Xã: " + error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+
+

@@ -1,0 +1,35 @@
+﻿@model List<FAST_FOOD.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Tin Tức & Ưu Đãi";
+    
+}
+<link rel="stylesheet" href="~/Content/Tintuc.css" />
+<div class="container">
+    <h1 class="news-header text-center">Tin Tức & Ưu Đãi Mới Nhất</h1>
+    <hr style="border-color: #e2002d; width: 100px; margin: 0 auto 40px;" />
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card article-card">
+                    <img src="@item.HinhAnh" class="card-img-top article-img" alt="@item.TieuDe">
+                    <div class="card-body card-body-kfc">
+                        @* THAY ĐỔI: Thêm class card-body-kfc *@
+                        <span class="article-date">@item.NgayDang.ToString("dd/MM/yyyy")</span>
+                        <h5 class="card-title-kfc">@item.TieuDe</h5>
+                        <p class="card-text-kfc">@item.TomTat</p>
+
+                        <div class="btn-read-more-wrapper">
+                            @* THAY ĐỔI: Thêm wrapper cho nút và căn giữa *@
+                            <a href="@Url.Action("ChiTiet", "TinTuc", new { slug = item.Slug })" class="btn-read-more">
+                                Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
