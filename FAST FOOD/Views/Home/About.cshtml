@@ -1,9 +1,213 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Về Chúng Tôi";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional information.</p>
-</main>
+    <style>
+        body{
+            padding-top:120px;
+        }
+        /* --- CSS ĐỒNG BỘ PHONG CÁCH KFC --- */
+        .about-page {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+            padding-bottom: 60px;
+        }
+
+        /* Phần Header Banner */
+        .about-header {
+            background-color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid #e2002d; /* Viền đỏ đặc trưng */
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #e2002d;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 32px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+            /* Gạch chân đỏ dưới tiêu đề */
+            .section-title::after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 3px;
+                background: #e2002d;
+                margin: 10px auto 0;
+            }
+
+        .about-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* --- PHẦN 1: VỀ CHÚNG TÔI --- */
+        .about-section-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+
+        /* --- PHẦN 2: NHÀ SÁNG LẬP --- */
+        .founder-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+
+            .founder-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-color: #e2002d;
+            }
+
+        /* Hình ảnh bo tròn */
+        .founder-img-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .founder-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Đảm bảo ảnh không bị méo */
+            border-radius: 50%; /* Tạo hình tròn */
+            border: 4px solid #e2002d; /* Viền đỏ quanh ảnh */
+            padding: 4px; /* Khoảng cách giữa ảnh và viền */
+            background-color: #fff;
+        }
+
+        .founder-name {
+            color: #333;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .founder-role {
+            color: #e2002d;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .founder-bio {
+            color: #666;
+            font-size: 14px;
+            font-style: italic;
+        }
+    </style>
+
+<body>
+<div class="about-page">
+
+    @* --- Header --- *@
+    <div class="about-header">
+        <div class="container">
+            <h1 class="section-title">Câu Chuyện Của Chúng Tôi</h1>
+            <p class="text-muted">Mang đến hương vị gà rán giòn tan từ năm 1997</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        @* --- MỤC 1: VỀ CHÚNG TÔI --- *@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="about-section-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h2 class="section-title" style="font-size: 24px; text-align: left; margin-bottom: 20px;">Về KFC Việt Nam</h2>
+                            <div class="about-text">
+                                <p>
+                                    KFC là cụm từ viết tắt của <strong>Kentucky Fried Chicken</strong> - Gà Rán Kentucky, một trong những thương hiệu thuộc Tập đoàn Yum! Brands Inc (Hoa Kỳ).
+                                </p>
+                                <p>
+                                    Xuất hiện tại Việt Nam từ năm 1997, KFC không chỉ mang đến hương vị độc đáo của công thức chế biến gà rán truyền thống với <strong>11 loại thảo mộc và gia vị</strong> do Đại tá Sanders sáng tạo, mà còn liên tục đổi mới với thực đơn phong phú, phù hợp với khẩu vị người Việt như Gà Giòn Cay, Cơm Gà Xiên Que, Bắp Cải Trộn...
+                                </p>
+                                <p>
+                                    Với cam kết về chất lượng và an toàn vệ sinh thực phẩm, chúng tôi tự hào là điểm đến yêu thích của hàng triệu gia đình Việt Nam.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            @* Thay bằng ảnh thật của nhà hàng hoặc món ăn *@
+
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.FhIBYKdJ5zqKT4tkZasGngHaF7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="KFC Store" class="img-fluid rounded shadow" style="max-height: 350px; width: 100%; object-fit: cover;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* --- MỤC 2: VỀ NHÀ SÁNG LẬP (3 NGƯỜI) --- *@
+        <div class="row mt-5">
+            <div class="col-md-12 text-center mb-5">
+                <h2 class="section-title">Đội Ngũ Sáng Lập</h2>
+                <p class="text-muted">Những người đặt nền móng cho sự phát triển của hệ thống</p>
+            </div>
+        </div>
+
+        <div class="row">
+            @* NGƯỜI 1 *@
+            <div class="col-md-4 mb-4">
+                <div class="founder-card">
+                    <div class="founder-img-container">
+                        @* Thay src bằng link ảnh của bạn *@
+
+                        <img src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg" alt="Founder 1" class="founder-img" />
+                    </div>
+                    <h3 class="founder-name">Nguyễn Thế Mạnh</h3>
+                    <div class="founder-role">Leader</div>
+                    <p class="founder-bio">"Chúng tôi không chỉ bán gà rán, chúng tôi bán niềm vui và những bữa ăn ngon cho mọi gia đình."</p>
+                </div>
+            </div>
+
+            @* NGƯỜI 2 *@
+            <div class="col-md-4 mb-4">
+                <div class="founder-card">
+                    <div class="founder-img-container">
+                        @* Thay src bằng link ảnh của bạn *@
+                        <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg" alt="Founder 2" class="founder-img" />
+                    </div>
+                    <h3 class="founder-name">Nguyễn Hoàng Minh Quân</h3>
+                    <div class="founder-role">Thành viên</div>
+                    <p class="founder-bio">"Sáng tạo không ngừng để mang thương hiệu đến gần hơn với trái tim khách hàng trẻ."</p>
+                </div>
+            </div>
+
+            @* NGƯỜI 3 *@
+            <div class="col-md-4 mb-4">
+                <div class="founder-card">
+                    <div class="founder-img-container">
+                        @* Thay src bằng link ảnh của bạn *@
+                        <img src="https://img.freepik.com/free-photo/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background_1258-66609.jpg" alt="Founder 3" class="founder-img" />
+                    </div>
+                    <h3 class="founder-name">Trần Thành Đạt</h3>
+                    <div class="founder-role">Thành viên</div>
+                    <p class="founder-bio">"Ứng dụng công nghệ để việc đặt hàng trở nên nhanh chóng và thuận tiện nhất."</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
