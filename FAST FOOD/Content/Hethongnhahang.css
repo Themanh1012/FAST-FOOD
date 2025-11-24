@@ -1,0 +1,50 @@
+﻿body {
+    padding-top: 160px;
+}
+/* Đảm bảo bản đồ có kích thước cố định để hiển thị */
+#map {
+    height: 600px;
+    width: 100%;
+    position: relative;
+}
+/* 2. Style cho ô tìm kiếm nổi trên bản đồ */
+.search-box-container {
+    position: absolute !important; /* Buộc nó nổi */
+    top: 20px !important; /* Đặt vị trí top */
+    left: 50px !important; /* Đặt vị trí left */
+    z-index: 9999 !important; /* Tăng Z-Index lên rất cao để nổi trên mọi thứ, kể cả các thành phần Leaflet */
+    width: 300px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    background-color: white;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+    .search-box-container input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        font-size: 16px;
+    }
+
+.store-list-container {
+    max-height: 550px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: white;
+    margin-top: 10px;
+}
+/* CSS cho từng item trong danh sách */
+.store-item {
+    cursor: pointer; /* Cho biết nó là một phần tử có thể bấm được */
+    border-left: 5px solid #e2002d; /* Màu đỏ đặc trưng của KFC */
+    transition: all 0.2s;
+}
+
+    .store-item:hover {
+        background-color: #f7f7f7;
+        transform: scale(1.01);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
