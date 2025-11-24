@@ -12,34 +12,30 @@
             <div class="footer-col">
                 <h4>Danh Mục Món Ăn</h4>
                 <ul>
-                    <li><a href="#">Ưu Đãi</a></li>
-                    <li><a href="#">Món Mới</a></li>
-                    <li><a href="#">Combo 1 Người</a></li>
-                    <li><a href="#">Combo Nhóm</a></li>
-                    <li><a href="#">Gà Rán - Gà Quay</a></li>
-                    <li><a href="#">Burger - Cơm - Mì Ý</a></li>
-                    <li><a href="#">Thức Ăn Nhẹ</a></li>
-                    <li><a href="#">Thức Uống & Tráng Miệng</a></li>
-                    <li><a href="#">Bảng Thành Phần Dị Ứng</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">Ưu Đãi</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3010 })">Món Mới</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3011 })">Combo 1 Người</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3012 })">Combo Nhóm</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3013 })">Gà Rán - Gà Quay</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3014 })">Burger - Cơm - Mì Ý</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3015 })">Thức Ăn Nhẹ</a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3016 })">Thức Uống & Tráng Miệng</a></li>
+                    
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Về KFC</h4>
                 <ul>
-                    <li><a href="#">Câu Chuyện Của Chúng Tôi</a></li>
-                    <li><a href="#">Tin Khuyến Mãi</a></li>
-                    <li><a href="#">Tin Tức KFC</a></li>
-                    <li><a href="#">Tuyển Dụng</a></li>
-                    <li><a href="#">Đặt Tiệc Sinh Nhật</a></li>
-                    <li><a href="#">Đơn Lớn Giá Hời</a></li>
+                    <li><a href="@Url.Action("About", "Home")">Câu Chuyện Của Chúng Tôi</a></li>                    
+                    <li><a href="@Url.Action("TinTuc", "TinTuc", new { area = "" })">Tin Tức KFC</a></li>                   
+                    <li><a href="@Url.Action("DatTiec", "DatTiec", new { area = "" })">Đặt Tiệc</a></li>                    
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Liên hệ KFC</h4>
-                <ul>
-                    <li><a href="#">Theo dõi đơn hàng</a></li>
+                <ul>                   
                     <li><a href="@Url.Action("Index", "HeThongNhaHang")">Hệ Thống Nhà Hàng</a></li>
                     <li><a href="@Url.Action("Contact", "Home")">Liên hệ KFC</a></li>
                 </ul>
@@ -54,11 +50,27 @@
                 </ul>
             </div>
 
-            <div class="footer-col app-col">
-                <h4>Download App</h4>
-                <div class="app-buttons">
-                    <img src="https://static.kfcvietnam.com.vn/images/web/appstore.png" alt="App Store" />
-                    <img src="https://static.kfcvietnam.com.vn/images/web/googleplay.png" alt="Google Play" />
+            <div class="footer-col download-app-col">
+
+                @* 1. Tiêu đề: Chữ trắng, in đậm *@
+                <h4 class="text-white fw-bold fs-5 mb-3">Download App</h4>
+
+                @* 2. Container Nút: Dùng d-flex để căn ngang, gap-3 để tạo khoảng cách *@
+                <div class="app-buttons-container d-flex flex-row gap-3">
+
+                    @* Nút App Store *@
+                    <a href="https://apps.apple.com/vn/app/kfc-vietnam/id562164615" class="text-decoration-none text-white d-flex align-items-center" style="font-size: 15px; transition: color 0.3s;">
+                        @* Icon Apple: Màu trắng, kích thước lớn hơn *@
+                        <i class="bi bi-box-arrow-down" style="font-size: 1.5rem; margin-right: 5px; color:#ffffff;"></i>
+                        App Store
+                    </a>
+
+                    @* Nút Google Play *@
+                    <a href="https://play.google.com/store/apps/details?id=kfc.vietnam&hl=en" class="text-decoration-none text-white d-flex align-items-center" style="font-size: 15px; transition: color 0.3s;">
+                        @* Icon Google Play: Màu đỏ KFC (Inline Style) *@
+                        <i class="bi bi-google-play" style="font-size: 1.5rem; margin-right: 5px; color: #e2002d;"></i>
+                        Google Play
+                    </a>
                 </div>
             </div>
 
@@ -84,6 +96,6 @@
     </div>
 
     <div class="footer-bottom">
-        <p>Copyright © 2025 KFC Vietnam. All rights reserved.</p>
+        <p>Copyright © 2025 KFC Vietnam.Thiết kế bởi nhóm 23.</p>
     </div>
 </footer>

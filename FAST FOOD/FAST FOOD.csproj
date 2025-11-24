@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\Controllers\HinhThucThanhToansController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DatTiecController.cs" />
     <Compile Include="Areas\Customer\Controllers\MenuController.cs" />
     <Compile Include="Controllers\ChinhSachController.cs" />
     <Compile Include="Controllers\HeThongNhaHangController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,12 +182,14 @@
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DanhMucViewModel.cs" />
+    <Compile Include="Models\DatTiec.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\HeThongNhaHang.cs" />
     <Compile Include="Models\HinhThucThanhToan.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KFCContext.cs" />
     <Compile Include="Models\MonAn.cs" />
+    <Compile Include="Models\TinTuc.cs" />
     <Compile Include="Models\TopProductViewModel.cs" />
     <Compile Include="Models\UserOrderDetailViewModel.cs" />
     <Compile Include="Models\UserOrderViewModel.cs" />
@@ -1876,6 +1880,7 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\DatTiec.css" />
     <Content Include="Areas\Customer\Content\product.v2.css" />
     <Content Include="Content\account.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1905,6 +1910,7 @@
     <Content Include="Content\pay\zalo.png" />
     <Content Include="Content\product.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\TinTuc.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2141,6 +2147,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\DatTiec\DatTiec.cshtml" />
+    <Content Include="Views\DatTiec\DatTiecThanhCong.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2214,6 +2222,8 @@
     <Content Include="Views\ChinhSach\HoatDong.cshtml" />
     <Content Include="Views\ChinhSach\QuyDinh.cshtml" />
     <Content Include="Views\ChinhSach\BaoMat.cshtml" />
+    <Content Include="Views\TinTuc\TinTuc.cshtml" />
+    <Content Include="Views\TinTuc\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

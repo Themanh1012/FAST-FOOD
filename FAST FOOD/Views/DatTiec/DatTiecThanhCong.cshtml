@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Đặt Tiệc Thành Công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/DatTiec.css" rel="stylesheet" />
+<div class="container">
+    <div class="success-page-card">
+
+        @* Icon check màu trắng trên nền đỏ *@
+        <div class="success-icon-wrapper">
+            @* Dùng biểu tượng văn bản V để đảm bảo hiển thị *@
+            <span class="success-icon">✓</span>
+        </div>
+
+        <h2 class="success-title">Yêu Cầu Đặt Tiệc Đã Được Ghi Nhận!</h2>
+
+        <p class="success-message">
+            Cảm ơn bạn đã tin tưởng lựa chọn dịch vụ đặt tiệc của KFC Việt Nam.
+        </p>
+        <p class="success-message">
+            Chúng tôi sẽ liên hệ trong vòng <strong>24 giờ làm việc</strong> để xác nhận và tư vấn chi tiết về buổi tiệc của bạn.
+        </p>
+
+        <a href="@Url.Action("Index", "Home")" class="btn btn-return-home">
+            QUAY VỀ TRANG CHỦ
+        </a>
+
+        <p class="small-text">Mọi thắc mắc, xin vui lòng liên hệ tổng đài 1900 6886.</p>
+    </div>
+</div>

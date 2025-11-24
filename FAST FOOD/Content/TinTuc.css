@@ -1,0 +1,163 @@
+﻿body {
+    padding-top: 180px;
+    background-color: #f8f9fa;
+}
+
+.news-header {
+    color: #e2002d;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 32px;
+    margin-bottom: 15px;
+    padding-top: 20px;
+}
+
+.article-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    height: 100%; /* Giữ chiều cao thẻ cố định trong grid */
+    overflow: hidden; /* Quan trọng: Ẩn nội dung vượt quá giới hạn */
+
+}
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+.article-img {
+    height: 200px; /* Cố định chiều cao hình ảnh */
+    width: 100%; /* Đảm bảo hình ảnh đầy đủ chiều rộng */
+    object-fit: cover; /* Quan trọng: Đảm bảo ảnh không bị méo, cắt ảnh cho vừa khung */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body-kfc { /* Đổi tên hoặc tạo class mới cho body của card */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title-kfc {
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    /* XÓA hoặc Giảm -webkit-line-clamp để hiển thị nhiều hơn */
+    -webkit-line-clamp: 2; /* Giữ 2 dòng nếu quá dài */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text-kfc {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    /* RẤT QUAN TRỌNG: Tăng giới hạn dòng cho nội dung tóm tắt */
+    -webkit-line-clamp: 3; /* Tăng lên 3 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Vẫn giữ quy tắc đẩy nút xuống dưới */
+}
+
+.article-date {
+    font-size: 12px;
+    color: #e2002d;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.btn-read-more-wrapper { /* Thêm wrapper cho nút để căn giữa */
+    text-align: center; /* Căn giữa nút */
+    margin-top: auto; /* Quan trọng: Đẩy nút xuống cuối cùng của card-body */
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* Đường kẻ trên nút */
+}
+.btn-read-more {
+    background-color: #e2002d;
+    color: white !important;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 3px 8px rgba(226, 0, 45, 0.3);
+    display: inline-block;
+    text-decoration: none;
+    width: auto; /* Đảm bảo nút không kéo dài toàn bộ */
+}
+
+    .btn-read-more:hover {
+        background-color: #b00022; /* Đỏ đậm hơn khi hover */
+        color: white !important;
+        transform: translateY(-1px); /* Hiệu ứng nhấc nhẹ */
+        box-shadow: 0 5px 10px rgba(226, 0, 45, 0.5);
+    }
+
+
+.article-detail-container {
+    background-color: white;
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.detail-title {
+    color: #e2002d;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.detail-meta {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.detail-content p {
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.detail-content img {
+    width: 100%; /* Đảm bảo hình ảnh đầy đủ chiều rộng của container */
+    height: auto; /* Chiều cao tự động để không bị méo */
+    max-height: 450px; /* Giới hạn chiều cao tối đa */
+    object-fit: contain; /* Quan trọng: Chứa toàn bộ ảnh trong khung mà không cắt, có thể có khoảng trắng */
+    /* HOẶC object-fit: cover; nếu bạn muốn ảnh lấp đầy khung và chấp nhận bị cắt */
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Thêm đổ bóng cho ảnh */
+}
+/* Nút Quay lại danh sách */
+.btn-return-list {
+    background-color: #e2002d;
+    color: white !important;
+    border-color: #e2002d;
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+    padding: 10px 25px;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none; /* Bỏ gạch chân */
+    display: inline-flex; /* Để icon và chữ nằm trên một dòng */
+    align-items: center; /* Căn giữa icon và chữ */
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+    .btn-return-list:hover {
+        background-color: #b00022;
+        color: white !important;
+        transform: translateY(-1px);
+    }

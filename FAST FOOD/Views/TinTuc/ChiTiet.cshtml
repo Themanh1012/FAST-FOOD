@@ -1,0 +1,32 @@
+﻿@model FAST_FOOD.Models.TinTuc
+
+@{
+    ViewBag.Title = Model.TieuDe;
+}
+<link rel="stylesheet" href="~/Content/Tintuc.css" />
+<div class="container">
+    <div class="article-detail-container">
+        <h1 class="detail-title">@Model.TieuDe</h1>
+        <div class="detail-meta">
+            Ngày đăng: @Model.NgayDang.ToString("dd MMMM yyyy")
+        </div>
+
+        <div class="detail-content">
+            <img src="@Model.HinhAnh" alt="@Model.TieuDe" class="img-fluid" />
+
+            <p><strong>@Model.TomTat</strong></p>
+
+            <p>
+                @Model.NoiDungChiTiet
+            </p>
+            <p>
+                Quý khách có thể xem thêm các chương trình khuyến mãi khác hoặc đặt hàng trực tuyến ngay hôm nay để nhận được ưu đãi tốt nhất từ hệ thống KFC Việt Nam.
+            </p>
+            <p>
+                <a href="@Url.Action("TinTuc", "TinTuc")" class="btn btn-return-list">
+                    <i class="fa fa-arrow-left"></i> Quay lại danh sách
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
