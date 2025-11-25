@@ -112,11 +112,12 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 dh.TongTien = donHang.TongTien;
                 dh.MaHTTT = donHang.MaHTTT;
 
-                db.SaveChanges();
+                // ⭐ GIỮ NGUYÊN NGÀY ĐẶT
+                // Không sửa NgayDat — tránh mất ngày tạo
 
+                db.SaveChanges();
             }
 
-            // Gán lại danh sách chọn khi model không hợp lệ
             ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaDonHang", "MaDonHang", donHang.MaHTTT);
             return View(donHang);
         }

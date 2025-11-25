@@ -17,7 +17,7 @@ namespace FAST_FOOD.Controllers
            
 
             ViewBag.Suggest = db.MonAns.Take(10).ToList();
-            // Trả danh sách danh mục qua View
+            // Trả danh sách danh mục qua Viewa
             return View(danhMucs);
         }
 

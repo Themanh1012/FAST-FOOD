@@ -2137,7 +2137,6 @@
     <Content Include="Images\Products\YUZU.jpg" />
     <Content Include="Areas\Customer\Views\Danhmucs\Category.cshtml" />
     <Content Include="Areas\Customer\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\UserDetail.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />

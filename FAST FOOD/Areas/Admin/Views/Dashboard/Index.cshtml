@@ -2,39 +2,61 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="mb-4 fw-bold admin-title">📊 Dashboard Quản Trị</h2>
-    
+<h2 class="fw-bold mb-4 admin-title">
+    <i class="fa-solid fa-gauge-high text-primary"></i> Dashboard Quản Trị
+</h2>
+
 <div class="row g-4">
 
-    <div class="col-md-3">
-        <div class="stat-card stat-blue">
-            <i class="fa-solid fa-money-bill-wave"></i>
-            <h4>Tổng doanh thu</h4>
-            @(ViewBag.TotalRevenue != null ? ((decimal)ViewBag.TotalRevenue).ToString("N0") : "0")
+    <!-- Tổng doanh thu -->
+    <div class="col-6 col-md-3">
+        <div class="stat-card shadow-sm stat-blue">
+            <div class="stat-icon">
+                <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+            <div class="stat-info">
+                <h6 class="label">Tổng doanh thu</h6>
+                <p class="value">@((ViewBag.TotalRevenue ?? 0).ToString("N0")) đ</p>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="stat-card stat-green">
-            <i class="fa-solid fa-calendar-day"></i>
-            <h4>Doanh thu hôm nay</h4>
-            @(ViewBag.TotalRevenue != null ? ((decimal)ViewBag.TotalRevenue).ToString("N0") : "0")
+    <!-- Doanh thu hôm nay -->
+    <div class="col-6 col-md-3">
+        <div class="stat-card shadow-sm stat-green">
+            <div class="stat-icon">
+                <i class="fa-solid fa-calendar-day"></i>
+            </div>
+            <div class="stat-info">
+                <h6 class="label">Doanh thu hôm nay</h6>
+                <p class="value">@((ViewBag.TodayRevenue ?? 0).ToString("N0")) đ</p>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="stat-card stat-orange">
-            <i class="fa-solid fa-box"></i>
-            <h4>Tổng đơn hàng</h4>
-            <p>@ViewBag.TotalOrders</p>
+    <!-- Tổng đơn hàng -->
+    <div class="col-6 col-md-3">
+        <div class="stat-card shadow-sm stat-orange">
+            <div class="stat-icon">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <div class="stat-info">
+                <h6 class="label">Tổng đơn hàng</h6>
+                <p class="value">@ViewBag.TotalOrders</p>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="stat-card stat-red">
-            <i class="fa-solid fa-user-group"></i>
-            <h4>Khách hàng</h4>
-            <p>@ViewBag.UserCount</p>
+    <!-- Khách hàng -->
+    <div class="col-6 col-md-3">
+        <div class="stat-card shadow-sm stat-red">
+            <div class="stat-icon">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+            <div class="stat-info">
+                <h6 class="label">Khách hàng</h6>
+                <p class="value">@ViewBag.UserCount</p>
+            </div>
         </div>
     </div>
 
@@ -42,15 +64,17 @@
 
 <hr class="my-5" />
 
-<h3 class="fw-bold mb-3">👥 Khách hàng gần đây</h3>
+<h3 class="fw-bold mb-3">
+    <i class="fa-solid fa-users text-primary"></i> Khách hàng gần đây
+</h3>
 
-<table class="table admin-table shadow-sm">
+<table class="table table-hover admin-table shadow-sm">
     <thead>
         <tr>
             <th>Họ tên</th>
             <th>Email</th>
-            <th>Số đơn</th>
-            <th>Tổng tiền</th>
+            <th class="text-center">Số đơn</th>
+            <th class="text-center">Tổng tiền</th>
             <th>Lần cuối mua</th>
             <th></th>
         </tr>
@@ -62,10 +86,18 @@
             <tr>
                 <td>@u.HoTen</td>
                 <td>@u.Email</td>
-                <td><span class="badge bg-primary">@u.TotalOrders</span></td>
-                <td class="text-danger fw-bold">@u.TotalMoney.ToString("N0") đ</td>
+
+                <td class="text-center">
+                    <span class="badge bg-primary">@u.TotalOrders</span>
+                </td>
+
+                <td class="text-center text-danger fw-bold">
+                    @u.TotalMoney.ToString("N0") đ
+                </td>
+
                 <td>@(u.LastOrder?.ToString("dd/MM/yyyy") ?? "-")</td>
-                <td>
+
+                <td class="text-end">
                     <a href="@Url.Action("UserDetail","Dashboard", new { id = u.UserId })"
                        class="btn btn-sm btn-outline-primary">
                         <i class="fa-solid fa-eye"></i> Xem
@@ -76,59 +108,70 @@
     </tbody>
 </table>
 
+
 <style>
+    /* Title */
     .admin-title {
-        font-size: 32px;
-    }
-    .stat-card:hover {
-        transform: translateY(-5px);
-        transition: 0.25s;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    .stat-card {
-        padding: 25px;
-        border-radius: 14px;
-        color: white;
-        text-align: center;
-        height: 100px; /* 🔥 Giúp 4 ô luôn đều */
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Căn giữa icon + text */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        font-size: 28px;
+        margin-bottom: 20px;
     }
 
-    .stat-card i {
+    /* --- Card Thống kê --- */
+    .stat-card {
+        display: flex;
+        align-items: center;
+        padding: 18px 16px;
+        border-radius: 14px;
+        color: white;
+        gap: 15px;
+        transition: 0.2s;
+        min-height: 90px;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+    .stat-icon {
+        font-size: 28px;
+    }
+
+    .stat-info .label {
+        margin: 0;
+        font-size: 14px;
+        opacity: 0.95;
+    }
+
+    .stat-info .value {
+        margin: 0;
         font-size: 20px;
-        margin-bottom: 12px;
+        font-weight: bold;
     }
 
     .stat-blue {
         background: #3b82f6;
     }
-    /* Tổng doanh thu */
+
     .stat-green {
         background: #22c55e;
     }
-    /* Doanh thu hôm nay */
+
     .stat-orange {
         background: #f59e0b;
     }
-    /* Tổng đơn */
+
     .stat-red {
         background: #ef4444;
-    }  
-    .admin-table {
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
     }
 
-        .admin-table th {
-            background: #f8f9fa;
-            font-weight: bold;
-        }
+    /* --- Table --- */
+    .admin-table th {
+        background: #f8f9fa;
+        font-weight: bold;
+    }
 
-        .admin-table tr:hover {
-            background: #f4f8ff;
-        }
+    .admin-table tbody tr:hover {
+        background: #eef5ff;
+    }
 </style>
