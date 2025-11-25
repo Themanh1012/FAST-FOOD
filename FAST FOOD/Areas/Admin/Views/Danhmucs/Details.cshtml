@@ -5,27 +5,40 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="text-info">Chi Tiết Danh Mục</h2>
-</hr>
+<h2 class="text-primary text-center mb-4">📂 Chi Tiết Danh Mục</h2>
 
-<dl class="row">
-    <dt class="col-sm-3">Tên Danh Mục</dt>
-    <dd class="col-sm-9">@Model.TenDanhMuc</dd>
+<div class="card shadow-sm mx-auto" style="max-width: 600px; border-radius: 12px;">
+    <div class="card-body">
 
-    <dt class="col-sm-3">Hình Ảnh</dt>
-    <dd class="col-sm-9">
-        @if (!string.IsNullOrEmpty(Model.HinhAnh))
-        {
-            <img src="@Model.HinhAnh" alt="@Model.TenDanhMuc" style="max-width:200px; max-height:150px; object-fit:cover; border-radius:8px;" />
-        }
-        else
-        {
-            <span class="text-muted">Chưa có ảnh</span>
-        }
-    </dd>
-</dl>
+        <dl class="row mb-4">
+            <dt class="col-sm-4 fw-bold text-secondary">Tên Danh Mục</dt>
+            <dd class="col-sm-8 fs-5">@Model.TenDanhMuc</dd>
 
-<p>
-    @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.DanhMucId }, new { @class = "btn btn-warning text-white" }) |
-    @Html.ActionLink("🔙 Quay Lại", "Index", null, new { @class = "btn btn-secondary" })
-</p>
+            <dt class="col-sm-4 fw-bold text-secondary">Hình Ảnh</dt>
+            <dd class="col-sm-8">
+                @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                {
+                    <div class="border rounded p-2 bg-light shadow-sm"
+                         style="display: inline-block; max-width: 250px;">
+                        <img src="@Url.Content(Model.HinhAnh)"
+                             alt="@Model.TenDanhMuc"
+                             class="img-fluid rounded"
+                             style="max-height: 200px; object-fit: cover;" />
+                    </div>
+                }
+                else
+                {
+                    <span class="text-muted fst-italic">Chưa có ảnh</span>
+                }
+            </dd>
+        </dl>
+
+        <div class="text-center mt-3">
+            @Html.ActionLink("✏️ Sửa", "Edit", new { id = Model.DanhMucId },
+                new { @class = "btn btn-warning text-white px-4 mx-2 w-25" })
+
+            @Html.ActionLink("↩️ Quay Lại", "Index", null,
+                new { @class = "btn btn-secondary px-4 mx-2 w-25" })
+        </div>
+    </div>
+</div>

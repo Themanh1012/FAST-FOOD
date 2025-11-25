@@ -11,6 +11,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
     {
         private readonly KFCContext db = new KFCContext();
 
+
         public ActionResult Index()
         {
             var users = db.accounts.Select(u => new UserOrderViewModel
@@ -19,14 +20,16 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 HoTen = u.HoTen,
                 Email = u.Email,
 
-                TotalOrders = db.DonHangs.Count(d => d.TenKhachHang == u.HoTen),
+                // ⭐ LẤY TẤT CẢ ĐƠN CỦA USER THEO HoTen
+                TotalOrders = db.DonHangs
+                    .Count(d => d.TenKhachHang.Trim() == u.HoTen.Trim()),
 
                 TotalMoney = db.DonHangs
-                    .Where(d => d.TenKhachHang == u.HoTen)
+                    .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
                     .Sum(d => (decimal?)d.TongTien) ?? 0,
 
                 LastOrder = db.DonHangs
-                    .Where(d => d.TenKhachHang == u.HoTen)
+                    .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
                     .OrderByDescending(d => d.NgayDat)
                     .Select(d => d.NgayDat)
                     .FirstOrDefault()
@@ -47,8 +50,9 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             {
                 HoTen = user.HoTen,
                 Email = user.Email,
+
                 DonHangs = db.DonHangs
-                    .Where(d => d.TenKhachHang == user.HoTen)
+                    .Where(d => d.TenKhachHang.Trim() == user.HoTen.Trim())
                     .OrderByDescending(d => d.NgayDat)
                     .ToList()
             };
@@ -56,4 +60,5 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             return View(model);
         }
     }
-}
+
+    }

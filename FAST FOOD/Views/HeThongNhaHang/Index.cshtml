@@ -1,0 +1,207 @@
+﻿@model FAST_FOOD.Models.HeThongNhaHang
+@{
+    ViewBag.Title = "Hệ thống nhà hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* Thêm Leaflet CSS *@
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link href="~/Content/Hethongnhahang.css" rel="stylesheet" />
+@* THÊM PHẦN DANH SÁCH NHÀ HÀNG DƯỚI BẢN ĐỒ *@
+<div class="container mt-4">
+    <h3 class="mb-4" style="border-left: 5px solid #e2002d; padding-left: 10px;">Danh Sách Cửa Hàng</h3>
+
+    @* Bắt đầu Grid *@
+    <div class="row">
+        @foreach (var nh in Model.DanhSachNhaHang)
+        {
+            <div class="col-md-4 mb-4">
+                @* col-md-4: Chia 3 cột trên màn hình vừa/lớn *@
+                <div class="card h-100 shadow-sm store-item"
+                     data-lat="@nh.Lat"
+                     data-lng="@nh.Lng"
+                     onclick="zoomToStore(this)">
+
+                    @* 1. Hình ảnh *@
+                    <img src="@nh.HinhAnh" class="card-img-top" alt="@nh.TenNhaHang"
+                         style="height: 200px; object-fit: cover;"> @* object-fit: cover giúp ảnh không bị méo *@
+
+                        @* 2. Thông tin chi tiết *@
+                        <div class="card-body">
+                            <h5 class="card-title text-danger font-weight-bold">@nh.TenNhaHang</h5>
+
+                            <p class="card-text mb-1">
+                                <i class="fa fa-map-marker text-secondary" style="width: 20px;"></i>
+                                @nh.DiaChi
+                            </p>
+
+                            <p class="card-text mb-1">
+                                <i class="fa fa-phone text-secondary" style="width: 20px;"></i>
+                                <strong>SĐT:</strong> @nh.SoDienThoai
+                            </p>
+
+                            <p class="card-text mb-3">
+                                <i class="fa fa-clock-o text-secondary" style="width: 20px;"></i>
+                                <strong>Giờ mở cửa:</strong> @nh.GioMoCua
+                            </p>
+
+                            <button class="btn btn-outline-danger btn-block w-100">
+                                Xem trên bản đồ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+@* Bản đồ Leaflet *@
+<div class="container mb-5">
+    <div id="map" style="border-radius: 5px; overflow: hidden; border: 1px solid #ddd;">
+        
+    </div>
+</div>
+
+    @* 3. Hiển thị danh sách nhà hàng (Tùy chọn, nếu muốn thêm danh sách bên cạnh bản đồ) *@
+    @* <div class="container mt-3">
+            <h3>Các Cửa Hàng Gần Nhất</h3>
+            <div class="store-list-container">
+                @foreach (var nh in Model.DanhSachNhaHang)
+                {
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title">@nh.TenNhaHang</h5>
+                            <p class="card-text">@nh.DiaChi</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div> *@
+    @section Scripts {
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+        var map;
+        var markers = [];
+
+        // Dữ liệu nhà hàng từ Model (Giữ nguyên)
+        var storesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.DanhSachNhaHang));
+
+        // Hàm xử lý việc phóng to và căn giữa bản đồ
+        function zoomToStore(element) {
+            // 1. Lấy tọa độ từ thuộc tính data-lat và data-lng
+            var lat = parseFloat(element.getAttribute('data-lat'));
+            var lng = parseFloat(element.getAttribute('data-lng'));
+
+            if (!isNaN(lat) && !isNaN(lng)) {
+                // 2. Sử dụng map.setView(center, zoomLevel) của Leaflet
+                // Mức zoom 15 là mức zoom chi tiết (gần như cấp độ đường phố)
+                map.setView([lat, lng], 15);
+
+                // 3. Tùy chọn: Mở popup của marker tương ứng (Nếu bạn muốn)
+                // markers.find(m => m.getLatLng().lat === lat && m.getLatLng().lng === lng).openPopup();
+            }
+        }
+
+        // Hàm khởi tạo bản đồ Leaflet
+        function initLeafletMap() {
+            // Tọa độ trung tâm: TP. Hồ Chí Minh
+            var centerLat = 10.8231;
+            var centerLng = 106.6297;
+            var zoomLevel = 10;
+
+            // 1. Khởi tạo bản đồ Leaflet
+            map = L.map('map').setView([centerLat, centerLng], zoomLevel);
+
+            // 2. Thêm lớp bản đồ từ OpenStreetMap (Miễn phí và không cần API Key)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            addLeafletMarkers(storesData);
+        }
+
+        function addLeafletMarkers(locations) {
+            // Xóa markers cũ (Tùy chọn)
+            markers.forEach(marker => marker.remove());
+            markers = [];
+
+            locations.forEach(function(store) {
+                var position = [store.Lat, store.Lng];
+
+                // Tạo Marker Leaflet
+                var marker = L.marker(position).addTo(map)
+                    .bindPopup('<h6>' + store.TenNhaHang + '</h6><p>' + store.DiaChi + '</p>')
+                    .on('mouseover', function (e) {
+                        this.openPopup();
+                    })
+                    .on('mouseout', function (e) {
+                        this.closePopup();
+                    });
+
+                markers.push(marker);
+            });
+        }
+
+        // Gọi hàm khởi tạo khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', initLeafletMap);
+
+        </script>
+        @*Google Map API(Nếu đã đăng kí API)*@
+        @*@<script>
+                // Khai báo biến toàn cục cho bản đồ
+                var map;
+                var markers = [];
+
+                // Dữ liệu nhà hàng từ Model (Chuyển đổi sang JSON)
+                var storesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.DanhSachNhaHang));
+
+                function initMap() {
+                    // Tọa độ trung tâm: TP. Hồ Chí Minh
+                    var centerPos = { lat: 10.8231, lng: 106.6297 };
+
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: centerPos,
+                        zoom: 10,
+                        mapTypeControl: false, // Ẩn nút chọn kiểu bản đồ
+                        streetViewControl: false // Ẩn Street View
+                    });
+
+                    addMarkers(storesData);
+                }
+
+                function addMarkers(locations) {
+                    // Xóa markers cũ trước khi thêm markers mới
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(null);
+                    }
+                    markers = [];
+
+                    locations.forEach(function(store) {
+                        var position = { lat: store.Lat, lng: store.Lng };
+
+                        var marker = new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            title: store.TenNhaHang
+                        });
+
+                        // Info Window khi click vào Marker
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: '<h6>' + store.TenNhaHang + '</h6><p>' + store.DiaChi + '</p>'
+                        });
+
+                        marker.addListener('click', function() {
+                            infoWindow.open(map, marker);
+                        });
+
+                        markers.push(marker);
+                    });
+                }
+
+                // Thêm thư viện Google Maps API (BẮT BUỘC)
+                // Bạn cần đặt đoạn code này ở vị trí có thể truy cập được
+
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+
+            </script>*@
+    }

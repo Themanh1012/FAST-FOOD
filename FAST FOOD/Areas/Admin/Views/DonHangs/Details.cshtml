@@ -1,33 +1,84 @@
-﻿@*@model FAST_FOOD.Models.DonHang
-
+﻿@model FAST_FOOD.Models.DonHang
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-}
-<div class="container mt-5">
-    <div class="card shadow border-0 rounded-4">
-        <div class="card-header bg-danger text-white">
-            <h4><i class="fas fa-trash></i>Xóa đơn hàng</h4>
-        </div>
-        <div class="card-body text-center">
-            <p class="text-muted fs-5">Bạn có chắc muốn xóa đơn hàng của <strong class="text-dark">@Model.TenKhachHang</strong>?</p>
-            <p><strong>Tổng tiền: </strong>@string.Format("{0:N0} đ", Model.TongTien)</p>
-            <p><strong>Ngày Đặt: </strong>@Model.NgayDat.ToString("dd/MM/yyyy")</p>
-            <p><strong>Trạng thái: </strong>@Model.TrangThai</p>
 
-            @using (Html.BeginForm())
+<div class="container mt-4">
+
+    <h2 class="fw-bold mb-4">🧾 Chi tiết đơn hàng #@Model.MaDonHang</h2>
+
+    <div class="card shadow p-4 mb-4">
+        <h4 class="fw-bold mb-3">👤 Thông tin khách hàng</h4>
+
+        <p><strong>Tên khách:</strong> @Model.TenKhachHang</p>
+        <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+        <p><strong>SĐT:</strong> @Model.SoDienThoai</p>
+        <p><strong>Ngày đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+        <p>
+            <strong>Trạng thái:</strong>
+
+            @if (Model.TrangThai == "Chờ xác nhận")
             {
-                @Html.AntiForgeryToken()
-        <div class="d-flex justity-content-center mt-4 gap-3">
-            <a href="@Url.Action("Index")" class="btn btn-secondary">
-                <i class="fas fa-times"></i>Hủy
-            </a>
-            <button type="submit" class="btn btn-danger">
-                <i class="fas fa-trash"></i> Xóa đơn hàng
-            </button>
-        </div>
+                <span class="badge bg-warning text-dark">Chờ xác nhận</span>
             }
+            else if (Model.TrangThai == "Đã xác nhận")
+            {
+                <span class="badge bg-success">Đã xác nhận</span>
+            }
+            else if (Model.TrangThai == "Đã Hủy")
+            {
+                <span class="badge bg-danger">Đã hủy</span>
+            }
+            else
+            {
+                <span class="badge bg-secondary">@Model.TrangThai</span>
+            }
+        </p>
+
+        <p>
+            <strong>Hình thức thanh toán:</strong>
+            @(Model.HinhThucThanhToan != null
+    ? Model.HinhThucThanhToan.TenHinhThuc
+    : "Không có")
+
+        </p>
+
+        <h4 class="fw-bold mt-4">🍗 Danh sách món đã mua</h4>
+
+        <table class="table table-bordered mt-3 shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Món ăn</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ct in Model.ChiTietDonHangs)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Url.Content(ct.MonAn.HinhAnh)" width="70" class="rounded" />
+                        </td>
+                        <td>@ct.MonAn.TenMon</td>
+                        <td>@ct.SoLuong</td>
+                        <td class="text-danger fw-bold">@ct.ThanhTien.ToString("N0") đ</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4 class="text-end fw-bold mt-3">
+            Tổng tiền: <span class="text-danger">@Model.TongTien.ToString("N0") đ</span>
+        </h4>
+
+        <div class="mt-4">
+            <a href="@Url.Action("Index")" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
+            </a>
         </div>
+
     </div>
-</div>*@
+</div>

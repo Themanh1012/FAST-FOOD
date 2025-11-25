@@ -23,16 +23,24 @@ namespace FAST_FOOD.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GuiLienHe(string HoTen, string Email, string NoiDung)
+        {
+            // Xử lý gửi email hoặc lưu vào database ở đây
+            ViewBag.Message = "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.";
+            return View("Contact");
         }
     }
 }

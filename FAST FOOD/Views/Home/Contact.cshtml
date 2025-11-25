@@ -1,19 +1,220 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    body{
+        padding-top:120px;
+    }
+    .contact-container {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+        font-family: 'Roboto', sans-serif;
+    }
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+    .contact-card {
+        background: #fff;
+        padding: 40px;
+        border-radius: 4px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        height: 100%;
+    }
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-</main>
+    .section-title {
+        color: #e2002d;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        font-size: 24px;
+        border-bottom: 2px solid #e2002d;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    /* Form Styles */
+    .form-control-kfc {
+        border-radius: 0;
+        border: 1px solid #ccc;
+        height: 45px;
+        margin-bottom: 20px;
+    }
+
+        .form-control-kfc:focus {
+            border-color: #e2002d;
+            box-shadow: none;
+        }
+
+    .btn-kfc-submit {
+        background-color: #e2002d;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 12px 40px;
+        border: none;
+        border-radius: 2px;
+        transition: all 0.3s;
+        width: 100%;
+    }
+
+        .btn-kfc-submit:hover {
+            background-color: #b00022;
+            color: white;
+        }
+
+    /* Info Item Styles */
+    .contact-info-item {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: start;
+    }
+
+    .icon-box {
+        width: 40px;
+        height: 40px;
+        background-color: #ffe6e9;
+        color: #e2002d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 18px;
+        flex-shrink: 0; /* Ngăn icon bị co lại */
+    }
+
+    .info-content h5 {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .info-content p {
+        color: #555;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    /* Style cho bản đồ Leaflet */
+    #contactMap {
+        height: 250px;
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        z-index: 1; /* Đảm bảo bản đồ nằm dưới menu dropdown */
+    }
+</style>
+<div class="contact-container">
+    <div class="container">
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success text-center mb-4">
+                <strong>@ViewBag.Message</strong>
+            </div>
+        }
+
+        <div class="row">
+            @* CỘT TRÁI: FORM LIÊN HỆ *@
+            <div class="col-md-7 mb-4">
+                <div class="contact-card">
+                    <h2 class="section-title">Gửi Tin Nhắn</h2>
+
+                    @using (Html.BeginForm("GuiLienHe", "LienHe", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label>Họ và tên *</label>
+                            <input type="text" name="HoTen" class="form-control form-control-kfc" placeholder="Nhập họ tên của bạn" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email *</label>
+                                    <input type="email" name="Email" class="form-control form-control-kfc" placeholder="email@example.com" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" name="SoDienThoai" class="form-control form-control-kfc" placeholder="Nhập số điện thoại" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nội dung lời nhắn *</label>
+                            <textarea name="NoiDung" class="form-control form-control-kfc" rows="5" placeholder="Bạn cần hỗ trợ gì?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-kfc-submit">Gửi Liên Hệ</button>
+                    }
+                </div>
+            </div>
+
+            @* CỘT PHẢI: THÔNG TIN LIÊN HỆ *@
+            <div class="col-md-5 mb-4">
+                <div class="contact-card">
+                    <h2 class="section-title">Thông Tin Liên Hệ</h2>
+
+                    <div class="contact-info-item">
+                        <div class="icon-box"><i class="fa fa-map-marker"></i></div>
+                        <div class="info-content">
+                            <h5>Trụ sở chính (HUFLIT Hóc Môn)</h5>
+                            <p>QL22, Tân Xuân, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam</p>
+
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="icon-box"><i class="fa fa-phone"></i></div>
+                        <div class="info-content">
+                            <h5>Tổng đài đặt hàng</h5>
+                            <p style="font-size: 20px; color: #e2002d; font-weight: bold;">1900 6886</p>
+                            <p class="small text-muted">(Hoạt động: 9:00 - 22:00)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="icon-box"><i class="fa fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h5>Email hỗ trợ</h5>
+                            <p>lienhe@huflit.edu.vn</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        @* 2. Thẻ chứa bản đồ Leaflet *@
+                        <div id="contactMap"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @* 3. Thêm JS của Leaflet *@
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            // Tọa độ HUFLIT Hóc Môn (Xã Tân Xuân, Huyện Hóc Môn)
+            var huflitLat = 10.875685;
+            var huflitLng = 106.599292;
+
+            // Khởi tạo bản đồ
+            var map = L.map('contactMap').setView([huflitLat, huflitLng], 16); // Zoom level 16 cho rõ
+
+            // Thêm lớp bản đồ OpenStreetMap (Miễn phí)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Thêm Marker (Ghim) tại vị trí HUFLIT
+            L.marker([huflitLat, huflitLng]).addTo(map)
+                .bindPopup('<b>HUFLIT - Cơ sở Hóc Môn</b><br>QL22, Tân Xuân, Hóc Môn, TP.HCM')
+                .openPopup();
+        });</script>
+}

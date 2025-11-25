@@ -19,12 +19,23 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         private KFCContext db = new KFCContext();
 
         // GET: MonAns
-        public ActionResult Index()
+        public ActionResult Index(int? categoryId)
         {
-            var monAns = db.MonAns.Include(m => m.DanhMuc).ToList();
-            return View(monAns);
+            // 1. Lấy danh mục
+            var listDM = db.Danhmucs.ToList();
+            ViewBag.CategoryId = new SelectList(listDM, "DanhMucId", "TenDanhMuc", categoryId);
 
+            // 2. Lấy món ăn
+            var monAns = db.MonAns.AsQueryable();
+
+            if (categoryId.HasValue)
+            {
+                monAns = monAns.Where(x => x.DanhMucId == categoryId.Value);
+            }
+
+            return View(monAns.ToList());
         }
+
 
         // GET: MonAns/Details/5
         public ActionResult Details(int? id)

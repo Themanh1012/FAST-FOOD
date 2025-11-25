@@ -1,32 +1,51 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Trang Quản Trị";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container text-center mt-5">
-    <h2 class="text-primary">Chào mừng đến với khu vực Admin</h2>
-    <p class="lead mt-3">Hãy chọn danh mục trong thanh điều hướng để quản lý dữ liệu.</p>
 
+    <h2 class="text-primary mb-3">Chào mừng đến với khu vực Admin</h2>
+    <p class="lead mb-4">Hãy chọn danh mục trong thanh điều hướng để quản lý dữ liệu.</p>
 
-    <a href="@Url.Action("Index", "Dashboard", new { area = "Admin" })" class="btn btn-info mx-2 text-white">
-        Thống kê
-    </a>
-    <div class="mt-4">
-        <a href="@Url.Action("Index", "Danhmucs", new { area = "Admin" })" class="btn btn-success mx-2">
-            Quản lý Danh Mục
+    <!-- Nút thống kê -->
+    <div class="mb-4">
+        <a href="@Url.Action("Index", "Dashboard", new { area = "Admin" })"
+           class="btn btn-info text-white px-4 py-2">
+            Thống kê
         </a>
-        <a href="@Url.Action("Index", "MonAns", new { area = "Admin" })" class="btn btn-warning mx-2">
-            Quản lý Món Ăn
-        </a>
-        <a href="@Url.Action("Index", "DonHangs", new { area = "Admin" })" class="btn btn-info mx-2 text-white">
-            Quản lý Đơn Hàng
-        </a>
+    </div>
 
-        <a href="/Home/Index" class="btn btn-info mx-2 text-white">
-            Trang chủ
-        </a>
+    <!-- Các nút quản lý -->
+    <div class="row justify-content-center g-3">
+
+        <div class="col-md-3 col-6">
+            <a href="@Url.Action("Index", "Danhmucs", new { area = "Admin" })"
+               class="btn btn-success w-100 py-2">
+                Quản lý Danh Mục
+            </a>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <a href="@Url.Action("Index", "MonAns", new { area = "Admin" })"
+               class="btn btn-warning w-100 py-2">
+                Quản lý Món Ăn
+            </a>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <a href="@Url.Action("Index", "DonHangs", new { area = "Admin" })"
+               class="btn btn-info text-white w-100 py-2">
+                Quản lý Đơn Hàng
+            </a>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <a href="/Home/Index"
+               class="btn btn-secondary w-100 py-2">
+                Trang chủ
+            </a>
+        </div>
 
     </div>
 </div>
-

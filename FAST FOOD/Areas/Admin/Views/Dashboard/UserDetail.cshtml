@@ -34,7 +34,7 @@ else
                     <td class="text-danger fw-bold">@d.TongTien.ToString("N0") đ</td>
 
                     <td>
-                        <a href="@Url.Action("Details","DonHangs",new { id = d.MaDonHang })"
+                        <a href="@Url.Action("Details","DonHangs", new { area="Admin", id = d.MaDonHang })"
                            class="btn btn-sm btn-outline-secondary">
                             <i class="fa-solid fa-receipt"></i> Xem đơn
                         </a>

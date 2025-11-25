@@ -41,7 +41,9 @@ namespace FAST_FOOD.Models
         [ForeignKey("MaHTTT")]
         public virtual HinhThucThanhToan HinhThucThanhToan { get; set; }
 
-      
+
+        [ForeignKey("MaDonHang")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+
     }
 }   

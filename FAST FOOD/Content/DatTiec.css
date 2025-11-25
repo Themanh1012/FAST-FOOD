@@ -1,0 +1,209 @@
+﻿body {
+    background-color: #f8f9fa; /* Nền xám nhạt toàn trang */
+    padding-top: 120px; /* Đảm bảo không bị header che */
+}
+
+.booking-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Đổ bóng mạnh hơn */
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.section-header {
+    color: #e2002d; /* Đỏ KFC */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+    .section-header::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: #e2002d;
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+/* Tiêu đề từng phần (Thông tin liên hệ, Thông tin buổi tiệc) */
+.subsection-title {
+    color: #333; /* Màu đen hoặc xám đậm */
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 15px; /* Để tạo điểm nhấn */
+}
+
+    .subsection-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 80%;
+        background-color: #e2002d; /* Gạch đỏ bên trái */
+        border-radius: 2px;
+    }
+
+/* Input và Select Field */
+.form-control {
+    border-radius: 4px; /* Bo tròn nhẹ */
+    border: 1px solid #ddd;
+    height: 48px; /* Chiều cao lớn hơn */
+    font-size: 16px;
+    padding: 10px 15px;
+    box-shadow: none !important;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+    .form-control:focus {
+        border-color: #e2002d;
+        box-shadow: 0 0 0 0.2rem rgba(226, 0, 45, 0.25) !important; /* Hiệu ứng focus màu đỏ mờ */
+    }
+
+/* Dropdown Ngày/Tháng/Năm */
+.date-select-group .form-control {
+    width: calc(33.33% - 10px) !important; /* Tối ưu hóa khoảng cách */
+    display: inline-block;
+    margin-right: 5px; /* Khoảng cách giữa các dropdown */
+}
+
+    .date-select-group .form-control:last-child {
+        margin-right: 0;
+    }
+
+/* Checkbox Điều khoản */
+.checkbox label {
+    font-size: 15px;
+    color: #555;
+    margin-left: 5px;
+}
+
+.checkbox a {
+    color: #e2002d;
+    font-weight: bold;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-top: 4px;
+}
+
+.text-danger {
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Nút Xác nhận Đặt Tiệc */
+.btn-submit {
+    background-color: #e2002d;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px 50px;
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(226, 0, 45, 0.4);
+}
+
+    .btn-submit:hover {
+        background-color: #b00022; /* Đỏ đậm hơn khi hover */
+        transform: translateY(-2px); /* Hiệu ứng nhấc lên nhẹ */
+        box-shadow: 0 6px 15px rgba(226, 0, 45, 0.6);
+    }
+
+/* Hình ảnh banner */
+.banner-img {
+    width: 100%;
+    height: 250px; /* Chiều cao cố định */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+.success-page-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    /* Đổ bóng mạnh mẽ hơn, tạo cảm giác chuyên nghiệp */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 50px 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Nền đỏ cho icon Check */
+.success-icon-wrapper {
+    background-color: #e2002d; /* Màu đỏ KFC */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    box-shadow: 0 4px 15px rgba(226, 0, 45, 0.4);
+}
+
+.success-icon {
+    color: #ffffff; /* Icon màu trắng */
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.success-title {
+    color: #e2002d; /* Tiêu đề màu đỏ KFC */
+    font-weight: 800;
+    margin-bottom: 15px;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.success-message {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Nút quay về (Bo tròn kiểu viên thuốc) */
+.btn-return-home {
+    background-color: #e2002d;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(226, 0, 45, 0.4);
+    text-transform: uppercase;
+}
+
+    .btn-return-home:hover {
+        background-color: #b00022;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(226, 0, 45, 0.6);
+    }
