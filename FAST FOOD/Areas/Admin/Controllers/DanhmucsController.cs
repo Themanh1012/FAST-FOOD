@@ -120,7 +120,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                     string path = Path.Combine(Server.MapPath("~/Images/Products/"), fileName);
                     UploadImage.SaveAs(path);
 
-                    danhmucGoc.HinhAnh = "/Images/Products/" + fileName;
+                    danhmucGoc.HinhAnh = "~/Images/Products/" + fileName;
 
                 }
 

@@ -2,28 +2,85 @@
 @{
     ViewBag.Title = "_Header2";
 }
+<style>
+    /* CSS tùy chỉnh cho Header 2 để giống KFC */
+    .header2 {
+        background-color: #000000; /* Nền đen */
+        padding: 10px 0;
+    }
 
+        .header2 .nav-link {
+            color: #ffffff !important; /* Chữ trắng */
+            font-weight: bold;
+            margin: 0 15px; /* Khoảng cách giữa các mục */
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Khoảng cách giữa icon và chữ */
+        }
+
+            .header2 .nav-link:hover {
+                color: #cccccc !important; /* Màu khi di chuột vào */
+            }
+
+    /* Nút "Bắt đầu đặt hàng" màu đỏ */
+    .btn-start-order {
+        background-color: #e2002d; /* Đỏ KFC */
+        color: white !important;
+        border-radius: 50px; /* Bo tròn hình viên thuốc */
+        padding: 8px 30px;
+        text-transform: none; /* Không viết hoa toàn bộ */
+        transition: background-color 0.3s;
+    }
+
+        .btn-start-order:hover {
+            background-color: #b00022; /* Đỏ đậm khi hover */
+            color: white;
+        }
+</style>
 <!-- HEADER 2-->
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary header2 ">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar navbar-expand-lg header2">
+    <div class="container-fluid justify-content-center">
+        @* Căn giữa nội dung *@
+
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+
+                @* Mục 1: Đặt ngay *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Đặt ngay</a>
+                    <a class="nav-link">
+                        <i class="bi bi-clock"></i>
+                        Đặt ngay
+                    </a>
                 </li>
+
+                @* Mục 2: Giao hàng (Thêm icon xe máy) *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Giao hàng</a>
+                    <a class="nav-link">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        Giao hàng
+                    </a>
                 </li>
+
+                @* Mục 3: Hoặc mang đi (Thêm icon cửa hàng) *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hoặc mang đi</a>
+                    <a class="nav-link">
+                        <i class="fa-solid fa-store"></i>
+                        Hoặc mang đi
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="order02" href="#">Bắt đầu đặt hàng</a>
+
+                @* Mục 4: Nút Bắt đầu đặt hàng *@
+                <li class="nav-item ms-3">
+                    @* ms-3 để tách xa một chút *@
+                    <a class="nav-link btn-start-order" id="order02" href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">
+                        Bắt đầu đặt hàng
+                    </a>
                 </li>
+
             </ul>
         </div>
     </div>
 </nav>
-
 

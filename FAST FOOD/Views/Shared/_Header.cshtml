@@ -24,8 +24,8 @@
                href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">
                 Khuyến Mãi
             </a>
-            <a class="navbar-brand" href="#">Dịch Vụ Tiệc</a>
-            <a class="navbar-brand" href="#">Hệ Thống Nhà Hàng</a>
+            <a class="navbar-brand" href="@Url.Action("DatTiec", "DatTiec", new { area = "" })">Dịch Vụ Tiệc</a>
+            <a class="navbar-brand" href="@Url.Action("Index", "HeThongNhaHang", new { area = "" })">Hệ Thống Nhà Hàng</a>
 
         </div>
 
@@ -83,15 +83,15 @@
                 <h6 class="fw-bold text-uppercase text-danger mb-3">Danh mục món ăn</h6>
 
                 <ul class="list-unstyled mb-4 off-menu">
-                    <li><a href="#" class="off-link">Khuyến mãi ></a></li>
-                    <li><a href="#" class="off-link">Món mới ></a></li>
-                    <li><a href="#" class="off-link">Combo 1 người ></a></li>
-                    <li><a href="#" class="off-link">Combo nhóm ></a></li>
-                    <li><a href="#" class="off-link">Gà rán - Gà quay ></a></li>
-                    <li><a href="#" class="off-link">Burger - Cơm - Mì Ý ></a></li>
-                    <li><a href="#" class="off-link">Thức ăn nhẹ ></a></li>
-                    <li><a href="#" class="off-link">Thức uống & Tráng miệng ></a></li>
-                    <li><a href="#" class="off-link">Bảng thành phần dị ứng ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })" class="off-link">Khuyến mãi ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3010 })" class="off-link">Món mới ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3011 })" class="off-link">Combo 1 người ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3012 })" class="off-link">Combo nhóm ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3013 })" class="off-link">Gà rán - Gà quay ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3014 })" class="off-link">Burger - Cơm - Mì Ý ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3015 })" class="off-link">Thức ăn nhẹ ></a></li>
+                    <li><a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3016 })" class="off-link">Thức uống & Tráng miệng ></a></li>
+                    
                 </ul>
 
                 <hr />
@@ -99,12 +99,9 @@
                 <!-- ⭐ VỀ KFC -->
                 <h6 class="fw-bold text-uppercase text-danger mb-3">Về KFC</h6>
                 <ul class="list-unstyled mb-4 off-menu">
-                    <li><a href="#" class="off-link">Câu chuyện của chúng tôi ></a></li>
-                    <li><a href="#" class="off-link">Tin khuyến mãi ></a></li>
-                    <li><a href="#" class="off-link">Tin tức KFC ></a></li>
-                    <li><a href="#" class="off-link">Tuyển dụng ></a></li>
-                    <li><a href="#" class="off-link">Đặt tiệc sinh nhật ></a></li>
-                    <li><a href="#" class="off-link">Đơn lớn giá hời ></a></li>
+                    <li><a href="@Url.Action("About", "Home")" class="off-link">Câu chuyện của chúng tôi ></a></li>                    
+                    <li><a href="@Url.Action("TinTuc", "TinTuc", new { area = "" })" class="off-link">Tin tức KFC ></a></li>                   
+                    <li><a href="@Url.Action("DatTiec", "DatTiec", new { area = "" })" class="off-link">Đặt tiệc></a></li>                    
                 </ul>
 
                 <hr />
@@ -112,8 +109,8 @@
                 <!-- ⭐ LIÊN HỆ -->
                 <h6 class="fw-bold text-uppercase text-danger mb-3">Liên hệ KFC</h6>
                 <ul class="list-unstyled mb-4 off-menu">
-                    <li><a href="#" class="off-link">Theo dõi đơn hàng ></a></li>
-                    <li><a href="#" class="off-link">Liên hệ KFC ></a></li>
+                    
+                    <li><a href="@Url.Action("Contact", "Home")" class="off-link">Liên hệ KFC ></a></li>
                 </ul>
 
                 <hr />
@@ -121,22 +118,22 @@
                 <!-- ⭐ CHÍNH SÁCH -->
                 <h6 class="fw-bold text-uppercase text-danger mb-3">Chính sách</h6>
                 <ul class="list-unstyled off-menu">
-                    <li><a href="#" class="off-link">Chính sách hoạt động ></a></li>
-                    <li><a href="#" class="off-link">Chính sách và quy định ></a></li>
-                    <li><a href="#" class="off-link">Chính sách bảo mật thông tin ></a></li>
+                    <li><a href="@Url.Action("HoatDong", "ChinhSach")" class="off-link">Chính sách hoạt động ></a></li>
+                    <li><a href="@Url.Action("QuyDinh", "ChinhSach")" class="off-link">Chính sách và quy định ></a></li>
+                    <li><a href="@Url.Action("BaoMat", "ChinhSach")" class="off-link">Chính sách bảo mật thông tin ></a></li>
                 </ul>
 
                 <!-- ⭐ ICON ZALO + MESSENGER -->
                 <!-- ⭐ FOOTER MINI TRONG OFFCANVAS -->
                 <div class="offcanvas-footer mt-4 text-center">
                     <div class="social-icons mb-3 d-flex justify-content-center gap-4">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/KFCVietnam/"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kfc_vietnam/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/user/KFCVietnam2011"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/kfc_vietnam"><i class="fa-brands fa-twitter"></i></a>
                     </div>
 
-                    <p class="copy-text">Copyright © 2023 KFC Vietnam</p>
+                    <p class="copy-text">Copyright © 2025 KFC Vietnam</p>
                 </div>
 
 

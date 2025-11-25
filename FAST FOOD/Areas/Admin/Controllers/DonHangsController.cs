@@ -30,16 +30,20 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang donHang = db.DonHangs.Find(id);
+
+            var donHang = db.DonHangs
+      .Include(d => d.HinhThucThanhToan)
+      .Include("ChiTietDonHangs.MonAn")
+      .FirstOrDefault(d => d.MaDonHang == id);
+
+
             if (donHang == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(donHang);
         }
+
 
         // GET: DonHangs/Create
         public ActionResult Create()
@@ -81,12 +85,14 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             System.Diagnostics.Debug.WriteLine("==> Danhmuc count: " + db.Danhmucs.Count());
 
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            HoaDon hoaDon = db.HoaDons.Find(id);
-            if (hoaDon == null) return HttpNotFound();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            ViewBag.MaDonHang = new SelectList(db.DonHangs, "MaDonHang", "MaDonHang", hoaDon.MaDonHang);
-            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", hoaDon.MaHTTT);
-            return View(hoaDon);
+            DonHang donHang = db.DonHangs.Find(id);
+            if (donHang == null) return HttpNotFound();
+
+            ViewBag.MaHTTT = new SelectList(db.HinhThucThanhToans, "MaHTTT", "TenHTTT", donHang.MaHTTT);
+            return View(donHang);
+
         }
 
         // POST: DonHangs/Edit/5
@@ -98,10 +104,16 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donHang).State = EntityState.Modified;
+                var dh = db.DonHangs.Find(donHang.MaDonHang);
+                if (dh == null) return HttpNotFound();
+
+                dh.TrangThai = donHang.TrangThai;
+                dh.TenKhachHang = donHang.TenKhachHang;
+                dh.TongTien = donHang.TongTien;
+                dh.MaHTTT = donHang.MaHTTT;
+
                 db.SaveChanges();
-                TempData["Success"] = "Cập nhật đơn hàng thành công!";
-                return RedirectToAction("Index");
+
             }
 
             // Gán lại danh sách chọn khi model không hợp lệ
@@ -135,7 +147,17 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             TempData["Success"] = "Xóa đơn hàng thành công!";
             return RedirectToAction("Index");
         }
+        public ActionResult XacNhan(int id)
+        {
+            var dh = db.DonHangs.Find(id);
+            if (dh == null) return HttpNotFound();
 
+            dh.TrangThai = "Đã xác nhận";
+            db.SaveChanges();
+
+            TempData["Success"] = "Đơn #" + id + " đã được xác nhận";
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -165,6 +187,22 @@ namespace FAST_FOOD.Areas.Admin.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index", "HoaDons");
+        }
+
+        public ActionResult TuChoi(int id)
+        {
+            var donHang = db.DonHangs.Find(id);
+
+            if (donHang == null)
+                return HttpNotFound();
+
+            if (donHang.TrangThai == "Chờ xác nhận")
+            {
+                donHang.TrangThai = "Đã Hủy"; // hoặc "Từ chối"
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
 
     }

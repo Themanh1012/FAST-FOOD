@@ -48,11 +48,9 @@
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
@@ -69,27 +67,22 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -129,7 +122,6 @@
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +138,10 @@
     <Compile Include="Areas\Admin\Controllers\HinhThucThanhToansController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DatTiecController.cs" />
     <Compile Include="Areas\Customer\Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ChinhSachController.cs" />
+    <Compile Include="Controllers\HeThongNhaHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MonAnsController.cs" />
     <Compile Include="Areas\Admin\Filters\AdminAuthorizeAttribute.cs" />
@@ -157,6 +152,7 @@
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,11 +182,14 @@
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DanhMucViewModel.cs" />
+    <Compile Include="Models\DatTiec.cs" />
     <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\HeThongNhaHang.cs" />
     <Compile Include="Models\HinhThucThanhToan.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KFCContext.cs" />
     <Compile Include="Models\MonAn.cs" />
+    <Compile Include="Models\TinTuc.cs" />
     <Compile Include="Models\TopProductViewModel.cs" />
     <Compile Include="Models\UserOrderDetailViewModel.cs" />
     <Compile Include="Models\UserOrderViewModel.cs" />
@@ -1881,8 +1880,6 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Areas\Customer\Content\product.v2.css" />
-    <Content Include="Content\account.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -1899,7 +1896,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\DatTiec.css" />
+    <Content Include="Areas\Customer\Content\product.v2.css" />
+    <Content Include="Content\account.css" />
+    <Content Include="Content\ChinhSach.css" />
     <Content Include="Content\Header01.css" />
+    <Content Include="Content\Hethongnhahang.css" />
     <Content Include="Content\pay\cash.png" />
     <Content Include="Content\pay\default.png" />
     <Content Include="Content\pay\momo.png" />
@@ -1908,6 +1910,7 @@
     <Content Include="Content\pay\zalo.png" />
     <Content Include="Content\product.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\TinTuc.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2132,18 +2135,17 @@
     <Content Include="Images\Products\VUI_DIENNN.jpg" />
     <Content Include="Images\Products\XIN_DIENNN.jpg" />
     <Content Include="Images\Products\YUZU.jpg" />
+    <Content Include="Areas\Customer\Views\Danhmucs\Category.cshtml" />
+    <Content Include="Areas\Customer\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\UserDetail.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Customer\Views\Danhmucs\Category.cshtml" />
-    <Content Include="Areas\Customer\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\UserDetail.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2155,6 +2157,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\DatTiec\DatTiec.cshtml" />
+    <Content Include="Views\DatTiec\DatTiecThanhCong.cshtml" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\Shop.js" />
     <Content Include="Web.config" />
@@ -2213,6 +2217,12 @@
     <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Account\DangKy.cshtml" />
     <Content Include="Views\Shared\_Product.cshtml" />
+    <Content Include="Views\HeThongNhaHang\Index.cshtml" />
+    <Content Include="Views\ChinhSach\HoatDong.cshtml" />
+    <Content Include="Views\ChinhSach\QuyDinh.cshtml" />
+    <Content Include="Views\ChinhSach\BaoMat.cshtml" />
+    <Content Include="Views\TinTuc\TinTuc.cshtml" />
+    <Content Include="Views\TinTuc\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2220,6 +2230,24 @@
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Views\Home\" />
     <Folder Include="Data\" />
+    <Folder Include="Images\Creater\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202511121539039__UPDATEDB.resx">
+      <DependentUpon>202511121539039__UPDATEDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511191323529__fixProduct.resx">
+      <DependentUpon>202511191323529__fixProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511191659184_AddMoTaToMonAn.resx">
+      <DependentUpon>202511191659184_AddMoTaToMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511191944138__AddDashBoard.resx">
+      <DependentUpon>202511191944138__AddDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511192022053__UdUser.resx">
+      <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2247,23 +2275,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202511121539039__UPDATEDB.resx">
-      <DependentUpon>202511121539039__UPDATEDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511191323529__fixProduct.resx">
-      <DependentUpon>202511191323529__fixProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511191659184_AddMoTaToMonAn.resx">
-      <DependentUpon>202511191659184_AddMoTaToMonAn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511191944138__AddDashBoard.resx">
-      <DependentUpon>202511191944138__AddDashBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511192022053__UdUser.resx">
-      <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2297,12 +2308,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

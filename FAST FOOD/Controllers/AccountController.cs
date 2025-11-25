@@ -48,7 +48,7 @@ namespace FAST_FOOD.Controllers
                 }
 
                 // 4️⃣ Đặt vai trò mặc định
-                model.VaiTro = "User";
+                model.VaiTro = "Khách Hàng";
 
                 // 5️⃣ Mã hóa mật khẩu
                 model.MatKhau = BCrypt.Net.BCrypt.HashPassword(model.MatKhau);
