@@ -3,13 +3,13 @@
     ViewBag.Title = "Chi tiết món ăn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class="hinhvuong">
 <div class="mb-4">
     <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
          width="60" class="mb-3" />
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 ">
 
     <div class="row align-items-center">
 
@@ -62,7 +62,7 @@
                     </a>
 
                     <!-- Quay lại -->
-                    <a href="@Url.Action("Index", "MonAns")"
+                    <a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = Model.DanhMucId })"
                        class="btn btn-lg fw-bold back-btn px-4"
                        style="background:#f3f3f3; border-radius:10px;">
                         ← Quay lại
@@ -74,8 +74,11 @@
         </div>
     </div>
 </div>
-
+</div>
 <style>
+    .hinhvuong{
+        padding:20px;
+    }
     /* Nút thêm vào giỏ hàng */
     .add-cart-btn {
         background: #28a745;
