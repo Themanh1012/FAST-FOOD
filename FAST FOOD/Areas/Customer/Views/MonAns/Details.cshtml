@@ -13,6 +13,16 @@
 
     <div class="row align-items-center">
 
+        <!-- thẻ -->
+        <nav class="kfc-breadcrumb mb-4">
+            <a href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = Model.DanhMucId })">
+                @Model.DanhMuc.TenDanhMuc
+            </a>
+            <span class="separator">></span>
+
+            <span class="current">@Model.TenMon</span>
+        </nav>
+
         <!-- Hình ảnh -->
         <div class="col-md-6 text-center">
             <img src="@Url.Content(Model.HinhAnh)"
@@ -102,5 +112,44 @@
 
         .back-btn:hover {
             background: #cfcfcf;
+        }
+
+    /* thẻ */
+    .kfc-breadcrumb {
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .kfc-breadcrumb {
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        color: #6c757d; 
+    }
+
+        .kfc-breadcrumb a {
+            color: #6c757d; 
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+            .kfc-breadcrumb a:hover {
+                color: #4b5055; 
+            }
+
+        .kfc-breadcrumb .separator {
+            margin: 0 5px;
+            color: #6c757d; 
+            font-weight: 700;
+        }
+
+        .kfc-breadcrumb .current {
+            color: #6c757d; /* xám nhạt */
+            font-weight: 600;
         }
 </style>
