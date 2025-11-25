@@ -49,15 +49,15 @@
 
                 @* Mục 1: Đặt ngay *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        @* Icon đồng hồ hoặc để trống tùy ý *@
+                    <a class="nav-link">
+                        <i class="bi bi-clock"></i>
                         Đặt ngay
                     </a>
                 </li>
 
                 @* Mục 2: Giao hàng (Thêm icon xe máy) *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link">
                         <i class="fa-solid fa-motorcycle"></i>
                         Giao hàng
                     </a>
@@ -65,7 +65,7 @@
 
                 @* Mục 3: Hoặc mang đi (Thêm icon cửa hàng) *@
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link">
                         <i class="fa-solid fa-store"></i>
                         Hoặc mang đi
                     </a>
@@ -74,7 +74,7 @@
                 @* Mục 4: Nút Bắt đầu đặt hàng *@
                 <li class="nav-item ms-3">
                     @* ms-3 để tách xa một chút *@
-                    <a class="nav-link btn-start-order" id="order02" href="#">
+                    <a class="nav-link btn-start-order" id="order02" href="@Url.Action("Category", "Danhmucs", new { area = "Customer", id = 3009 })">
                         Bắt đầu đặt hàng
                     </a>
                 </li>

@@ -1880,9 +1880,6 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Content\DatTiec.css" />
-    <Content Include="Areas\Customer\Content\product.v2.css" />
-    <Content Include="Content\account.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -1899,6 +1896,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\DatTiec.css" />
+    <Content Include="Areas\Customer\Content\product.v2.css" />
+    <Content Include="Content\account.css" />
     <Content Include="Content\ChinhSach.css" />
     <Content Include="Content\Header01.css" />
     <Content Include="Content\Hethongnhahang.css" />
@@ -2146,8 +2146,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Views\DatTiec\DatTiec.cshtml" />
-    <Content Include="Views\DatTiec\DatTiecThanhCong.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2159,6 +2157,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\DatTiec\DatTiec.cshtml" />
+    <Content Include="Views\DatTiec\DatTiecThanhCong.cshtml" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\Shop.js" />
     <Content Include="Web.config" />
@@ -2230,6 +2230,7 @@
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Views\Home\" />
     <Folder Include="Data\" />
+    <Folder Include="Images\Creater\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202511121539039__UPDATEDB.resx">
