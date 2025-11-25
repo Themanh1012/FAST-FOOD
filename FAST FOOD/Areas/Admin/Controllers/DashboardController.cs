@@ -16,7 +16,7 @@ namespace FAST_FOOD.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ViewBag.TotalRevenue = db.DonHangs
-                .Sum(d => (decimal?)d.TongTien) ?? 0;
+               .Sum(d => (decimal?)d.TongTien) ?? 0;
 
             // Doanh thu hôm nay
             var today = DateTime.Today;
@@ -32,7 +32,6 @@ namespace FAST_FOOD.Areas.Admin.Controllers
 
             // Tổng số khách
             ViewBag.UserCount = db.accounts.Count();
-
             var users = db.accounts.Select(u => new UserOrderViewModel
             {
                 UserId = u.MaTK,
@@ -40,25 +39,26 @@ namespace FAST_FOOD.Areas.Admin.Controllers
                 Email = u.Email,
 
                 TotalOrders = db.DonHangs
-                   .Count(d => d.TenKhachHang.Trim() == u.HoTen.Trim()),
+                     .Count(d => d.TenKhachHang.Trim() == u.HoTen.Trim()),
 
                 TotalMoney = db.DonHangs
-                   .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
-                   .Sum(d => (decimal?)d.TongTien) ?? 0,
+                     .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
+                     .Sum(d => (decimal?)d.TongTien) ?? 0,
 
                 LastOrder = db.DonHangs
-                   .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
-                   .OrderByDescending(d => d.NgayDat)
-                   .Select(d => d.NgayDat)
-                   .FirstOrDefault()
+                     .Where(d => d.TenKhachHang.Trim() == u.HoTen.Trim())
+                     .OrderByDescending(d => d.NgayDat)
+                     .Select(d => d.NgayDat)
+                     .FirstOrDefault()
             })
-           .OrderByDescending(x => x.LastOrder)
-           .Take(10) // 10 khách hàng gần nhất
-           .ToList();
+             .OrderByDescending(x => x.LastOrder)
+             .Take(10) // 10 khách hàng gần nhất
+             .ToList();
 
             ViewBag.UserOrders = users;
 
             return View();
+
         }
 
         public ActionResult UserDetail(int id)

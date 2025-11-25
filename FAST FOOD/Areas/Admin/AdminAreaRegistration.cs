@@ -16,7 +16,7 @@ namespace FAST_FOOD.Areas.Admin
                 url: "Admin/{controller}/{action}/{id}",
               defaults: new { action = "Index", id = UrlParameter.Optional },
 
-                namespaces: new[] { "FAST_FOOD.Areas.Admin.Controllers" }  // ⚠️ PHẢI CÓ DÒNG NÀY
+                namespaces: new[] { "FAST_FOOD.Areas.Admin.Controllers" }  
             );
         }
     }
