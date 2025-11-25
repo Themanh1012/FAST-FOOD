@@ -27,7 +27,9 @@
                data-aos-delay="@((m.MonAnId % 6) * 80)">
               <div class="kfc-card">
 
-                  <img src="@Url.Content(m.HinhAnh)" alt="@m.TenMon" class="kfc-img">
+                  <a href="@Url.Action("Details", "MonAns", new { area = "Customer", id = m.MonAnId })">
+                      <img src="@Url.Content(m.HinhAnh)" alt="@m.TenMon" class="kfc-img">
+                  </a>
 
                   <div class="kfc-body">
                       <div class="kfc-title-row">
@@ -37,10 +39,8 @@
 
                       <div class="kfc-desc">@m.MoTa</div>
 
-                      <a href="@Url.Action("Details", "MonAns", new { area = "Customer", id = m.MonAnId })"
-                         class="kfc-btn text-center d-block">
-                          Thêm
-                      </a>
+
+
                       <form action="@Url.Action("AddToCart", "Carts", new { area = "Customer" })" method="post" class="mt-2">
                           <input type="hidden" name="id" value="@m.MonAnId" />
                           <button type="button" class="kfc-btn" onclick="addToCart(@m.MonAnId)">Thêm</button>
