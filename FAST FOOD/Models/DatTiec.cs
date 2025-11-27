@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 
 namespace FAST_FOOD.Models
@@ -11,6 +12,9 @@ namespace FAST_FOOD.Models
     public class DatTiec
     {
         public int Id { get; set; }
+
+        public int MaTK { get; set; }
+        public virtual account Account { get; set; }
         // THÔNG TIN LIÊN HỆ
         [Required(ErrorMessage = "Vui lòng nhập họ và tên.")]
         [Display(Name = "Họ và tên người đặt *")]

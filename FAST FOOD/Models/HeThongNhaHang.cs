@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace FAST_FOOD.Models
 {
     public class NhaHang
     {
+
         public string TenNhaHang { get; set; }
         public string DiaChi { get; set; }
         public double Lat { get; set; } // Vĩ độ

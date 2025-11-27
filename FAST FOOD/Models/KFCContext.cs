@@ -24,7 +24,11 @@ namespace FAST_FOOD.Models
         public DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
 
         public DbSet<HoaDon> HoaDons { get; set; }
-       
+
+    
+        public DbSet<DatTiec> DatTiecs { get; set; }
+      
+        public DbSet<TinTuc> TinTucs { get; set; }
 
         public DbSet<account> accounts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

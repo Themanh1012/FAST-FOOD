@@ -176,6 +176,14 @@
     <Compile Include="Migrations\202511192022053__UdUser.Designer.cs">
       <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202511260922574_AddNewTables.cs" />
+    <Compile Include="Migrations\202511260922574_AddNewTables.Designer.cs">
+      <DependentUpon>202511260922574_AddNewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511260930174_FixDB.cs" />
+    <Compile Include="Migrations\202511260930174_FixDB.Designer.cs">
+      <DependentUpon>202511260930174_FixDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\account.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -2246,6 +2254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511192022053__UdUser.resx">
       <DependentUpon>202511192022053__UdUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511260922574_AddNewTables.resx">
+      <DependentUpon>202511260922574_AddNewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511260930174_FixDB.resx">
+      <DependentUpon>202511260930174_FixDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace FAST_FOOD.Models
         [Required, StringLength(100, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 ký tự trở lên.")]
         [Display(Name = "Tên đăng nhập")]
         public string TenDangNhap { get; set; }
-            
+
         [Required, StringLength(255, MinimumLength = 6, ErrorMessage = "Mật khẩu phải từ 6 ký tự trở lên.")]
         [Display(Name = "Mật khẩu")]
         public string MatKhau { get; set; }
@@ -43,9 +43,14 @@ namespace FAST_FOOD.Models
         public string ResetToken { get; set; }
         [Display(Name = "Thời gian hết hạn mã khôi phục")]
         public DateTime? TokenExpireTime { get; set; }
+
+        // Navigation
+        public virtual ICollection<DonHang> DonHangs { get; set; }
+        public virtual ICollection<DatTiec> DatTiecs { get; set; }
+        public virtual ICollection<TinTuc> TinTucs { get; set; }
     }
 }
 
-      
-  
+
+
 
